@@ -1,0 +1,159 @@
+/*  
+ // teste08 - sem erros 
+ const int MAX = 10, MAX2 = 50; 
+          
+ string Mensagem = "Hello world"; 
+  
+ procedure start {  // comeca aqui o programa principal  
+  
+         int idade;  
+         string nome; 
+  
+         print("Digite o nome"); 
+         read(nome); 
+         print("Digite a idade"); 
+         read(idade); 
+          
+         if (idade >= 150) print("pode aposentar kkkk"); 
+         else { 
+                 print("vai trabalhar"); // hehehe 
+         }         
+   
+ }  
+  
+ //if (true) then {outra_funcao();} 
+ //if (true) then {outra_funcao();} else {funcao();} 
+ //int .. a , b 
+  
+ //teste(oi,ola,t(2,i,outra_funcao())) 
+  
+ //print(); 
+ //d = a[2] 
+ //(d == 2 ) 
+ //d=s 
+ //oi || ola && !a && false || oi(ola) && a == b 
+ //oi || ola && !a 
+ //oi || ola 
+  
+ //(2+(3*4)/(6)) 
+  
+ //s+2/2/w 
+  
+ //procedure proc (boolean b, int teste) {print(d); outra_funcao();} 
+ function boolean chama_funcoes(boolean b, int teste, real numero, string nome){ 
+  
+         outra_funcao(); 
+         t(2,i,outra()); 
+  
+         return 8; 
+ } 
+  
+ var { 
+         string soma = (2+(3*4)/(p)); 
+         int f = (d == 2 ); 
+ } 
+  
+ while (b){ 
+         print (oi); 
+         read (oi); 
+         teste(oi,ola,t(2,i,outra_funcao())); 
+         outra_funcao(); 
+  
+         var { 
+                 string d= 3, d=4; 
+                 int s; 
+         }; 
+         var { 
+                 boolean d= 3, d=4; 
+                 int s; 
+         }; 
+  
+         if (true) then { 
+                 outra_funcao(); 
+         } else { 
+                 funcao(); 
+         } 
+  
+         while (b) { 
+                 outra_funcao(); 
+         } 
+  
+         p = 5; 
+  
+         l = (2+(3*4)/(p)); 
+  
+         r = oi || ola && !a && false || oi(ola) && a == b; 
+  
+         f = (d == 2 ); 
+         //s = w[2]; 
+ } 
+  
+ function boolean funcao(){ 
+         while (b){ 
+                 print (p); 
+                 } 
+                 read (oi); 
+                 teste(oi,ola,t(2,i,outra_funcao())); 
+                 outra_funcao(); 
+  
+                 var { 
+                         string d= 3, d=4; 
+                         int s; 
+                 }; 
+                 var { 
+                         boolean d= 3, d=4; 
+                         int s; 
+                 }; 
+  
+                 if (true) then { 
+                         outra_funcao(); 
+                 } else { 
+                         funcao(); 
+                 } 
+  
+                 while (b) { 
+                         outra_funcao(); 
+                 } 
+                 outra_funcao(); 
+                 p = 5; 
+  
+                 l = (2+(3*4)/(p)); 
+          
+  
+         return 8; 
+ } 
+ var { string d= 3, d=4; 
+                 int s;} 
+ */ 
+  
+ var { 
+         string nome; 
+         int idade, numero; 
+         real numero_real; 
+         boolean teste; 
+ } 
+  
+ function int nome_funcao(int p1, string p1) { 
+         print(1); 
+         return 1; 
+ } 
+  
+ procedure start() { 
+         teste = false; 
+         idade = 1 + teste; 
+         idade = nome_funcao(idade, nome); 
+         /*print("Digite o nome"); 
+         read(nome); 
+         print("Digite a idade"); 
+         read(idade); 
+  
+         invalida(); 
+          
+         if (idade >= 150) then { 
+                 print("pode aposentar kkkk"); 
+         } else { 
+                 print("vai trabalhar"); 
+         }        */ 
+  
+ } 
+  
