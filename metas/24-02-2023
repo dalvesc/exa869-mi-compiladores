@@ -1,0 +1,96 @@
+void bubbleSort(int arr[], int n)
+{
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+  
+        // Last i elements are already in place
+        for (j = 0; j < n - i - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(&arr[j], &arr[j + 1]);
+}
+
+
+Tokens:
+
+<keyword, void>
+<identifier, bubbleSort>
+<delimiter, (>
+<keyword, int>
+<identifier, arr>
+<delimiter, [>
+<delimiter. ]>
+<delimiter, ,>
+<keyword, int>
+<identifier, n>
+<delimiter, {>
+<keyword, int>
+<identifier, i>
+<delimiter, ,>
+<identifier, j>
+<delimiter, ;>
+<keyword, for>
+<delimiter, (>
+<identifier, i>
+<operator, =>
+<number, 0>
+<delimiter, ;>
+<identifier, i>
+<operator, <>
+<identifier, n>
+<operator, ->
+<number, 1>
+<delimiter, ;>
+<identifier, i>
+<operator, +>
+<operator, +>
+<delimiter, )>
+<comment_delimiter, //>
+<keyword, for>
+<delimiter, (>
+<identifier, j>
+<operator, =>
+<number, 0>
+<delimiter, ;>
+<identifier, j>
+<operator, <>
+<identifier, n>
+<operator, ->
+<identifier, i>
+<operator, ->
+<number, 1>
+<delimiter, ;>
+<identifier, j>
+<operator, +>
+<operator, +>
+<delimiter, )>
+<keyword, if>
+<delimiter, (>
+<identifier, arr>
+<delimiter, [>
+<identifier, j>
+<delimiter. ]>
+<identifier, arr>
+<delimiter, [>
+<identifier, j>
+<operator, +>
+<number, 1>
+<delimiter. ]>
+<delimiter, )>
+<identifier, swap>
+<operator, &>
+<identifier, arr>
+<delimiter, [>
+<identifier, j>
+<delimiter. ]>
+<delimiter, ,>
+<operator, &>
+<identifier, arr>
+<delimiter, [>
+<identifier, j>
+<operator, +>
+<number, 1>
+<delimiter. ]>
+<delimiter, )>
+<delimiter, ;>
+<delimiter, }>
+
