@@ -1,3 +1,6 @@
+import os
+
+
 palavras_reservadas = ['var', 'const', 'struct', 'procedure', 'function', 'start', 'return', 'if', 'else', 'then', 'while', 'read', 'print', 'int', 'real', 'boolean', 'string', 'true', 'false']
 identificadores = []
 numeros = []
@@ -11,3 +14,23 @@ delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 cadeia_caracteres = []
 simbolo = []
 espaços = []
+
+pasta = os.getcwd()+'/analisador_lexico/files/input/'
+
+
+
+def ler_linha_arquivo(arquivo):
+    arquivo = open(arquivo)
+    linhas = arquivo.readlines()
+    arquivo.close()
+
+    return linhas
+
+def ler_pasta_arquivos():
+    arquivos = []
+    for raiz, diretorios, files in os.walk(pasta):
+        for arquivo in files:
+            arquivos.append(os.path.join(raiz, arquivo))
+    return arquivos
+
+print(ler_linha_arquivo(ler_pasta_arquivos()[0])) #aparecendo \xa0 no lugar de espaço
