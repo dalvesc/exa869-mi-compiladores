@@ -27,7 +27,7 @@ def ler_linha_arquivo(arquivo):
 
     linhas_formatadas = []
     for linha in linhas:
-        linha = unicodedata.normalize("NFKD", linha)
+        linha = unicodedata.normalize("NFKD", linha)#transforma \xa0 em espaço
         linhas_formatadas.append(linha)
 
     return linhas_formatadas
@@ -78,7 +78,7 @@ def analisar_arquivo(linhas):
         lexema = []
         for letra in linha:
             lexema.append(letra)
-            analisadores(''.join(lexema).strip(), linha_encontrada)    
+            analisadores(''.join(lexema).strip(), linha_encontrada)
 
 
 if __name__ == "__main__":
