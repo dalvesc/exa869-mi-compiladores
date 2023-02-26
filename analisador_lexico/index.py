@@ -4,17 +4,13 @@ import unicodedata
 
 palavras_reservadas = ['var', 'const', 'struct', 'procedure', 'function', 'start', 'return', 'if', 'else', 'then', 'while', 'read', 'print', 'int', 'real', 'boolean', 'string', 'true', 'false']
 identificadores = []
-numeros = []
-digitos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-letras = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 operadores_aritmeticos = ['+', '-', '*', '/', '++', '--']
 operadores_relacionais = ['!=', '==', '<', '<=', '>', '>=', '=']
 operadores_logicos = ['!', '&&', '||']
 delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 cadeia_caracteres = []
-simbolo_ascii = []
-espaco_ascii = []
+simbolo_ascii = [i for i in range(32, 127) if i != 34 or i == 9]
 
 pasta = os.getcwd()+'/analisador_lexico/files/input/' #pasta dos códigos de input
 
@@ -82,6 +78,17 @@ def is_delimitador(lexema):
 def is_delimitador_comentario(lexema):
     return lexema in delimitadores_comentarios
 
+#indentifica se o lexema é um caractere válido na tabela ascii
+def is_caractere_valido_string(lexema):
+    return all(ord(c) in simbolo_ascii or c == '"' for c in lexema)
+
+#indentifica se o lexema é uma cadeia de caracteres
+def is_cadeia_caractere(lexema):
+    if len(lexema) != 0:
+        if lexema[0] and lexema[len(lexema)-1] == '"':
+            if is_caractere_valido_string(lexema):
+                return True
+
 #todos os analisadores para passar o lexema
 def analisadores(lexema, linha_encontrada):
     if is_palavra_reservada(lexema):
@@ -96,6 +103,8 @@ def analisadores(lexema, linha_encontrada):
         return tokens.append(montar_token('operador logico', lexema, linha_encontrada))
     elif is_delimitador(lexema):
         return tokens.append(montar_token('delimitador', lexema, linha_encontrada))
+    elif is_cadeia_caractere(lexema):
+        return tokens.append(montar_token('cadeia de caracteres', lexema, linha_encontrada))
     else:
         return tokens_erros.append(montar_token('erro', lexema, linha_encontrada))
     #outros if's para os outros analisadores
@@ -110,14 +119,20 @@ def analisar_arquivo(linhas):
         while i < len(linha):
             letra = linha[i]
             
-            if linha[i] != ' ' and linha[i] != "\t" and linha[i] != "\n":
+            if linha[i] != "\n":
                 lexema.append(letra)
 
-            if linha[++i] == ' '  or linha[++i] == "\t" or linha[++i] == "\n": 
+            if linha[++i] == "\n": 
                 if lexema:
                     analisadores(''.join(lexema).strip(), linha_encontrada)
                     lexema = []
-
+            elif linha[++i] == " ":
+                if lexema and lexema[0] != '"': 
+                        analisadores(''.join(lexema).strip(), linha_encontrada)
+                        lexema = []
+            elif lexema[0] == '"' and lexema[len(lexema)-1] == '"' and len(lexema) > 1:
+                analisadores(''.join(lexema).strip(), linha_encontrada)
+                lexema = []
             i = i + 1
 
 
