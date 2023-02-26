@@ -119,20 +119,30 @@ def analisar_arquivo(linhas):
         while i < len(linha):
             letra = linha[i]
             
-            if linha[i] != "\n":
+            if letra != "\n":
                 lexema.append(letra)
 
-            if linha[++i] == "\n": 
+            if letra == "\n": #caso seja final de linha
                 if lexema:
                     analisadores(''.join(lexema).strip(), linha_encontrada)
                     lexema = []
-            elif linha[++i] == " ":
-                if lexema and lexema[0] != '"': 
-                        analisadores(''.join(lexema).strip(), linha_encontrada)
-                        lexema = []
-            elif lexema[0] == '"' and lexema[len(lexema)-1] == '"' and len(lexema) > 1:
+            elif letra == '"': #caso inicie uma cadeia de caracteres
+                j = i + 1 
+                while j < len(linha):
+                    if (linha[j] != '"'):
+                        print(lexema)
+                        lexema.append(linha[j])
+                    j = j + 1
                 analisadores(''.join(lexema).strip(), linha_encontrada)
                 lexema = []
+            elif letra == " ": #caso seja um espaço em branco
+                analisadores(''.join(lexema).strip(), linha_encontrada)
+                lexema = []
+            #elif lexema[0] == '"' and lexema[len(lexema)-1] == '"' and len(lexema) > 1:
+            #    analisadores(''.join(lexema).strip(), linha_encontrada)
+            #    lexema = []
+            
+
             i = i + 1
 
 

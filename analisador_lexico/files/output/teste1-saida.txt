@@ -9,7 +9,6 @@ Tokens:
 <"operador relacional", "=", 3>
 <"palavra reservada", "string", 5>
 <"operador relacional", "=", 5>
-<"cadeia de caracteres", ""Hello world"", 5>
 <"delimitador", ";", 5>
 <"palavra reservada", "procedure", 7>
 <"palavra reservada", "start", 7>
@@ -153,7 +152,7 @@ Tokens:
 <"delimitador", "{", 154>
 <"delimitador", "}", 156>
 <"delimitador de comentario", "*/", 156>
-<"cadeia de caracteres", ""vai"", 157>
+<"cadeia de caracteres", "vai"", 157>
 <"delimitador", "}", 158>
 
 Erros: 
@@ -179,6 +178,9 @@ Erros:
 <"erro", "", 4>
 <"erro", "", 5>
 <"erro", "Mensagem", 5>
+<"erro", ""Hello world;", 5>
+<"erro", "Hello", 5>
+<"erro", "world";", 5>
 <"erro", "", 6>
 <"erro", "", 6>
 <"erro", "", 7>
@@ -223,9 +225,11 @@ Erros:
 <"erro", "", 12>
 <"erro", "", 12>
 <"erro", "", 12>
-<"erro", "print("Digite", 12>
+<"erro", "print("Digite o nome);", 12>
+<"erro", "Digite", 12>
 <"erro", "o", 12>
 <"erro", "nome");", 12>
+<"erro", ");", 12>
 <"erro", "", 13>
 <"erro", "", 13>
 <"erro", "", 13>
@@ -245,9 +249,11 @@ Erros:
 <"erro", "", 14>
 <"erro", "", 14>
 <"erro", "", 14>
-<"erro", "print("Digite", 14>
+<"erro", "print("Digite a idade);", 14>
+<"erro", "Digite", 14>
 <"erro", "a", 14>
 <"erro", "idade");", 14>
+<"erro", ");", 14>
 <"erro", "", 15>
 <"erro", "", 15>
 <"erro", "", 15>
@@ -279,9 +285,11 @@ Erros:
 <"erro", "", 17>
 <"erro", "(idade", 17>
 <"erro", "150)", 17>
-<"erro", "print("pode", 17>
+<"erro", "print("pode aposentar kkkk);", 17>
+<"erro", "pode", 17>
 <"erro", "aposentar", 17>
 <"erro", "kkkk");", 17>
+<"erro", ");", 17>
 <"erro", "", 18>
 <"erro", "", 18>
 <"erro", "", 18>
@@ -308,8 +316,10 @@ Erros:
 <"erro", "", 19>
 <"erro", "", 19>
 <"erro", "", 19>
-<"erro", "print("vai", 19>
-<"erro", "trabalhar");", 19>
+<"erro", "print("vai trabalhar); // hehehe", 19>
+<"erro", "vai", 19>
+<"erro", "trabalhar"); // hehehe", 19>
+<"erro", ");", 19>
 <"erro", "hehehe", 19>
 <"erro", "", 20>
 <"erro", "", 20>
@@ -1478,9 +1488,11 @@ Erros:
 <"erro", "", 145>
 <"erro", "", 145>
 <"erro", "", 145>
-<"erro", "/*print("Digite", 145>
+<"erro", "/*print("Digite o nome);", 145>
+<"erro", "Digite", 145>
 <"erro", "o", 145>
 <"erro", "nome");", 145>
+<"erro", ");", 145>
 <"erro", "", 146>
 <"erro", "", 146>
 <"erro", "", 146>
@@ -1500,9 +1512,11 @@ Erros:
 <"erro", "", 147>
 <"erro", "", 147>
 <"erro", "", 147>
-<"erro", "print("Digite", 147>
+<"erro", "print("Digite a idade);", 147>
+<"erro", "Digite", 147>
 <"erro", "a", 147>
 <"erro", "idade");", 147>
+<"erro", ");", 147>
 <"erro", "", 148>
 <"erro", "", 148>
 <"erro", "", 148>
@@ -1563,9 +1577,11 @@ Erros:
 <"erro", "", 153>
 <"erro", "", 153>
 <"erro", "", 153>
-<"erro", "print("pode", 153>
+<"erro", "print("pode aposentar kkkk);", 153>
+<"erro", "pode", 153>
 <"erro", "aposentar", 153>
 <"erro", "kkkk");", 153>
+<"erro", ");", 153>
 <"erro", "", 154>
 <"erro", "", 154>
 <"erro", "", 154>
@@ -1592,8 +1608,10 @@ Erros:
 <"erro", "", 155>
 <"erro", "", 155>
 <"erro", "", 155>
-<"erro", "print("vai", 155>
+<"erro", "print("vai trabalhar);", 155>
+<"erro", "vai", 155>
 <"erro", "trabalhar");", 155>
+<"erro", ");", 155>
 <"erro", "", 156>
 <"erro", "", 156>
 <"erro", "", 156>
@@ -1612,6 +1630,7 @@ Erros:
 <"erro", "", 156>
 <"erro", "", 157>
 <"erro", "", 157>
+<"erro", ""vai", 157>
 <"erro", "", 158>
 <"erro", "", 159>
 <"erro", "", 159>
