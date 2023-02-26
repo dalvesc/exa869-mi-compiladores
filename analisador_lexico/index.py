@@ -13,8 +13,8 @@ operadores_logicos = ['!', '&&', '||']
 delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 cadeia_caracteres = []
-simbolo = []
-espaços = []
+simbolo_ascii = []
+espaco_ascii = []
 
 pasta = os.getcwd()+'/analisador_lexico/files/input/' #pasta dos códigos de input
 
@@ -62,11 +62,23 @@ def montar_token(classificacao, lexema, linha):
 def is_palavra_reservada(lexema):
     return lexema in palavras_reservadas
 
-
+#indentifica se o lexema é um operador aritmetico
 def is_operador_aritmetico(lexema):
     return lexema in operadores_aritmeticos
 
+#indentifica se o lexema é um operador relacional
+def is_operador_relacional(lexema):
+    return lexema in operadores_relacionais
 
+#indentifica se o lexema é um operador logico
+def is_operador_logico(lexema):
+    return lexema in operadores_logicos
+
+#indentifica se o lexema é um delimitador
+def is_delimitador(lexema):
+    return lexema in delimitadores
+
+#indentifica se o lexema é um delimitador de comentario
 def is_delimitador_comentario(lexema):
     return lexema in delimitadores_comentarios
 
@@ -79,6 +91,12 @@ def analisadores(lexema, linha_encontrada):
         return tokens.append(montar_token('delimitador de comentario', lexema, linha_encontrada))
     elif is_operador_aritmetico(lexema):
         return tokens.append(montar_token('operador aritmetico', lexema, linha_encontrada))
+    elif is_operador_relacional(lexema):
+        return tokens.append(montar_token('operador relacional', lexema, linha_encontrada))
+    elif is_operador_logico(lexema):
+        return tokens.append(montar_token('operador logico', lexema, linha_encontrada))
+    elif is_delimitador(lexema):
+        return tokens.append(montar_token('delimitador', lexema, linha_encontrada))
     else:
         return tokens_erros.append(montar_token('erro', lexema, linha_encontrada))
     #outros if's para os outros analisadores
@@ -96,13 +114,10 @@ def analisar_arquivo(linhas):
             if linha[i] != ' ' and linha[i] != "\t" and linha[i] != "\n":
                 lexema.append(letra)
 
-
             if linha[++i] == ' '  or linha[++i] == "\t" or linha[++i] == "\n": 
                 if lexema:
                     analisadores(''.join(lexema).strip(), linha_encontrada)
-                    print(lexema)
                     lexema = []
-
 
             i = i + 1
 
