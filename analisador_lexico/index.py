@@ -84,7 +84,6 @@ def is_delimitador_comentario(lexema):
 
 #todos os analisadores para passar o lexema
 def analisadores(lexema, linha_encontrada):
-
     if is_palavra_reservada(lexema):
         return tokens.append(montar_token('palavra reservada', lexema, linha_encontrada))
     elif is_delimitador_comentario(lexema):
