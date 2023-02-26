@@ -1,171 +1,1611 @@
 Tokens: 
 
 <"delimitador de comentario", "/*", 1>
+<"delimitador de comentario", "//", 2>
+<"operador aritmetico", "-", 2>
+<"palavra reservada", "const", 3>
+<"palavra reservada", "int", 3>
+<"operador relacional", "=", 3>
+<"operador relacional", "=", 3>
+<"palavra reservada", "string", 5>
+<"operador relacional", "=", 5>
 <"cadeia de caracteres", ""Hello world"", 5>
 <"delimitador", ";", 5>
+<"palavra reservada", "procedure", 7>
+<"palavra reservada", "start", 7>
+<"delimitador", "{", 7>
+<"delimitador de comentario", "//", 7>
+<"palavra reservada", "int", 9>
+<"palavra reservada", "string", 10>
 <"cadeia de caracteres", ""Digite o nome"", 12>
 <"cadeia de caracteres", ""Digite a idade"", 14>
+<"palavra reservada", "if", 17>
+<"operador relacional", ">=", 17>
 <"cadeia de caracteres", ""pode aposentar kkkk"", 17>
+<"palavra reservada", "else", 18>
+<"delimitador", "{", 18>
 <"cadeia de caracteres", ""vai trabalhar"", 19>
+<"delimitador de comentario", "//", 19>
 <"delimitador", "}", 20>
 <"delimitador", "}", 22>
+<"palavra reservada", "then", 24>
+<"palavra reservada", "then", 25>
+<"palavra reservada", "else", 25>
+<"delimitador", ",", 26>
+<"operador relacional", "=", 31>
+<"operador relacional", "==", 32>
+<"delimitador", ")", 32>
+<"operador logico", "||", 34>
+<"operador logico", "&&", 34>
+<"operador logico", "&&", 34>
+<"palavra reservada", "false", 34>
+<"operador logico", "||", 34>
+<"operador logico", "&&", 34>
+<"operador relacional", "==", 34>
+<"operador logico", "||", 35>
+<"operador logico", "&&", 35>
+<"operador logico", "||", 36>
+<"palavra reservada", "int", 42>
+<"palavra reservada", "function", 43>
+<"palavra reservada", "boolean", 43>
+<"palavra reservada", "int", 43>
+<"palavra reservada", "real", 43>
+<"palavra reservada", "string", 43>
+<"palavra reservada", "return", 48>
 <"delimitador", "}", 49>
+<"palavra reservada", "var", 51>
+<"delimitador", "{", 51>
+<"palavra reservada", "string", 52>
+<"operador relacional", "=", 52>
+<"palavra reservada", "int", 53>
+<"operador relacional", "=", 53>
+<"operador relacional", "==", 53>
 <"delimitador", "}", 54>
+<"palavra reservada", "while", 56>
+<"palavra reservada", "print", 57>
+<"palavra reservada", "read", 58>
+<"palavra reservada", "var", 62>
+<"delimitador", "{", 62>
+<"palavra reservada", "string", 63>
+<"palavra reservada", "int", 64>
+<"palavra reservada", "var", 66>
+<"delimitador", "{", 66>
+<"palavra reservada", "boolean", 67>
+<"palavra reservada", "int", 68>
+<"palavra reservada", "if", 71>
+<"palavra reservada", "then", 71>
+<"delimitador", "{", 71>
+<"delimitador", "}", 73>
+<"palavra reservada", "else", 73>
+<"delimitador", "{", 73>
 <"delimitador", "}", 75>
+<"palavra reservada", "while", 77>
+<"delimitador", "{", 77>
 <"delimitador", "}", 79>
+<"operador relacional", "=", 81>
+<"operador relacional", "=", 83>
+<"operador relacional", "=", 85>
+<"operador logico", "||", 85>
+<"operador logico", "&&", 85>
+<"operador logico", "&&", 85>
+<"palavra reservada", "false", 85>
+<"operador logico", "||", 85>
+<"operador logico", "&&", 85>
+<"operador relacional", "==", 85>
+<"operador relacional", "=", 87>
+<"operador relacional", "==", 87>
+<"operador relacional", "=", 88>
 <"delimitador", "}", 89>
+<"palavra reservada", "function", 91>
+<"palavra reservada", "boolean", 91>
+<"palavra reservada", "while", 92>
+<"palavra reservada", "print", 93>
 <"delimitador", "}", 94>
+<"palavra reservada", "read", 95>
+<"palavra reservada", "var", 99>
+<"delimitador", "{", 99>
+<"palavra reservada", "string", 100>
+<"palavra reservada", "int", 101>
+<"palavra reservada", "var", 103>
+<"delimitador", "{", 103>
+<"palavra reservada", "boolean", 104>
+<"palavra reservada", "int", 105>
+<"palavra reservada", "if", 108>
+<"palavra reservada", "then", 108>
+<"delimitador", "{", 108>
+<"delimitador", "}", 110>
+<"palavra reservada", "else", 110>
+<"delimitador", "{", 110>
 <"delimitador", "}", 112>
+<"palavra reservada", "while", 114>
+<"delimitador", "{", 114>
 <"delimitador", "}", 116>
+<"operador relacional", "=", 118>
+<"operador relacional", "=", 120>
+<"palavra reservada", "return", 123>
 <"delimitador", "}", 124>
+<"palavra reservada", "var", 125>
+<"delimitador", "{", 125>
+<"palavra reservada", "string", 125>
+<"palavra reservada", "int", 126>
 <"delimitador de comentario", "*/", 127>
+<"palavra reservada", "var", 129>
+<"delimitador", "{", 129>
+<"palavra reservada", "string", 130>
+<"palavra reservada", "int", 131>
+<"palavra reservada", "real", 132>
+<"palavra reservada", "boolean", 133>
 <"delimitador", "}", 134>
+<"palavra reservada", "function", 136>
+<"palavra reservada", "int", 136>
+<"palavra reservada", "string", 136>
+<"delimitador", "{", 136>
+<"palavra reservada", "return", 138>
 <"delimitador", "}", 139>
+<"palavra reservada", "procedure", 141>
+<"delimitador", "{", 141>
+<"operador relacional", "=", 142>
+<"operador relacional", "=", 143>
+<"operador aritmetico", "+", 143>
+<"operador relacional", "=", 144>
 <"cadeia de caracteres", ""Digite o nome"", 145>
 <"cadeia de caracteres", ""Digite a idade"", 147>
+<"palavra reservada", "if", 152>
+<"operador relacional", ">=", 152>
+<"palavra reservada", "then", 152>
+<"delimitador", "{", 152>
 <"cadeia de caracteres", ""pode aposentar kkkk"", 153>
+<"delimitador", "}", 154>
+<"palavra reservada", "else", 154>
+<"delimitador", "{", 154>
 <"cadeia de caracteres", ""vai trabalhar"", 155>
+<"delimitador", "}", 156>
+<"delimitador de comentario", "*/", 156>
 <"cadeia de caracteres", ""vai"", 157>
 <"delimitador", "}", 158>
 
 Erros: 
-<"erro", "// teste08 - sem erros", 2>
-<"erro", "const int MAX = 10, MAX2 = 50;", 3>
+<"erro", "", 1>
+<"erro", "", 2>
+<"erro", "teste08", 2>
+<"erro", "sem", 2>
+<"erro", "erros", 2>
+<"erro", "", 3>
+<"erro", "MAX", 3>
+<"erro", "10,", 3>
+<"erro", "MAX2", 3>
+<"erro", "50;", 3>
 <"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 4>
+<"erro", "", 5>
+<"erro", "Mensagem", 5>
 <"erro", "", 6>
-<"erro", "procedure start {  // comeca aqui o programa principal", 7>
+<"erro", "", 6>
+<"erro", "", 7>
+<"erro", "", 7>
+<"erro", "comeca", 7>
+<"erro", "aqui", 7>
+<"erro", "o", 7>
+<"erro", "programa", 7>
+<"erro", "principal", 7>
+<"erro", "", 7>
 <"erro", "", 8>
-<"erro", "int idade;", 9>
-<"erro", "string nome;", 10>
+<"erro", "", 8>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "", 9>
+<"erro", "idade;", 9>
+<"erro", "", 9>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "", 10>
+<"erro", "nome;", 10>
 <"erro", "", 11>
+<"erro", "", 11>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
+<"erro", "", 12>
 <"erro", ");", 12>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
+<"erro", "", 13>
 <"erro", "read(nome);", 13>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
+<"erro", "", 14>
 <"erro", ");", 14>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
+<"erro", "", 15>
 <"erro", "read(idade);", 15>
 <"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 16>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "", 17>
+<"erro", "(idade", 17>
+<"erro", "150)", 17>
 <"erro", ");", 17>
-<"erro", "else {", 18>
-<"erro", "); // hehehe", 19>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 18>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", "", 19>
+<"erro", ");", 19>
+<"erro", "hehehe", 19>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
+<"erro", "", 20>
 <"erro", "", 21>
+<"erro", "", 21>
+<"erro", "", 21>
+<"erro", "", 22>
+<"erro", "", 22>
 <"erro", "", 23>
-<"erro", "//if (true) then {outra_funcao();}", 24>
-<"erro", "//if (true) then {outra_funcao();} else {funcao();}", 25>
-<"erro", "//int .. a , b", 26>
+<"erro", "", 23>
+<"erro", "", 24>
+<"erro", "//if", 24>
+<"erro", "(true)", 24>
+<"erro", "{outra_funcao();}", 24>
+<"erro", "", 25>
+<"erro", "//if", 25>
+<"erro", "(true)", 25>
+<"erro", "{outra_funcao();}", 25>
+<"erro", "{funcao();}", 25>
+<"erro", "", 26>
+<"erro", "//int", 26>
+<"erro", "..", 26>
+<"erro", "a", 26>
+<"erro", "b", 26>
 <"erro", "", 27>
+<"erro", "", 27>
+<"erro", "", 28>
 <"erro", "//teste(oi,ola,t(2,i,outra_funcao()))", 28>
 <"erro", "", 29>
+<"erro", "", 29>
+<"erro", "", 30>
 <"erro", "//print();", 30>
-<"erro", "//d = a[2]", 31>
-<"erro", "//(d == 2 )", 32>
+<"erro", "", 31>
+<"erro", "//d", 31>
+<"erro", "a[2]", 31>
+<"erro", "", 32>
+<"erro", "//(d", 32>
+<"erro", "2", 32>
+<"erro", "", 33>
 <"erro", "//d=s", 33>
-<"erro", "//oi || ola && !a && false || oi(ola) && a == b", 34>
-<"erro", "//oi || ola && !a", 35>
-<"erro", "//oi || ola", 36>
+<"erro", "", 34>
+<"erro", "//oi", 34>
+<"erro", "ola", 34>
+<"erro", "!a", 34>
+<"erro", "oi(ola)", 34>
+<"erro", "a", 34>
+<"erro", "b", 34>
+<"erro", "", 35>
+<"erro", "//oi", 35>
+<"erro", "ola", 35>
+<"erro", "!a", 35>
+<"erro", "", 36>
+<"erro", "//oi", 36>
+<"erro", "ola", 36>
 <"erro", "", 37>
+<"erro", "", 37>
+<"erro", "", 38>
 <"erro", "//(2+(3*4)/(6))", 38>
 <"erro", "", 39>
+<"erro", "", 39>
+<"erro", "", 40>
 <"erro", "//s+2/2/w", 40>
 <"erro", "", 41>
-<"erro", "//procedure proc (boolean b, int teste) {print(d); outra_funcao();}", 42>
-<"erro", "function boolean chama_funcoes(boolean b, int teste, real numero, string nome){", 43>
+<"erro", "", 41>
+<"erro", "", 42>
+<"erro", "//procedure", 42>
+<"erro", "proc", 42>
+<"erro", "(boolean", 42>
+<"erro", "b,", 42>
+<"erro", "teste)", 42>
+<"erro", "{print(d);", 42>
+<"erro", "outra_funcao();}", 42>
+<"erro", "", 43>
+<"erro", "chama_funcoes(boolean", 43>
+<"erro", "b,", 43>
+<"erro", "teste,", 43>
+<"erro", "numero,", 43>
+<"erro", "nome){", 43>
 <"erro", "", 44>
+<"erro", "", 44>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
+<"erro", "", 45>
 <"erro", "outra_funcao();", 45>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
+<"erro", "", 46>
 <"erro", "t(2,i,outra());", 46>
 <"erro", "", 47>
-<"erro", "return 8;", 48>
+<"erro", "", 47>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "", 48>
+<"erro", "8;", 48>
+<"erro", "", 49>
 <"erro", "", 50>
-<"erro", "var {", 51>
-<"erro", "string soma = (2+(3*4)/(p));", 52>
-<"erro", "int f = (d == 2 );", 53>
+<"erro", "", 50>
+<"erro", "", 51>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "", 52>
+<"erro", "soma", 52>
+<"erro", "(2+(3*4)/(p));", 52>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "", 53>
+<"erro", "f", 53>
+<"erro", "(d", 53>
+<"erro", "2", 53>
+<"erro", ");", 53>
+<"erro", "", 54>
 <"erro", "", 55>
-<"erro", "while (b){", 56>
-<"erro", "print (oi);", 57>
-<"erro", "read (oi);", 58>
+<"erro", "", 55>
+<"erro", "", 56>
+<"erro", "(b){", 56>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "", 57>
+<"erro", "(oi);", 57>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "", 58>
+<"erro", "(oi);", 58>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
+<"erro", "", 59>
 <"erro", "teste(oi,ola,t(2,i,outra_funcao()));", 59>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
+<"erro", "", 60>
 <"erro", "outra_funcao();", 60>
 <"erro", "", 61>
-<"erro", "var {", 62>
-<"erro", "string d= 3, d=4;", 63>
-<"erro", "int s;", 64>
+<"erro", "", 61>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 62>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "", 63>
+<"erro", "d=", 63>
+<"erro", "3,", 63>
+<"erro", "d=4;", 63>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "", 64>
+<"erro", "s;", 64>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
+<"erro", "", 65>
 <"erro", "};", 65>
-<"erro", "var {", 66>
-<"erro", "boolean d= 3, d=4;", 67>
-<"erro", "int s;", 68>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 66>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "", 67>
+<"erro", "d=", 67>
+<"erro", "3,", 67>
+<"erro", "d=4;", 67>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "", 68>
+<"erro", "s;", 68>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
+<"erro", "", 69>
 <"erro", "};", 69>
 <"erro", "", 70>
-<"erro", "if (true) then {", 71>
+<"erro", "", 70>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "", 71>
+<"erro", "(true)", 71>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
+<"erro", "", 72>
 <"erro", "outra_funcao();", 72>
-<"erro", "} else {", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 73>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
+<"erro", "", 74>
 <"erro", "funcao();", 74>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
+<"erro", "", 75>
 <"erro", "", 76>
-<"erro", "while (b) {", 77>
+<"erro", "", 76>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "", 77>
+<"erro", "(b)", 77>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
+<"erro", "", 78>
 <"erro", "outra_funcao();", 78>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
+<"erro", "", 79>
 <"erro", "", 80>
-<"erro", "p = 5;", 81>
+<"erro", "", 80>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "", 81>
+<"erro", "p", 81>
+<"erro", "5;", 81>
 <"erro", "", 82>
-<"erro", "l = (2+(3*4)/(p));", 83>
+<"erro", "", 82>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "", 83>
+<"erro", "l", 83>
+<"erro", "(2+(3*4)/(p));", 83>
 <"erro", "", 84>
-<"erro", "r = oi || ola && !a && false || oi(ola) && a == b;", 85>
+<"erro", "", 84>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "", 85>
+<"erro", "r", 85>
+<"erro", "oi", 85>
+<"erro", "ola", 85>
+<"erro", "!a", 85>
+<"erro", "oi(ola)", 85>
+<"erro", "a", 85>
+<"erro", "b;", 85>
 <"erro", "", 86>
-<"erro", "f = (d == 2 );", 87>
-<"erro", "//s = w[2];", 88>
+<"erro", "", 86>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "", 87>
+<"erro", "f", 87>
+<"erro", "(d", 87>
+<"erro", "2", 87>
+<"erro", ");", 87>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "", 88>
+<"erro", "//s", 88>
+<"erro", "w[2];", 88>
+<"erro", "", 89>
 <"erro", "", 90>
-<"erro", "function boolean funcao(){", 91>
-<"erro", "while (b){", 92>
-<"erro", "print (p);", 93>
-<"erro", "read (oi);", 95>
+<"erro", "", 90>
+<"erro", "", 91>
+<"erro", "funcao(){", 91>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "", 92>
+<"erro", "(b){", 92>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "", 93>
+<"erro", "(p);", 93>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 94>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "", 95>
+<"erro", "(oi);", 95>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
+<"erro", "", 96>
 <"erro", "teste(oi,ola,t(2,i,outra_funcao()));", 96>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
+<"erro", "", 97>
 <"erro", "outra_funcao();", 97>
 <"erro", "", 98>
-<"erro", "var {", 99>
-<"erro", "string d= 3, d=4;", 100>
-<"erro", "int s;", 101>
+<"erro", "", 98>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 99>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "", 100>
+<"erro", "d=", 100>
+<"erro", "3,", 100>
+<"erro", "d=4;", 100>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "", 101>
+<"erro", "s;", 101>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
+<"erro", "", 102>
 <"erro", "};", 102>
-<"erro", "var {", 103>
-<"erro", "boolean d= 3, d=4;", 104>
-<"erro", "int s;", 105>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 103>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "", 104>
+<"erro", "d=", 104>
+<"erro", "3,", 104>
+<"erro", "d=4;", 104>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "", 105>
+<"erro", "s;", 105>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
+<"erro", "", 106>
 <"erro", "};", 106>
 <"erro", "", 107>
-<"erro", "if (true) then {", 108>
+<"erro", "", 107>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "", 108>
+<"erro", "(true)", 108>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
+<"erro", "", 109>
 <"erro", "outra_funcao();", 109>
-<"erro", "} else {", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 110>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
+<"erro", "", 111>
 <"erro", "funcao();", 111>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
+<"erro", "", 112>
 <"erro", "", 113>
-<"erro", "while (b) {", 114>
+<"erro", "", 113>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "", 114>
+<"erro", "(b)", 114>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
+<"erro", "", 115>
 <"erro", "outra_funcao();", 115>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 116>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
+<"erro", "", 117>
 <"erro", "outra_funcao();", 117>
-<"erro", "p = 5;", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "", 118>
+<"erro", "p", 118>
+<"erro", "5;", 118>
 <"erro", "", 119>
-<"erro", "l = (2+(3*4)/(p));", 120>
+<"erro", "", 119>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "", 120>
+<"erro", "l", 120>
+<"erro", "(2+(3*4)/(p));", 120>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
+<"erro", "", 121>
 <"erro", "", 121>
 <"erro", "", 122>
-<"erro", "return 8;", 123>
-<"erro", "var { string d= 3, d=4;", 125>
-<"erro", "int s;}", 126>
+<"erro", "", 122>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "", 123>
+<"erro", "8;", 123>
+<"erro", "", 124>
+<"erro", "", 125>
+<"erro", "d=", 125>
+<"erro", "3,", 125>
+<"erro", "d=4;", 125>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "", 126>
+<"erro", "s;}", 126>
+<"erro", "", 127>
 <"erro", "", 128>
-<"erro", "var {", 129>
-<"erro", "string nome;", 130>
-<"erro", "int idade, numero;", 131>
-<"erro", "real numero_real;", 132>
-<"erro", "boolean teste;", 133>
+<"erro", "", 128>
+<"erro", "", 129>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "", 130>
+<"erro", "nome;", 130>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "", 131>
+<"erro", "idade,", 131>
+<"erro", "numero;", 131>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "", 132>
+<"erro", "numero_real;", 132>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "", 133>
+<"erro", "teste;", 133>
+<"erro", "", 134>
 <"erro", "", 135>
-<"erro", "function int nome_funcao(int p1, string p1) {", 136>
+<"erro", "", 135>
+<"erro", "", 136>
+<"erro", "nome_funcao(int", 136>
+<"erro", "p1,", 136>
+<"erro", "p1)", 136>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
+<"erro", "", 137>
 <"erro", "print(1);", 137>
-<"erro", "return 1;", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "", 138>
+<"erro", "1;", 138>
+<"erro", "", 139>
 <"erro", "", 140>
-<"erro", "procedure start() {", 141>
-<"erro", "teste = false;", 142>
-<"erro", "idade = 1 + teste;", 143>
-<"erro", "idade = nome_funcao(idade, nome);", 144>
+<"erro", "", 140>
+<"erro", "", 141>
+<"erro", "start()", 141>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "", 142>
+<"erro", "teste", 142>
+<"erro", "false;", 142>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "", 143>
+<"erro", "idade", 143>
+<"erro", "1", 143>
+<"erro", "teste;", 143>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "", 144>
+<"erro", "idade", 144>
+<"erro", "nome_funcao(idade,", 144>
+<"erro", "nome);", 144>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
+<"erro", "", 145>
 <"erro", ");", 145>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
+<"erro", "", 146>
 <"erro", "read(nome);", 146>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
+<"erro", "", 147>
 <"erro", ");", 147>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
+<"erro", "", 148>
 <"erro", "read(idade);", 148>
 <"erro", "", 149>
+<"erro", "", 149>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
+<"erro", "", 150>
 <"erro", "invalida();", 150>
 <"erro", "", 151>
-<"erro", "if (idade >= 150) then {", 152>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 151>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "", 152>
+<"erro", "(idade", 152>
+<"erro", "150)", 152>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
+<"erro", "", 153>
 <"erro", ");", 153>
-<"erro", "} else {", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 154>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
+<"erro", "", 155>
 <"erro", ");", 155>
-<"erro", "}        */", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 156>
+<"erro", "", 157>
+<"erro", "", 157>
+<"erro", "", 158>
+<"erro", "", 159>
+<"erro", "", 159>

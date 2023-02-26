@@ -2,14 +2,15 @@ import os
 import unicodedata
 
 
-palavras_reservadas = ['var', 'const', 'struct', 'procedure', 'function', 'start', 'return', 'if', 'else', 'then', 'while', 'read', 'print', 'int', 'real', 'boolean', 'string', 'true', 'false']
+palavras_reservadas = ['var', 'const', 'struct', 'procedure', 'function', 
+                       'start', 'return', 'if', 'else', 'then', 'while', 'read', 
+                       'print', 'int', 'real', 'boolean', 'string', 'true', 'false']
 identificadores = []
 operadores_aritmeticos = ['+', '-', '*', '/', '++', '--']
 operadores_relacionais = ['!=', '==', '<', '<=', '>', '>=', '=']
 operadores_logicos = ['!', '&&', '||']
 delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
-cadeia_caracteres = []
 simbolo_ascii = [i for i in range(32, 127) if i != 34 or i == 9]
 
 pasta = os.getcwd()+'/analisador_lexico/files/input/' #pasta dos códigos de input
@@ -140,9 +141,9 @@ def analisar_arquivo(linhas):
                 analisadores(''.join(lexema).strip(), linha_encontrada)
                 lexema = []
                 i = j
-            #elif letra == " ": #caso seja um espaço em branco
-            #    analisadores(''.join(lexema).strip(), linha_encontrada)
-            #    lexema = []
+            elif letra == " ": #caso seja um espaço em branco
+                analisadores(''.join(lexema).strip(), linha_encontrada)
+                lexema = []
             #elif lexema[0] == '"' and lexema[len(lexema)-1] == '"' and len(lexema) > 1:
             #    analisadores(''.join(lexema).strip(), linha_encontrada)
             #    lexema = []
