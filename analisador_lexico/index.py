@@ -5,13 +5,12 @@ import unicodedata
 palavras_reservadas = ['var', 'const', 'struct', 'procedure', 'function', 
                        'start', 'return', 'if', 'else', 'then', 'while', 'read', 
                        'print', 'int', 'real', 'boolean', 'string', 'true', 'false']
-identificadores = []
 operadores_aritmeticos = ['+', '-', '*', '/', '++', '--']
 operadores_relacionais = ['!=', '==', '<', '<=', '>', '>=', '=']
 operadores_logicos = ['!', '&&', '||']
 delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
-simbolo_ascii = [i for i in range(32, 127) if i != 34 or i == 9]
+simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
 pasta = os.getcwd()+'/files/input/' #pasta dos códigos de input
 
@@ -60,7 +59,7 @@ def is_palavra_reservada(lexema):
 
 #identifica se o lexema é um identificador
 def is_identificador(lexema):
-    return not lexema[0].isdigit() 
+    return not lexema[0].isdigit() and not lexema[0] == '"' and not lexema[-1] == '"' 
 
 #identifica se o lexema é um operador aritmetico
 def is_operador_aritmetico(lexema):
@@ -88,10 +87,12 @@ def is_caractere_valido_string(lexema):
 
 #identifica se o lexema é uma cadeia de caracteres
 def is_cadeia_caractere(lexema):
-    if len(lexema) != 0:
-        if lexema[0] and lexema[len(lexema)-1] == '"':
+    if len(lexema) > 1:
+        if lexema[0] == '"' and lexema[-1] == '"':
             if is_caractere_valido_string(lexema):
                 return True
+        else:
+            return False    
 
 #todos os analisadores para passar o lexema
 def analisadores(lexema, linha_encontrada):
@@ -164,20 +165,49 @@ def analisar_arquivo2(linhas):
         linha_atual = linha_atual + 1
         lexema = []
         print("LINHA: ", linha)
-        for index, letra in enumerate(linha):
+        i=0
+        while i < len(linha):
+            letra = linha[i]
+
+            
+            #for index, letra in enumerate(linha):
             if letra != "\n":
                 if letra in delimitadores:
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
-                    lexemas_da_linha.append(letra)
-                    continue
-                
-                if letra == ' ':
+                    #lexemas_da_linha.append(letra)
+                    
+                    #continue
+                elif letra == '"':
+                    if lexema != ['"']:    
+                        lexemas_da_linha.append(''.join(lexema).strip())
+                        lexema = []
+                        lexema.append(letra)
+                        j = i
+                        for letra2 in linha[j+1:]:
+                            if letra2 == '"':
+                                lexema.append(letra2)
+                                lexemas_da_linha.append(''.join(lexema).strip())
+                                lexema = []
+                                i = j+1
+                                break 
+                            elif letra2 == '\n':
+                                lexemas_da_linha.append(''.join(lexema).strip())
+                                lexema = []
+                                i = j+1
+                                break
+                            else:   
+                                j = j + 1
+                                lexema.append(letra2)
+                        
+                        #continue                    
+                elif letra == ' ':
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
-
-                lexema.append(letra)
                 
+                lexema.append(letra)
+                print("LEXEMA: ", lexema)
+            i = i + 1    
                 #print("STRING: ", lexema)
         #list_1 = [item for item in list_1 if item[2] >= 5 or item[3] >= 0.3]
         lexemas_da_linha = [item for item in lexemas_da_linha if item != '']
