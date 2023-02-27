@@ -13,8 +13,7 @@ delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34 or i == 9]
 
-pasta = os.getcwd()+'/analisador_lexico/files/input/' #pasta dos códigos de input
-
+pasta = os.getcwd()+'/files/input/' #pasta dos códigos de input
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -39,7 +38,7 @@ def ler_pasta_arquivos():
 #salva os tokens e erros em arquivos de output
 def montar_output(arquivo, tokens, tokens_erros):
     arquivo = arquivo.replace('.txt', '')
-    arquivo = open(os.getcwd()+'/analisador_lexico/files/output/'+arquivo+'-saida.txt', 'w')
+    arquivo = open(os.getcwd()+'/files/output/'+arquivo+'-saida.txt', 'w')
     arquivo.write( 'Tokens: \n\n')
     for token in tokens:
         arquivo.write(token)
@@ -55,35 +54,39 @@ def montar_output(arquivo, tokens, tokens_erros):
 def montar_token(classificacao, lexema, linha):
     return '<"'+classificacao+'", "'+''.join(lexema)+'", '+str(linha)+'>\n'
 
-#indentifica se o lexema é uma palavra reservada
+#identifica se o lexema é uma palavra reservada
 def is_palavra_reservada(lexema):
     return lexema in palavras_reservadas
 
-#indentifica se o lexema é um operador aritmetico
+#identifica se o lexema é um identificador
+def is_identificador(lexema):
+    return not lexema[0].isdigit() 
+
+#identifica se o lexema é um operador aritmetico
 def is_operador_aritmetico(lexema):
     return lexema in operadores_aritmeticos
 
-#indentifica se o lexema é um operador relacional
+#identifica se o lexema é um operador relacional
 def is_operador_relacional(lexema):
     return lexema in operadores_relacionais
 
-#indentifica se o lexema é um operador logico
+#identifica se o lexema é um operador logico
 def is_operador_logico(lexema):
     return lexema in operadores_logicos
 
-#indentifica se o lexema é um delimitador
+#identifica se o lexema é um delimitador
 def is_delimitador(lexema):
     return lexema in delimitadores
 
-#indentifica se o lexema é um delimitador de comentario
+#identifica se o lexema é um delimitador de comentario
 def is_delimitador_comentario(lexema):
     return lexema in delimitadores_comentarios
 
-#indentifica se o lexema é um caractere válido na tabela ascii
+#identifica se o lexema é um caractere válido na tabela ascii
 def is_caractere_valido_string(lexema):
     return all(ord(c) in simbolo_ascii or c == '"' for c in lexema)
 
-#indentifica se o lexema é uma cadeia de caracteres
+#identifica se o lexema é uma cadeia de caracteres
 def is_cadeia_caractere(lexema):
     if len(lexema) != 0:
         if lexema[0] and lexema[len(lexema)-1] == '"':
@@ -106,6 +109,8 @@ def analisadores(lexema, linha_encontrada):
         return tokens.append(montar_token('delimitador', lexema, linha_encontrada))
     elif is_cadeia_caractere(lexema):
         return tokens.append(montar_token('cadeia de caracteres', lexema, linha_encontrada))
+    elif is_identificador(lexema):
+        return tokens.append(montar_token('identificador', lexema, linha_encontrada))
     else:
         return tokens_erros.append(montar_token('erro', lexema, linha_encontrada))
     #outros if's para os outros analisadores
@@ -127,6 +132,7 @@ def analisar_arquivo(linhas):
                 if lexema:
                     analisadores(''.join(lexema).strip(), linha_encontrada)
                     lexema = []
+
             elif letra == '"': #caso inicie uma cadeia de caracteres
                 lexema = []
                 j = i
@@ -148,13 +154,48 @@ def analisar_arquivo(linhas):
             #    analisadores(''.join(lexema).strip(), linha_encontrada)
             #    lexema = []
             
-
             i = i + 1
+
+def analisar_arquivo2(linhas):
+    linha_atual = 0
+    lexemas_da_linha = []
+    for linha in linhas:
+        lexemas_da_linha = []
+        linha_atual = linha_atual + 1
+        lexema = []
+        print("LINHA: ", linha)
+        for index, letra in enumerate(linha):
+            if letra != "\n":
+                if letra in delimitadores:
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexemas_da_linha.append(letra)
+                    continue
+                
+                if letra == ' ':
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+
+                lexema.append(letra)
+                
+                #print("STRING: ", lexema)
+        #list_1 = [item for item in list_1 if item[2] >= 5 or item[3] >= 0.3]
+        lexemas_da_linha = [item for item in lexemas_da_linha if item != '']
+        print("LEXEMAS DA LINHA: ", lexemas_da_linha)
+        print("============")
+        print("\n")
+        for lexema in lexemas_da_linha:
+            analisadores(lexema, linha_atual)
+
+            
+
+
+
 
 
 if __name__ == "__main__":
     for arquivo in ler_pasta_arquivos():
         tokens = []
         tokens_erros = []
-        analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
+        analisar_arquivo2(ler_linha_arquivo(pasta+arquivo))
         montar_output(arquivo, tokens, tokens_erros)
