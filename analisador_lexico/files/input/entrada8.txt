@@ -3,7 +3,7 @@
 
 	variaveis
 	{
-		inteiro a?; % identificador invalido
+		int a?; % identificador invalido
 	}
 	algoritmo
 	{

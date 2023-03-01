@@ -2,8 +2,8 @@
 
 variaveis
 {
-	inteiro a;
-	inteiro x;
+	int a;
+	int x;
 	% 	real %s	;	
 	real b;
 }

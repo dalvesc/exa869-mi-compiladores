@@ -1,7 +1,7 @@
 % Programa sem erros - Testando tudo que a linguagem aceita
 
 % Palavras reservadas
-algoritmo, variaveis, constantes, registro, funcao, retorno, vazio, se, senao, enquanto, para, leia, escreva, inteiro, real, booleano, char, cadeia, verdadeiro, falso
+algoritmo, variaveis, constantes, registro, funcao, retorno, vazio, se, senao, enquanto, para, leia, escreva, int, real, boolean, char, string, verdadeiro, falso
 
 % Identificadores validos
 
@@ -11,7 +11,7 @@ num1 todos_tutores soma q123
 
 123 1.2 23.987
 
-% Cadeias de caracteres
+% strings de caracteres
 
 "texto correto" "@#$:^&*"
 

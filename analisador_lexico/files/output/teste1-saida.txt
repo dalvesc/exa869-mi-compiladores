@@ -40,7 +40,6 @@ Tokens:
 <"delimitador", ")", 12>
 <"delimitador", ";", 12>
 <"palavra reservada", "read", 13>
-<"identificador", "(nome", 13>
 <"delimitador", ")", 13>
 <"delimitador", ";", 13>
 <"palavra reservada", "print", 14>
@@ -49,11 +48,9 @@ Tokens:
 <"delimitador", ")", 14>
 <"delimitador", ";", 14>
 <"palavra reservada", "read", 15>
-<"identificador", "(idade", 15>
 <"delimitador", ")", 15>
 <"delimitador", ";", 15>
 <"palavra reservada", "if", 17>
-<"identificador", "(idade", 17>
 <"operador relacional", ">=", 17>
 <"delimitador", ")", 17>
 <"palavra reservada", "print", 17>
@@ -73,25 +70,20 @@ Tokens:
 <"delimitador", "}", 20>
 <"delimitador", "}", 22>
 <"identificador", "//if", 24>
-<"identificador", "(true", 24>
 <"delimitador", ")", 24>
 <"palavra reservada", "then", 24>
-<"identificador", "{outra_funcao", 24>
 <"delimitador", "(", 24>
 <"delimitador", ")", 24>
 <"delimitador", ";", 24>
 <"delimitador", "}", 24>
 <"identificador", "//if", 25>
-<"identificador", "(true", 25>
 <"delimitador", ")", 25>
 <"palavra reservada", "then", 25>
-<"identificador", "{outra_funcao", 25>
 <"delimitador", "(", 25>
 <"delimitador", ")", 25>
 <"delimitador", ";", 25>
 <"delimitador", "}", 25>
 <"palavra reservada", "else", 25>
-<"identificador", "{funcao", 25>
 <"delimitador", "(", 25>
 <"delimitador", ")", 25>
 <"delimitador", ";", 25>
@@ -103,12 +95,6 @@ Tokens:
 <"delimitador", ",", 26>
 <"identificador", "b", 26>
 <"identificador", "//teste", 28>
-<"identificador", "(oi", 28>
-<"identificador", ",ola", 28>
-<"identificador", ",t", 28>
-<"identificador", "(2", 28>
-<"identificador", ",i", 28>
-<"identificador", ",outra_funcao", 28>
 <"delimitador", "(", 28>
 <"delimitador", ")", 28>
 <"delimitador", ")", 28>
@@ -120,10 +106,8 @@ Tokens:
 <"identificador", "//d", 31>
 <"operador relacional", "=", 31>
 <"identificador", "a", 31>
-<"identificador", "[2", 31>
 <"delimitador", "]", 31>
 <"delimitador de comentario", "//", 32>
-<"identificador", "(d", 32>
 <"operador relacional", "==", 32>
 <"delimitador", ")", 32>
 <"identificador", "//d=s", 33>
@@ -136,7 +120,6 @@ Tokens:
 <"palavra reservada", "false", 34>
 <"operador logico", "||", 34>
 <"identificador", "oi", 34>
-<"identificador", "(ola", 34>
 <"delimitador", ")", 34>
 <"operador logico", "&&", 34>
 <"identificador", "a", 34>
@@ -151,23 +134,16 @@ Tokens:
 <"operador logico", "||", 36>
 <"identificador", "ola", 36>
 <"delimitador de comentario", "//", 38>
-<"identificador", "(2+", 38>
-<"identificador", "(3*4", 38>
-<"identificador", ")/", 38>
-<"identificador", "(6", 38>
 <"delimitador", ")", 38>
 <"delimitador", ")", 38>
 <"identificador", "//s+2/2/w", 40>
 <"identificador", "//procedure", 42>
 <"identificador", "proc", 42>
-<"identificador", "(boolean", 42>
 <"identificador", "b", 42>
 <"delimitador", ",", 42>
 <"palavra reservada", "int", 42>
 <"identificador", "teste", 42>
 <"delimitador", ")", 42>
-<"identificador", "{print", 42>
-<"identificador", "(d", 42>
 <"delimitador", ")", 42>
 <"delimitador", ";", 42>
 <"identificador", "outra_funcao", 42>
@@ -178,7 +154,6 @@ Tokens:
 <"palavra reservada", "function", 43>
 <"palavra reservada", "boolean", 43>
 <"identificador", "chama_funcoes", 43>
-<"identificador", "(boolean", 43>
 <"identificador", "b", 43>
 <"delimitador", ",", 43>
 <"palavra reservada", "int", 43>
@@ -196,9 +171,6 @@ Tokens:
 <"delimitador", ")", 45>
 <"delimitador", ";", 45>
 <"identificador", "t", 46>
-<"identificador", "(2", 46>
-<"identificador", ",i", 46>
-<"identificador", ",outra", 46>
 <"delimitador", "(", 46>
 <"delimitador", ")", 46>
 <"delimitador", ")", 46>
@@ -211,40 +183,26 @@ Tokens:
 <"palavra reservada", "string", 52>
 <"identificador", "soma", 52>
 <"operador relacional", "=", 52>
-<"identificador", "(2+", 52>
-<"identificador", "(3*4", 52>
-<"identificador", ")/", 52>
-<"identificador", "(p", 52>
 <"delimitador", ")", 52>
 <"delimitador", ")", 52>
 <"delimitador", ";", 52>
 <"palavra reservada", "int", 53>
 <"identificador", "f", 53>
 <"operador relacional", "=", 53>
-<"identificador", "(d", 53>
 <"operador relacional", "==", 53>
 <"delimitador", ")", 53>
 <"delimitador", ";", 53>
 <"delimitador", "}", 54>
 <"palavra reservada", "while", 56>
-<"identificador", "(b", 56>
 <"delimitador", ")", 56>
 <"delimitador", "{", 56>
 <"palavra reservada", "print", 57>
-<"identificador", "(oi", 57>
 <"delimitador", ")", 57>
 <"delimitador", ";", 57>
 <"palavra reservada", "read", 58>
-<"identificador", "(oi", 58>
 <"delimitador", ")", 58>
 <"delimitador", ";", 58>
 <"identificador", "teste", 59>
-<"identificador", "(oi", 59>
-<"identificador", ",ola", 59>
-<"identificador", ",t", 59>
-<"identificador", "(2", 59>
-<"identificador", ",i", 59>
-<"identificador", ",outra_funcao", 59>
 <"delimitador", "(", 59>
 <"delimitador", ")", 59>
 <"delimitador", ")", 59>
@@ -279,7 +237,6 @@ Tokens:
 <"delimitador", "}", 69>
 <"delimitador", ";", 69>
 <"palavra reservada", "if", 71>
-<"identificador", "(true", 71>
 <"delimitador", ")", 71>
 <"palavra reservada", "then", 71>
 <"delimitador", "{", 71>
@@ -296,7 +253,6 @@ Tokens:
 <"delimitador", ";", 74>
 <"delimitador", "}", 75>
 <"palavra reservada", "while", 77>
-<"identificador", "(b", 77>
 <"delimitador", ")", 77>
 <"delimitador", "{", 77>
 <"identificador", "outra_funcao", 78>
@@ -309,10 +265,6 @@ Tokens:
 <"delimitador", ";", 81>
 <"identificador", "l", 83>
 <"operador relacional", "=", 83>
-<"identificador", "(2+", 83>
-<"identificador", "(3*4", 83>
-<"identificador", ")/", 83>
-<"identificador", "(p", 83>
 <"delimitador", ")", 83>
 <"delimitador", ")", 83>
 <"delimitador", ";", 83>
@@ -327,7 +279,6 @@ Tokens:
 <"palavra reservada", "false", 85>
 <"operador logico", "||", 85>
 <"identificador", "oi", 85>
-<"identificador", "(ola", 85>
 <"delimitador", ")", 85>
 <"operador logico", "&&", 85>
 <"identificador", "a", 85>
@@ -336,14 +287,12 @@ Tokens:
 <"delimitador", ";", 85>
 <"identificador", "f", 87>
 <"operador relacional", "=", 87>
-<"identificador", "(d", 87>
 <"operador relacional", "==", 87>
 <"delimitador", ")", 87>
 <"delimitador", ";", 87>
 <"identificador", "//s", 88>
 <"operador relacional", "=", 88>
 <"identificador", "w", 88>
-<"identificador", "[2", 88>
 <"delimitador", "]", 88>
 <"delimitador", ";", 88>
 <"delimitador", "}", 89>
@@ -354,25 +303,16 @@ Tokens:
 <"delimitador", ")", 91>
 <"delimitador", "{", 91>
 <"palavra reservada", "while", 92>
-<"identificador", "(b", 92>
 <"delimitador", ")", 92>
 <"delimitador", "{", 92>
 <"palavra reservada", "print", 93>
-<"identificador", "(p", 93>
 <"delimitador", ")", 93>
 <"delimitador", ";", 93>
 <"delimitador", "}", 94>
 <"palavra reservada", "read", 95>
-<"identificador", "(oi", 95>
 <"delimitador", ")", 95>
 <"delimitador", ";", 95>
 <"identificador", "teste", 96>
-<"identificador", "(oi", 96>
-<"identificador", ",ola", 96>
-<"identificador", ",t", 96>
-<"identificador", "(2", 96>
-<"identificador", ",i", 96>
-<"identificador", ",outra_funcao", 96>
 <"delimitador", "(", 96>
 <"delimitador", ")", 96>
 <"delimitador", ")", 96>
@@ -407,7 +347,6 @@ Tokens:
 <"delimitador", "}", 106>
 <"delimitador", ";", 106>
 <"palavra reservada", "if", 108>
-<"identificador", "(true", 108>
 <"delimitador", ")", 108>
 <"palavra reservada", "then", 108>
 <"delimitador", "{", 108>
@@ -424,7 +363,6 @@ Tokens:
 <"delimitador", ";", 111>
 <"delimitador", "}", 112>
 <"palavra reservada", "while", 114>
-<"identificador", "(b", 114>
 <"delimitador", ")", 114>
 <"delimitador", "{", 114>
 <"identificador", "outra_funcao", 115>
@@ -441,10 +379,6 @@ Tokens:
 <"delimitador", ";", 118>
 <"identificador", "l", 120>
 <"operador relacional", "=", 120>
-<"identificador", "(2+", 120>
-<"identificador", "(3*4", 120>
-<"identificador", ")/", 120>
-<"identificador", "(p", 120>
 <"delimitador", ")", 120>
 <"delimitador", ")", 120>
 <"delimitador", ";", 120>
@@ -483,7 +417,6 @@ Tokens:
 <"palavra reservada", "function", 136>
 <"palavra reservada", "int", 136>
 <"identificador", "nome_funcao", 136>
-<"identificador", "(int", 136>
 <"identificador", "p1", 136>
 <"delimitador", ",", 136>
 <"palavra reservada", "string", 136>
@@ -491,7 +424,6 @@ Tokens:
 <"delimitador", ")", 136>
 <"delimitador", "{", 136>
 <"palavra reservada", "print", 137>
-<"identificador", "(1", 137>
 <"delimitador", ")", 137>
 <"delimitador", ";", 137>
 <"palavra reservada", "return", 138>
@@ -514,7 +446,6 @@ Tokens:
 <"identificador", "idade", 144>
 <"operador relacional", "=", 144>
 <"identificador", "nome_funcao", 144>
-<"identificador", "(idade", 144>
 <"delimitador", ",", 144>
 <"identificador", "nome", 144>
 <"delimitador", ")", 144>
@@ -525,7 +456,6 @@ Tokens:
 <"delimitador", ")", 145>
 <"delimitador", ";", 145>
 <"palavra reservada", "read", 146>
-<"identificador", "(nome", 146>
 <"delimitador", ")", 146>
 <"delimitador", ";", 146>
 <"palavra reservada", "print", 147>
@@ -534,7 +464,6 @@ Tokens:
 <"delimitador", ")", 147>
 <"delimitador", ";", 147>
 <"palavra reservada", "read", 148>
-<"identificador", "(idade", 148>
 <"delimitador", ")", 148>
 <"delimitador", ";", 148>
 <"identificador", "invalida", 150>
@@ -542,7 +471,6 @@ Tokens:
 <"delimitador", ")", 150>
 <"delimitador", ";", 150>
 <"palavra reservada", "if", 152>
-<"identificador", "(idade", 152>
 <"operador relacional", ">=", 152>
 <"delimitador", ")", 152>
 <"palavra reservada", "then", 152>
@@ -571,26 +499,98 @@ Erros:
 <"erro", "50", 3>
 <"erro", """, 5>
 <"erro", """, 12>
+<"erro", "(nome", 13>
 <"erro", """, 14>
+<"erro", "(idade", 15>
+<"erro", "(idade", 17>
 <"erro", "150", 17>
 <"erro", """, 17>
 <"erro", """, 19>
+<"erro", "(true", 24>
+<"erro", "{outra_funcao", 24>
+<"erro", "(true", 25>
+<"erro", "{outra_funcao", 25>
+<"erro", "{funcao", 25>
+<"erro", "(oi", 28>
+<"erro", ",ola", 28>
+<"erro", ",t", 28>
+<"erro", "(2", 28>
+<"erro", ",i", 28>
+<"erro", ",outra_funcao", 28>
+<"erro", "[2", 31>
+<"erro", "(d", 32>
 <"erro", "2", 32>
+<"erro", "(ola", 34>
+<"erro", "(2+", 38>
+<"erro", "(3*4", 38>
+<"erro", ")/", 38>
+<"erro", "(6", 38>
+<"erro", "(boolean", 42>
+<"erro", "{print", 42>
+<"erro", "(d", 42>
+<"erro", "(boolean", 43>
+<"erro", "(2", 46>
+<"erro", ",i", 46>
+<"erro", ",outra", 46>
 <"erro", "8", 48>
+<"erro", "(2+", 52>
+<"erro", "(3*4", 52>
+<"erro", ")/", 52>
+<"erro", "(p", 52>
+<"erro", "(d", 53>
 <"erro", "2", 53>
+<"erro", "(b", 56>
+<"erro", "(oi", 57>
+<"erro", "(oi", 58>
+<"erro", "(oi", 59>
+<"erro", ",ola", 59>
+<"erro", ",t", 59>
+<"erro", "(2", 59>
+<"erro", ",i", 59>
+<"erro", ",outra_funcao", 59>
 <"erro", "3", 63>
 <"erro", "3", 67>
+<"erro", "(true", 71>
+<"erro", "(b", 77>
 <"erro", "5", 81>
+<"erro", "(2+", 83>
+<"erro", "(3*4", 83>
+<"erro", ")/", 83>
+<"erro", "(p", 83>
+<"erro", "(ola", 85>
+<"erro", "(d", 87>
 <"erro", "2", 87>
+<"erro", "[2", 88>
+<"erro", "(b", 92>
+<"erro", "(p", 93>
+<"erro", "(oi", 95>
+<"erro", "(oi", 96>
+<"erro", ",ola", 96>
+<"erro", ",t", 96>
+<"erro", "(2", 96>
+<"erro", ",i", 96>
+<"erro", ",outra_funcao", 96>
 <"erro", "3", 100>
 <"erro", "3", 104>
+<"erro", "(true", 108>
+<"erro", "(b", 114>
 <"erro", "5", 118>
+<"erro", "(2+", 120>
+<"erro", "(3*4", 120>
+<"erro", ")/", 120>
+<"erro", "(p", 120>
 <"erro", "8", 123>
 <"erro", "3", 125>
+<"erro", "(int", 136>
+<"erro", "(1", 137>
 <"erro", "1", 138>
 <"erro", "1", 143>
+<"erro", "(idade", 144>
 <"erro", """, 145>
+<"erro", "(nome", 146>
 <"erro", """, 147>
+<"erro", "(idade", 148>
+<"erro", "(idade", 152>
 <"erro", "150", 152>
 <"erro", """, 153>
 <"erro", """, 155>
