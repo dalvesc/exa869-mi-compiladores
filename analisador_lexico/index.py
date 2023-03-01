@@ -12,7 +12,7 @@ delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
-pasta = os.getcwd()+'/files/input/' #pasta dos códigos de input
+pasta = os.getcwd()+'/files/input/testte/' #pasta dos códigos de input
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -141,6 +141,7 @@ def analisadores(lexema, linha_encontrada):
 def analisar_arquivo(linhas):
     linha_atual = 0
     lexemas_da_linha = []
+    comentario = False
     for linha in linhas:
         lexemas_da_linha = []
         linha_atual = linha_atual + 1
@@ -158,6 +159,29 @@ def analisar_arquivo(linhas):
                     lexema = []
                     lexemas_da_linha.append(letra)
                     i = i + 1
+                    continue
+                elif letra == '/' and linha[i+1] == '*' or letra == '/' and linha[i+1] == '/' or comentario:
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexema.append(letra)
+                    lexema.append(linha[i+1])
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    comentario = True
+                    j = i + 1
+                    for letra2 in linha[j+1:]:
+                        if letra2 == '*' and linha[j+2] == '/' :
+                            while True:   
+                                print("entrou aqui")
+                            lexema.append(letra2)
+                            lexema.append(linha[j+2])
+                            lexemas_da_linha.append(''.join(lexema).strip())
+                            lexema = []
+                            i = j + 3
+                            comentario = False
+                            break
+                        else:
+                            j = j + 1
                     continue
 
                 elif letra.isdigit() and linha[i - 1] == ' ':
