@@ -1,0 +1,10 @@
+% Teste de cadeia de caracteres
+variaveis
+{
+	cadeia nome = "nome pro'prio ";
+	cadeia palavra = "";
+	cadeia palavra2 = " ";
+	cadeia sobrenome = " sobre " tutores ";
+
+}
+			

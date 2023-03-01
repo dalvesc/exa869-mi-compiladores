@@ -1,0 +1,30 @@
+% Programa sem erros - Testando tudo que a linguagem aceita
+
+% Palavras reservadas
+algoritmo, variaveis, constantes, registro, funcao, retorno, vazio, se, senao, enquanto, para, leia, escreva, inteiro, real, booleano, char, cadeia, verdadeiro, falso
+
+% Identificadores validos
+
+num1 todos_tutores soma q123
+
+% Numeros validos
+
+123 1.2 23.987
+
+% Cadeias de caracteres
+
+"texto correto" "@#$:^&*"
+
+% Operadores
+
++ - * / ++ -- == != > >= < <= = && || !
+
+% Delimitadores
+
+; , ( ) { } [ ] .
+
+% Comentarios validos
+
+{# isto é um comentário
+de bloco #}
+% isto é um comentário de linha

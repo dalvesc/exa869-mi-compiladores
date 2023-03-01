@@ -1,0 +1,13 @@
+% Teste 1 - identificadores
+variaveis
+{
+    inteiro var_int;
+    real r_e_a_l;
+    booleano b00lean;
+    cadeia str1_ng;
+
+    inteiro var_int!;
+    real _r_e_a_l;
+    booleano b@@lean;
+    cadeia str!_ng;
+}

@@ -1,0 +1,7 @@
+% teste 05 - token desconhecido
+
+@
+a > b ?	
+escreva $ 
+a = #
+6+^e
