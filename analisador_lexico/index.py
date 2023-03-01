@@ -232,12 +232,12 @@ def analisar_arquivo(linhas):
                                 lexema.append(letra2)
                                 lexemas_da_linha.append(''.join(lexema).strip())
                                 lexema = []
-                                i = j+1
+                                i = j+2
                                 break
                             elif letra2 == '\n':
                                 lexemas_da_linha.append(''.join(lexema).strip())
                                 lexema = []
-                                i = j+1
+                                i = j+2
                                 break
                             else:   
                                 j = j + 1

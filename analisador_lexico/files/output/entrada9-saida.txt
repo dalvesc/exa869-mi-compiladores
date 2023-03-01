@@ -69,7 +69,6 @@ Tokens:
 <"identificador", "strings", 14>
 <"identificador", "de", 14>
 <"cadeia de caracteres", ""texto correto"", 16>
-<"cadeia de caracteres", "" "", 16>
 <"cadeia de caracteres", ""@#$:^&*"", 16>
 <"operador aritmetico", "/", 18>
 <"operador aritmetico", "/", 18>
@@ -117,7 +116,6 @@ Tokens:
 <"identificador", "de", 30>
 
 Erros: 
-<"erro", """, 16>
 <"erro", "#", 28>
 <"erro", "é", 28>
 <"erro", "#", 29>

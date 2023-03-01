@@ -22,6 +22,7 @@ Tokens:
 <"identificador", "Mensagem", 5>
 <"operador relacional", "=", 5>
 <"cadeia de caracteres", ""Hello world"", 5>
+<"delimitador", ";", 5>
 <"palavra reservada", "procedure", 7>
 <"palavra reservada", "start", 7>
 <"delimitador", "{", 7>
@@ -41,6 +42,8 @@ Tokens:
 <"palavra reservada", "print", 12>
 <"delimitador", "(", 12>
 <"cadeia de caracteres", ""Digite o nome"", 12>
+<"delimitador", ")", 12>
+<"delimitador", ";", 12>
 <"palavra reservada", "read", 13>
 <"delimitador", "(", 13>
 <"identificador", "nome", 13>
@@ -49,6 +52,8 @@ Tokens:
 <"palavra reservada", "print", 14>
 <"delimitador", "(", 14>
 <"cadeia de caracteres", ""Digite a idade"", 14>
+<"delimitador", ")", 14>
+<"delimitador", ";", 14>
 <"palavra reservada", "read", 15>
 <"delimitador", "(", 15>
 <"identificador", "idade", 15>
@@ -63,11 +68,18 @@ Tokens:
 <"palavra reservada", "print", 17>
 <"delimitador", "(", 17>
 <"cadeia de caracteres", ""pode aposentar kkkk"", 17>
+<"delimitador", ")", 17>
+<"delimitador", ";", 17>
 <"palavra reservada", "else", 18>
 <"delimitador", "{", 18>
 <"palavra reservada", "print", 19>
 <"delimitador", "(", 19>
 <"cadeia de caracteres", ""vai trabalhar"", 19>
+<"delimitador", ")", 19>
+<"delimitador", ";", 19>
+<"operador aritmetico", "/", 19>
+<"operador aritmetico", "/", 19>
+<"identificador", "hehehe", 19>
 <"delimitador", "}", 20>
 <"delimitador", "}", 22>
 <"operador aritmetico", "/", 24>
@@ -643,6 +655,8 @@ Tokens:
 <"palavra reservada", "print", 146>
 <"delimitador", "(", 146>
 <"cadeia de caracteres", ""Digite o nome"", 146>
+<"delimitador", ")", 146>
+<"delimitador", ";", 146>
 <"palavra reservada", "read", 147>
 <"delimitador", "(", 147>
 <"identificador", "nome", 147>
@@ -651,6 +665,8 @@ Tokens:
 <"palavra reservada", "print", 148>
 <"delimitador", "(", 148>
 <"cadeia de caracteres", ""Digite a idade"", 148>
+<"delimitador", ")", 148>
+<"delimitador", ";", 148>
 <"palavra reservada", "read", 149>
 <"delimitador", "(", 149>
 <"identificador", "idade", 149>
@@ -671,12 +687,16 @@ Tokens:
 <"palavra reservada", "print", 154>
 <"delimitador", "(", 154>
 <"cadeia de caracteres", ""pode aposentar kkkk"", 154>
+<"delimitador", ")", 154>
+<"delimitador", ";", 154>
 <"delimitador", "}", 155>
 <"palavra reservada", "else", 155>
 <"delimitador", "{", 155>
 <"palavra reservada", "print", 156>
 <"delimitador", "(", 156>
 <"cadeia de caracteres", ""vai trabalhar"", 156>
+<"delimitador", ")", 156>
+<"delimitador", ";", 156>
 <"delimitador", "}", 157>
 <"operador aritmetico", "*", 157>
 <"operador aritmetico", "/", 157>
@@ -685,11 +705,6 @@ Tokens:
 <"delimitador", "}", 161>
 
 Erros: 
-<"erro", "";", 5>
-<"erro", "");", 12>
-<"erro", "");", 14>
-<"erro", "");", 17>
-<"erro", ""); // hehehe", 19>
 <"erro", "d=s", 33>
 <"erro", "!a", 34>
 <"erro", "!a", 35>
@@ -704,10 +719,4 @@ Erros:
 <"erro", "d=4", 104>
 <"erro", "d=", 126>
 <"erro", "d=4", 126>
-<"erro", "");", 146>
-<"erro", "");", 148>
-<"erro", "");", 154>
-<"erro", "");", 156>
-<"erro", """, 158>
 <"erro", ""eita", 159>
-<"erro", """, 160>

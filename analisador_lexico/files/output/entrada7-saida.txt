@@ -11,23 +11,23 @@ Tokens:
 <"identificador", "nome", 4>
 <"operador relacional", "=", 4>
 <"cadeia de caracteres", ""nome pro'prio "", 4>
+<"delimitador", ";", 4>
 <"palavra reservada", "string", 5>
 <"identificador", "palavra", 5>
 <"operador relacional", "=", 5>
 <"cadeia de caracteres", """", 5>
+<"delimitador", ";", 5>
 <"palavra reservada", "string", 6>
 <"identificador", "palavra2", 6>
 <"operador relacional", "=", 6>
 <"cadeia de caracteres", "" "", 6>
+<"delimitador", ";", 6>
 <"palavra reservada", "string", 7>
 <"identificador", "sobrenome", 7>
 <"operador relacional", "=", 7>
 <"cadeia de caracteres", "" sobre "", 7>
-<"cadeia de caracteres", "" tutores "", 7>
+<"identificador", "tutores", 7>
 <"delimitador", "}", 9>
 
 Erros: 
-<"erro", "";", 4>
-<"erro", "";", 5>
-<"erro", "";", 6>
 <"erro", "";", 7>
