@@ -55,12 +55,9 @@ Tokens:
 <"operador aritmetico", "/", 6>
 <"operador aritmetico", "/", 6>
 <"identificador", "Identificadores", 6>
-<"identificador", "num", 8>
-<"numero", "1", 8>
+<"identificador", "num1", 8>
 <"identificador", "todos_tutores", 8>
 <"identificador", "soma", 8>
-<"identificador", "q", 8>
-<"numero", "123", 8>
 <"operador aritmetico", "/", 10>
 <"operador aritmetico", "/", 10>
 <"identificador", "Numeros", 10>
@@ -108,21 +105,21 @@ Tokens:
 <"operador aritmetico", "/", 26>
 <"identificador", "Comentarios", 26>
 <"delimitador", "{", 28>
-<"identificador", "#", 28>
 <"identificador", "isto", 28>
-<"identificador", "é", 28>
 <"identificador", "um", 28>
 <"identificador", "de", 29>
 <"identificador", "bloco", 29>
-<"identificador", "#", 29>
 <"delimitador", "}", 29>
 <"operador aritmetico", "/", 30>
 <"operador aritmetico", "/", 30>
 <"identificador", "isto", 30>
-<"identificador", "é", 30>
 <"identificador", "um", 30>
-<"identificador", "comentário", 30>
 <"identificador", "de", 30>
 
 Erros: 
 <"erro", """, 16>
+<"erro", "#", 28>
+<"erro", "é", 28>
+<"erro", "#", 29>
+<"erro", "é", 30>
+<"erro", "comentário", 30>

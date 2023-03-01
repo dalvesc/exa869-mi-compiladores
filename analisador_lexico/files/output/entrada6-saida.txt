@@ -11,8 +11,6 @@ Tokens:
 <"identificador", "a", 10>
 <"operador relacional", ">=", 10>
 <"identificador", "b", 10>
-<"identificador", "&", 10>
-<"identificador", "&", 10>
 <"identificador", "b", 10>
 <"operador relacional", "<", 10>
 <"operador relacional", "=", 10>
@@ -21,14 +19,10 @@ Tokens:
 <"identificador", "b", 12>
 <"operador aritmetico", "*", 12>
 <"numero", "2", 12>
-<"identificador", "|", 14>
-<"identificador", "|!", 14>
 <"identificador", "b", 14>
 <"operador aritmetico", "-", 14>
 <"operador aritmetico", "-", 14>
-<"identificador", "<==", 14>
 <"identificador", "a", 16>
-<"identificador", ">>=", 16>
 <"numero", "10", 16>
 <"operador aritmetico", "+", 16>
 <"numero", "20", 16>
@@ -37,4 +31,10 @@ Tokens:
 <"numero", "100", 16>
 <"delimitador", "}", 18>
 
-Sucesso, nenhum erro encontrado!
+Erros: 
+<"erro", "&", 10>
+<"erro", "&", 10>
+<"erro", "|", 14>
+<"erro", "|!", 14>
+<"erro", "<==", 14>
+<"erro", ">>=", 16>

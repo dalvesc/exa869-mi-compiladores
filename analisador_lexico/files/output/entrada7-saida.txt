@@ -16,8 +16,7 @@ Tokens:
 <"operador relacional", "=", 5>
 <"cadeia de caracteres", """", 5>
 <"palavra reservada", "string", 6>
-<"identificador", "palavra", 6>
-<"numero", "2", 6>
+<"identificador", "palavra2", 6>
 <"operador relacional", "=", 6>
 <"cadeia de caracteres", "" "", 6>
 <"palavra reservada", "string", 7>

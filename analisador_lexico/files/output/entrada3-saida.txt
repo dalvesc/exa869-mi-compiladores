@@ -30,15 +30,12 @@ Tokens:
 <"delimitador", ".", 13>
 <"numero", "3", 13>
 <"delimitador", ";", 13>
-<"identificador", "##", 13>
 <"delimitador", "}", 13>
 <"identificador", "b", 14>
 <"operador relacional", "=", 14>
 <"delimitador", "{", 14>
-<"identificador", "#", 14>
 <"identificador", "numero", 14>
 <"palavra reservada", "real", 14>
-<"identificador", "#", 14>
 <"delimitador", "}", 14>
 <"numero", "1.2", 14>
 <"delimitador", ";", 14>
@@ -52,11 +49,14 @@ Tokens:
 <"identificador", "b", 16>
 <"operador relacional", "=", 16>
 <"numero", "5", 16>
-<"identificador", "$", 16>
 <"delimitador", ";", 16>
-<"identificador", "#", 16>
 <"delimitador", "}", 16>
 <"delimitador", "{", 18>
 <"delimitador", "}", 20>
 
-Sucesso, nenhum erro encontrado!
+Erros: 
+<"erro", "##", 13>
+<"erro", "#", 14>
+<"erro", "#", 14>
+<"erro", "$", 16>
+<"erro", "#", 16>

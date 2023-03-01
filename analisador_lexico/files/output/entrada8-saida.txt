@@ -20,7 +20,6 @@ Tokens:
 <"delimitador", ")", 2>
 <"delimitador", "{", 5>
 <"palavra reservada", "int", 6>
-<"identificador", "a?", 6>
 <"delimitador", ";", 6>
 <"operador aritmetico", "/", 6>
 <"operador aritmetico", "/", 6>
@@ -47,11 +46,9 @@ Tokens:
 <"identificador", "numero", 11>
 <"identificador", "se", 13>
 <"delimitador", "(", 13>
-<"identificador", "?", 13>
 <"delimitador", ")", 13>
 <"delimitador", "{", 14>
 <"identificador", "x", 15>
-<"identificador", "=?", 15>
 <"identificador", "a", 15>
 <"delimitador", ";", 15>
 <"operador aritmetico", "/", 15>
@@ -60,7 +57,6 @@ Tokens:
 <"identificador", "mal", 15>
 <"delimitador", "}", 16>
 <"delimitador", "{", 17>
-<"identificador", "#", 17>
 <"identificador", "Comentario", 17>
 <"identificador", "nao", 17>
 <"identificador", "finalizado", 17>
@@ -68,4 +64,8 @@ Tokens:
 <"delimitador", "}", 18>
 
 Erros: 
+<"erro", "a?", 6>
 <"erro", "2.2.2", 11>
+<"erro", "?", 13>
+<"erro", "=?", 15>
+<"erro", "#", 17>

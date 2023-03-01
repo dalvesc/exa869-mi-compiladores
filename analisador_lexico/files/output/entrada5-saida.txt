@@ -10,10 +10,10 @@ Tokens:
 <"operador relacional", ">", 4>
 <"identificador", "b", 4>
 <"identificador", "escreva", 5>
-<"identificador", "$", 5>
 <"identificador", "a", 6>
 <"operador relacional", "=", 6>
 <"numero", "6", 7>
 <"operador aritmetico", "+", 7>
 
-Sucesso, nenhum erro encontrado!
+Erros: 
+<"erro", "$", 5>

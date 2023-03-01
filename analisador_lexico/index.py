@@ -67,9 +67,11 @@ def is_palavra_reservada(lexema):
 
 #identifica se o lexema é um identificador
 def is_identificador(lexema):
-    if not lexema[0].isdigit() and lexema[0] not in delimitadores:
-        if not lexema[0] == '"' and not lexema[-1] == '"':
-            return True
+    if not lexema[0].isdigit() and lexema[0] != '_' and lexema[0] not in delimitadores:
+        for caracter in lexema:
+            if not caracter.isalnum() and caracter != '_':
+                return False
+        return True
     return False
 
 #identifica se o lexema é um número
@@ -158,7 +160,7 @@ def analisar_arquivo(linhas):
                     i = i + 1
                     continue
 
-                elif letra.isdigit():
+                elif letra.isdigit() and linha[i - 1] == ' ':
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     lexema.append(letra)

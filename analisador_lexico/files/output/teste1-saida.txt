@@ -4,8 +4,7 @@ Tokens:
 <"operador aritmetico", "*", 1>
 <"operador aritmetico", "/", 2>
 <"operador aritmetico", "/", 2>
-<"identificador", "teste", 2>
-<"numero", "08", 2>
+<"identificador", "teste08", 2>
 <"operador aritmetico", "-", 2>
 <"identificador", "sem", 2>
 <"identificador", "erros", 2>
@@ -15,8 +14,7 @@ Tokens:
 <"operador relacional", "=", 3>
 <"numero", "10", 3>
 <"delimitador", ",", 3>
-<"identificador", "MAX", 3>
-<"numero", "2", 3>
+<"identificador", "MAX2", 3>
 <"operador relacional", "=", 3>
 <"numero", "50", 3>
 <"delimitador", ";", 3>
@@ -155,14 +153,12 @@ Tokens:
 <"delimitador", ")", 32>
 <"operador aritmetico", "/", 33>
 <"operador aritmetico", "/", 33>
-<"identificador", "d=s", 33>
 <"operador aritmetico", "/", 34>
 <"operador aritmetico", "/", 34>
 <"identificador", "oi", 34>
 <"operador logico", "||", 34>
 <"identificador", "ola", 34>
 <"operador logico", "&&", 34>
-<"identificador", "!a", 34>
 <"operador logico", "&&", 34>
 <"palavra reservada", "false", 34>
 <"operador logico", "||", 34>
@@ -180,7 +176,6 @@ Tokens:
 <"operador logico", "||", 35>
 <"identificador", "ola", 35>
 <"operador logico", "&&", 35>
-<"identificador", "!a", 35>
 <"operador aritmetico", "/", 36>
 <"operador aritmetico", "/", 36>
 <"identificador", "oi", 36>
@@ -337,11 +332,8 @@ Tokens:
 <"palavra reservada", "var", 62>
 <"delimitador", "{", 62>
 <"palavra reservada", "string", 63>
-<"identificador", "d=", 63>
 <"numero", "3", 63>
 <"delimitador", ",", 63>
-<"identificador", "d=", 63>
-<"numero", "4", 63>
 <"delimitador", ";", 63>
 <"palavra reservada", "int", 64>
 <"identificador", "s", 64>
@@ -351,11 +343,8 @@ Tokens:
 <"palavra reservada", "var", 66>
 <"delimitador", "{", 66>
 <"palavra reservada", "boolean", 67>
-<"identificador", "d=", 67>
 <"numero", "3", 67>
 <"delimitador", ",", 67>
-<"identificador", "d=", 67>
-<"numero", "4", 67>
 <"delimitador", ";", 67>
 <"palavra reservada", "int", 68>
 <"identificador", "s", 68>
@@ -416,7 +405,6 @@ Tokens:
 <"operador logico", "||", 85>
 <"identificador", "ola", 85>
 <"operador logico", "&&", 85>
-<"identificador", "!a", 85>
 <"operador logico", "&&", 85>
 <"palavra reservada", "false", 85>
 <"operador logico", "||", 85>
@@ -494,11 +482,8 @@ Tokens:
 <"palavra reservada", "var", 99>
 <"delimitador", "{", 99>
 <"palavra reservada", "string", 100>
-<"identificador", "d=", 100>
 <"numero", "3", 100>
 <"delimitador", ",", 100>
-<"identificador", "d=", 100>
-<"numero", "4", 100>
 <"delimitador", ";", 100>
 <"palavra reservada", "int", 101>
 <"identificador", "s", 101>
@@ -508,11 +493,8 @@ Tokens:
 <"palavra reservada", "var", 103>
 <"delimitador", "{", 103>
 <"palavra reservada", "boolean", 104>
-<"identificador", "d=", 104>
 <"numero", "3", 104>
 <"delimitador", ",", 104>
-<"identificador", "d=", 104>
-<"numero", "4", 104>
 <"delimitador", ";", 104>
 <"palavra reservada", "int", 105>
 <"identificador", "s", 105>
@@ -575,7 +557,9 @@ Tokens:
 <"operador relacional", "=", 121>
 <"numero", "2.2", 121>
 <"operador aritmetico", "+", 121>
-<"numero", "3.1", 121>
+<"numero", "3", 121>
+<"delimitador", ".", 121>
+<"numero", "1", 121>
 <"delimitador", ";", 121>
 <"palavra reservada", "return", 124>
 <"numero", "8", 124>
@@ -584,11 +568,8 @@ Tokens:
 <"palavra reservada", "var", 126>
 <"delimitador", "{", 126>
 <"palavra reservada", "string", 126>
-<"identificador", "d=", 126>
 <"numero", "3", 126>
 <"delimitador", ",", 126>
-<"identificador", "d=", 126>
-<"numero", "4", 126>
 <"delimitador", ";", 126>
 <"palavra reservada", "int", 127>
 <"identificador", "s", 127>
@@ -618,12 +599,10 @@ Tokens:
 <"identificador", "nome_funcao", 137>
 <"delimitador", "(", 137>
 <"palavra reservada", "int", 137>
-<"identificador", "p", 137>
-<"numero", "1", 137>
+<"identificador", "p1", 137>
 <"delimitador", ",", 137>
 <"palavra reservada", "string", 137>
-<"identificador", "p", 137>
-<"numero", "1", 137>
+<"identificador", "p1", 137>
 <"delimitador", ")", 137>
 <"delimitador", "{", 137>
 <"palavra reservada", "print", 138>
@@ -711,6 +690,20 @@ Erros:
 <"erro", "");", 14>
 <"erro", "");", 17>
 <"erro", ""); // hehehe", 19>
+<"erro", "d=s", 33>
+<"erro", "!a", 34>
+<"erro", "!a", 35>
+<"erro", "d=", 63>
+<"erro", "d=4", 63>
+<"erro", "d=", 67>
+<"erro", "d=4", 67>
+<"erro", "!a", 85>
+<"erro", "d=", 100>
+<"erro", "d=4", 100>
+<"erro", "d=", 104>
+<"erro", "d=4", 104>
+<"erro", "d=", 126>
+<"erro", "d=4", 126>
 <"erro", "");", 146>
 <"erro", "");", 148>
 <"erro", "");", 154>

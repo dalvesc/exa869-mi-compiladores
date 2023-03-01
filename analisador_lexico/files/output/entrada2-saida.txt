@@ -17,8 +17,7 @@ Tokens:
 <"identificador", "numero_real", 7>
 <"delimitador", ";", 7>
 <"palavra reservada", "real", 8>
-<"identificador", "numero_real", 8>
-<"numero", "2", 8>
+<"identificador", "numero_real2", 8>
 <"delimitador", ";", 8>
 <"delimitador", "}", 9>
 <"delimitador", "{", 12>
@@ -33,8 +32,7 @@ Tokens:
 <"identificador", "numero_real", 16>
 <"operador relacional", "=", 16>
 <"numero", "1.123456789", 16>
-<"identificador", "numero_real", 17>
-<"numero", "2", 17>
+<"identificador", "numero_real2", 17>
 <"operador relacional", "=", 17>
 <"numero", "123456789.1", 17>
 <"palavra reservada", "int", 19>
@@ -45,17 +43,16 @@ Tokens:
 <"identificador", "a", 20>
 <"operador relacional", "=", 20>
 <"numero", "1.1", 20>
-<"identificador", "_", 20>
 <"delimitador", ";", 20>
 <"identificador", "numero_real", 21>
 <"operador relacional", "=", 21>
-<"identificador", "numero_real", 22>
-<"numero", "2", 22>
+<"identificador", "numero_real2", 22>
 <"operador relacional", "=", 22>
 <"numero", "1234", 22>
-<"identificador", "@", 22>
-<"numero", "56789.1", 22>
+<"delimitador", ".", 22>
 <"delimitador", "}", 23>
 
 Erros: 
+<"erro", "_", 20>
 <"erro", "1.123456.789", 21>
+<"erro", "@56789", 22>
