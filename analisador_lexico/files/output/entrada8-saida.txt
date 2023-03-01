@@ -1,0 +1,71 @@
+Tokens: 
+
+<"operador aritmetico", "/", 1>
+<"operador aritmetico", "/", 1>
+<"identificador", "Programa", 1>
+<"identificador", "com", 1>
+<"identificador", "varios", 1>
+<"operador aritmetico", "/", 2>
+<"operador aritmetico", "/", 2>
+<"identificador", "tabulacao", 2>
+<"identificador", "no", 2>
+<"identificador", "inicio", 2>
+<"identificador", "de", 2>
+<"identificador", "cada", 2>
+<"identificador", "linha", 2>
+<"delimitador", "(", 2>
+<"identificador", "nao", 2>
+<"identificador", "eh", 2>
+<"identificador", "erro", 2>
+<"delimitador", ")", 2>
+<"delimitador", "{", 5>
+<"palavra reservada", "int", 6>
+<"identificador", "a?", 6>
+<"delimitador", ";", 6>
+<"operador aritmetico", "/", 6>
+<"operador aritmetico", "/", 6>
+<"identificador", "identificador", 6>
+<"delimitador", "}", 7>
+<"delimitador", "{", 9>
+<"identificador", "a", 10>
+<"operador relacional", "=", 10>
+<"operador aritmetico", "/", 10>
+<"operador aritmetico", "/", 10>
+<"delimitador", ";", 10>
+<"identificador", "a", 11>
+<"operador relacional", "=", 11>
+<"delimitador", ";", 11>
+<"operador aritmetico", "/", 11>
+<"operador aritmetico", "/", 11>
+<"identificador", "numero", 11>
+<"identificador", "invalido", 11>
+<"identificador", "ou", 11>
+<"identificador", "numero", 11>
+<"delimitador", ",", 11>
+<"identificador", "delimitador", 11>
+<"delimitador", ",", 11>
+<"identificador", "numero", 11>
+<"identificador", "se", 13>
+<"delimitador", "(", 13>
+<"identificador", "?", 13>
+<"delimitador", ")", 13>
+<"delimitador", "{", 14>
+<"identificador", "x", 15>
+<"identificador", "=?", 15>
+<"identificador", "a", 15>
+<"delimitador", ";", 15>
+<"operador aritmetico", "/", 15>
+<"operador aritmetico", "/", 15>
+<"identificador", "operador", 15>
+<"identificador", "mal", 15>
+<"delimitador", "}", 16>
+<"delimitador", "{", 17>
+<"identificador", "#", 17>
+<"identificador", "Comentario", 17>
+<"identificador", "nao", 17>
+<"identificador", "finalizado", 17>
+<"delimitador", ";", 17>
+<"delimitador", "}", 18>
+
+Erros: 
+<"erro", "2.2.2", 11>

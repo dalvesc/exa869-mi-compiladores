@@ -1,0 +1,40 @@
+Tokens: 
+
+<"operador aritmetico", "/", 1>
+<"operador aritmetico", "/", 1>
+<"delimitador", "{", 4>
+<"identificador", "a", 6>
+<"operador logico", "!", 6>
+<"operador relacional", "=", 6>
+<"identificador", "a", 8>
+<"operador relacional", "!=", 8>
+<"identificador", "a", 10>
+<"operador relacional", ">=", 10>
+<"identificador", "b", 10>
+<"identificador", "&", 10>
+<"identificador", "&", 10>
+<"identificador", "b", 10>
+<"operador relacional", "<", 10>
+<"operador relacional", "=", 10>
+<"identificador", "a", 12>
+<"operador logico", "&&", 12>
+<"identificador", "b", 12>
+<"operador aritmetico", "*", 12>
+<"numero", "2", 12>
+<"identificador", "|", 14>
+<"identificador", "|!", 14>
+<"identificador", "b", 14>
+<"operador aritmetico", "-", 14>
+<"operador aritmetico", "-", 14>
+<"identificador", "<==", 14>
+<"identificador", "a", 16>
+<"identificador", ">>=", 16>
+<"numero", "10", 16>
+<"operador aritmetico", "+", 16>
+<"numero", "20", 16>
+<"operador aritmetico", "/", 16>
+<"operador logico", "&&", 16>
+<"numero", "100", 16>
+<"delimitador", "}", 18>
+
+Sucesso, nenhum erro encontrado!

@@ -1,4 +1,4 @@
-% Teste 2 - Numeros 
+// Teste 2 - Numeros 
 
 variaveis
 {

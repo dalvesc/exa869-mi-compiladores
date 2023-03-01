@@ -1,0 +1,61 @@
+Tokens: 
+
+<"operador aritmetico", "/", 1>
+<"operador aritmetico", "/", 1>
+<"identificador", "Teste", 1>
+<"numero", "2", 1>
+<"operador aritmetico", "-", 1>
+<"identificador", "Numeros", 1>
+<"delimitador", "{", 4>
+<"palavra reservada", "int", 5>
+<"palavra reservada", "int", 5>
+<"delimitador", ";", 5>
+<"palavra reservada", "int", 6>
+<"identificador", "a", 6>
+<"delimitador", ";", 6>
+<"palavra reservada", "real", 7>
+<"identificador", "numero_real", 7>
+<"delimitador", ";", 7>
+<"palavra reservada", "real", 8>
+<"identificador", "numero_real", 8>
+<"numero", "2", 8>
+<"delimitador", ";", 8>
+<"delimitador", "}", 9>
+<"delimitador", "{", 12>
+<"palavra reservada", "int", 14>
+<"operador relacional", "=", 14>
+<"numero", "1", 14>
+<"delimitador", ";", 14>
+<"identificador", "a", 15>
+<"operador relacional", "=", 15>
+<"numero", "1.1", 15>
+<"delimitador", ";", 15>
+<"identificador", "numero_real", 16>
+<"operador relacional", "=", 16>
+<"numero", "1.123456789", 16>
+<"identificador", "numero_real", 17>
+<"numero", "2", 17>
+<"operador relacional", "=", 17>
+<"numero", "123456789.1", 17>
+<"palavra reservada", "int", 19>
+<"operador relacional", "=", 19>
+<"delimitador", ".", 19>
+<"numero", "1", 19>
+<"delimitador", ";", 19>
+<"identificador", "a", 20>
+<"operador relacional", "=", 20>
+<"numero", "1.1", 20>
+<"identificador", "_", 20>
+<"delimitador", ";", 20>
+<"identificador", "numero_real", 21>
+<"operador relacional", "=", 21>
+<"identificador", "numero_real", 22>
+<"numero", "2", 22>
+<"operador relacional", "=", 22>
+<"numero", "1234", 22>
+<"identificador", "@", 22>
+<"numero", "56789.1", 22>
+<"delimitador", "}", 23>
+
+Erros: 
+<"erro", "1.123456.789", 21>

@@ -49,6 +49,14 @@ def montar_output(arquivo, tokens, tokens_erros):
         arquivo.write( '\nSucesso, nenhum erro encontrado!')
     arquivo.close()
 
+
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
 #monta o token
 def montar_token(classificacao, lexema, linha):
     return '<"'+classificacao+'", "'+''.join(lexema)+'", '+str(linha)+'>\n'
@@ -59,7 +67,16 @@ def is_palavra_reservada(lexema):
 
 #identifica se o lexema é um identificador
 def is_identificador(lexema):
-    return not lexema[0].isdigit() and not lexema[0] == '"' and not lexema[-1] == '"' 
+    if not lexema[0].isdigit() and lexema[0] not in delimitadores:
+        if not lexema[0] == '"' and not lexema[-1] == '"':
+            return True
+    return False
+
+#identifica se o lexema é um número
+def is_numero(lexema):
+    if len(lexema) > 1 and lexema[0] == '-' and lexema[-1].isdigit():
+        return True
+    return lexema.isdigit() or isfloat(lexema)
 
 #identifica se o lexema é um operador aritmetico
 def is_operador_aritmetico(lexema):
@@ -110,6 +127,8 @@ def analisadores(lexema, linha_encontrada):
         return tokens.append(montar_token('delimitador', lexema, linha_encontrada))
     elif is_cadeia_caractere(lexema):
         return tokens.append(montar_token('cadeia de caracteres', lexema, linha_encontrada))
+    elif is_numero(lexema):
+        return tokens.append(montar_token('numero', lexema, linha_encontrada))
     elif is_identificador(lexema):
         return tokens.append(montar_token('identificador', lexema, linha_encontrada))
     else:
@@ -118,46 +137,6 @@ def analisadores(lexema, linha_encontrada):
 
 #ler linha por linha do arquivo e passar para o analisador
 def analisar_arquivo(linhas):
-    linha_encontrada = 0
-    for linha in linhas:
-        linha_encontrada +=1
-        lexema = []
-        i = 0
-        while i < len(linha):
-            letra = linha[i]
-            
-            if letra != "\n":
-                lexema.append(letra)
-
-            if letra == "\n": #caso seja final de linha
-                if lexema:
-                    analisadores(''.join(lexema).strip(), linha_encontrada)
-                    lexema = []
-
-            elif letra == '"': #caso inicie uma cadeia de caracteres
-                lexema = []
-                j = i
-                lexema.append(linha[j])
-                j = j + 1
-                while linha[j] != '"':
-                    lexema.append(linha[j])
-                    j = j + 1
-                    if j == len(linha):
-                        break
-                lexema.append(linha[j])
-                analisadores(''.join(lexema).strip(), linha_encontrada)
-                lexema = []
-                i = j
-            elif letra == " ": #caso seja um espaço em branco
-                analisadores(''.join(lexema).strip(), linha_encontrada)
-                lexema = []
-            #elif lexema[0] == '"' and lexema[len(lexema)-1] == '"' and len(lexema) > 1:
-            #    analisadores(''.join(lexema).strip(), linha_encontrada)
-            #    lexema = []
-            
-            i = i + 1
-
-def analisar_arquivo2(linhas):
     linha_atual = 0
     lexemas_da_linha = []
     for linha in linhas:
@@ -175,9 +154,71 @@ def analisar_arquivo2(linhas):
                 if letra in delimitadores:
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
-                    #lexemas_da_linha.append(letra)
-                    
-                    #continue
+                    lexemas_da_linha.append(letra)
+                    i = i + 1
+                    continue
+
+                elif letra.isdigit():
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexema.append(letra)
+                    j = i
+                    for letra2 in linha[j+1:]:
+                        if not letra2.isdigit() and not letra2 == ".":
+                            lexemas_da_linha.append(''.join(lexema).strip())
+                            lexema = []
+                            i = j + 1
+                            break
+                        elif letra2 == "\n":
+                            lexemas_da_linha.append(''.join(lexema).strip())
+                            lexema = []
+                            i = j + 1
+                            break
+                        else:
+                            j = j + 1
+                            lexema.append(letra2)
+                    continue
+
+                elif letra == '-' and linha[i+1].isdigit():
+                    if not lexemas_da_linha[-1]: 
+                        lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexema.append(letra)
+                    j = i
+                    for letra2 in linha[j+1:]:
+                        if lexemas_da_linha and is_numero(lexemas_da_linha[-1]):
+                            lexemas_da_linha.append(''.join(letra).strip())
+                            lexema = []
+                            i = j + 1
+                            break
+                        elif not letra2.isdigit():
+                            lexemas_da_linha.append(''.join(lexema).strip())
+                            lexema = []
+                            i = j + 1
+                            break
+                        elif letra2 == "\n":
+                            lexemas_da_linha.append(''.join(lexema).strip())
+                            lexema = []
+                            i = j + 1
+                            break
+                        else:
+                            j = j + 1
+                            lexema.append(letra2)
+                    continue
+                elif letra in operadores_aritmeticos:
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexemas_da_linha.append(letra)
+                    i = i + 1
+                    continue
+
+                elif letra.isdigit() and linha[i+1] in operadores_aritmeticos:
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexemas_da_linha.append(letra)
+                    i = i + 1
+                    continue
+
                 elif letra == '"':
                     if lexema != ['"']:    
                         lexemas_da_linha.append(''.join(lexema).strip())
@@ -190,7 +231,7 @@ def analisar_arquivo2(linhas):
                                 lexemas_da_linha.append(''.join(lexema).strip())
                                 lexema = []
                                 i = j+1
-                                break 
+                                break
                             elif letra2 == '\n':
                                 lexemas_da_linha.append(''.join(lexema).strip())
                                 lexema = []
@@ -199,8 +240,8 @@ def analisar_arquivo2(linhas):
                             else:   
                                 j = j + 1
                                 lexema.append(letra2)
-                        
-                        #continue                    
+                        continue                    
+
                 elif letra == ' ':
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
@@ -209,7 +250,6 @@ def analisar_arquivo2(linhas):
                 print("LEXEMA: ", lexema)
             i = i + 1    
                 #print("STRING: ", lexema)
-        #list_1 = [item for item in list_1 if item[2] >= 5 or item[3] >= 0.3]
         lexemas_da_linha = [item for item in lexemas_da_linha if item != '']
         print("LEXEMAS DA LINHA: ", lexemas_da_linha)
         print("============")
@@ -227,5 +267,5 @@ if __name__ == "__main__":
     for arquivo in ler_pasta_arquivos():
         tokens = []
         tokens_erros = []
-        analisar_arquivo2(ler_linha_arquivo(pasta+arquivo))
+        analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
         montar_output(arquivo, tokens, tokens_erros)

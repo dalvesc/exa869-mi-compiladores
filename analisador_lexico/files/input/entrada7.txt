@@ -1,4 +1,4 @@
-% Teste de string de caracteres
+// Teste de string de caracteres
 variaveis
 {
 	string nome = "nome pro'prio ";

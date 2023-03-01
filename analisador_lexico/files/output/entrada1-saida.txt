@@ -1,0 +1,39 @@
+Tokens: 
+
+<"operador aritmetico", "/", 1>
+<"operador aritmetico", "/", 1>
+<"identificador", "Teste", 1>
+<"numero", "1", 1>
+<"operador aritmetico", "-", 1>
+<"delimitador", "{", 3>
+<"palavra reservada", "int", 4>
+<"identificador", "var_int", 4>
+<"delimitador", ";", 4>
+<"palavra reservada", "real", 5>
+<"identificador", "r_e_a_l", 5>
+<"delimitador", ";", 5>
+<"palavra reservada", "boolean", 6>
+<"identificador", "b", 6>
+<"numero", "00", 6>
+<"identificador", "lean", 6>
+<"delimitador", ";", 6>
+<"palavra reservada", "string", 7>
+<"identificador", "str", 7>
+<"numero", "1", 7>
+<"identificador", "_ng", 7>
+<"delimitador", ";", 7>
+<"palavra reservada", "int", 9>
+<"identificador", "var_int!", 9>
+<"delimitador", ";", 9>
+<"palavra reservada", "real", 10>
+<"identificador", "_r_e_a_l", 10>
+<"delimitador", ";", 10>
+<"palavra reservada", "boolean", 11>
+<"identificador", "b@@lean", 11>
+<"delimitador", ";", 11>
+<"palavra reservada", "string", 12>
+<"identificador", "str!_ng", 12>
+<"delimitador", ";", 12>
+<"delimitador", "}", 13>
+
+Sucesso, nenhum erro encontrado!

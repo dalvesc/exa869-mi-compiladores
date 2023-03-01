@@ -1,4 +1,4 @@
-% teste 05 - token desconhecido
+// teste 05 - token desconhecido
 
 @
 a > b ?	

@@ -1,0 +1,19 @@
+Tokens: 
+
+<"operador aritmetico", "/", 1>
+<"operador aritmetico", "/", 1>
+<"identificador", "teste", 1>
+<"numero", "05", 1>
+<"operador aritmetico", "-", 1>
+<"identificador", "token", 1>
+<"identificador", "a", 4>
+<"operador relacional", ">", 4>
+<"identificador", "b", 4>
+<"identificador", "escreva", 5>
+<"identificador", "$", 5>
+<"identificador", "a", 6>
+<"operador relacional", "=", 6>
+<"numero", "6", 7>
+<"operador aritmetico", "+", 7>
+
+Sucesso, nenhum erro encontrado!

@@ -1,4 +1,4 @@
-% Teste 1 - identificadores
+// Teste 1 - identificadores
 variaveis
 {
     int var_int;

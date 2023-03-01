@@ -1,0 +1,43 @@
+Tokens: 
+
+<"identificador", "algoritmo", 1>
+<"delimitador", ",", 1>
+<"identificador", "variaveis", 1>
+<"delimitador", ",", 1>
+<"identificador", "constantes", 1>
+<"delimitador", ",", 1>
+<"identificador", "registro", 1>
+<"delimitador", ",", 1>
+<"identificador", "funcao", 1>
+<"delimitador", ",", 1>
+<"identificador", "retorno", 1>
+<"delimitador", ",", 1>
+<"identificador", "vazio", 1>
+<"delimitador", ",", 1>
+<"identificador", "se", 1>
+<"delimitador", ",", 1>
+<"identificador", "senao", 1>
+<"delimitador", ",", 1>
+<"identificador", "enquanto", 1>
+<"delimitador", ",", 1>
+<"identificador", "para", 1>
+<"delimitador", ",", 1>
+<"identificador", "leia", 1>
+<"delimitador", ",", 1>
+<"identificador", "escreva", 1>
+<"delimitador", ",", 1>
+<"palavra reservada", "int", 1>
+<"delimitador", ",", 1>
+<"palavra reservada", "real", 1>
+<"delimitador", ",", 1>
+<"palavra reservada", "boolean", 1>
+<"delimitador", ",", 1>
+<"identificador", "char", 1>
+<"delimitador", ",", 1>
+<"palavra reservada", "string", 1>
+<"delimitador", ",", 1>
+<"identificador", "verdadeiro", 1>
+<"delimitador", ",", 1>
+<"identificador", "falso", 1>
+
+Sucesso, nenhum erro encontrado!
