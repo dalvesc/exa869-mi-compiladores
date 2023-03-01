@@ -180,6 +180,9 @@ def analisar_arquivo(linhas):
                             i = j + 3
                             comentario = False
                             break
+                        elif letra == "\n":
+                            i = j +1
+                            break
                         else:
                             j = j + 1
                     continue
