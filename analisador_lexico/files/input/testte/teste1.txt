@@ -1,7 +1,6 @@
 /*  
- /*
     m=2;
- */
+ 
  // teste08 - sem erros 
  const int MAX = 10, MAX2 = 50; 
           
@@ -157,7 +156,7 @@
                  print("pode aposentar kkkk"); 
          } else { 
                  print("vai trabalhar"); 
-         }        */ 
+         }       
   "vai"
   "eita
   ""
