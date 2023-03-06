@@ -170,13 +170,23 @@ def analisar_arquivo(linhas):
                     i = i + 2
                     continue
 
-                elif letra == "*" and linha[i+1] == "/":
+                elif letra == "*" and linha[i+1] == "/": #falta quando n fecha o comentario de bloco aberto
                     lexema.append(letra)
                     lexema.append(linha[i+1])
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     comentario = True
                     i = i + 2
+                    continue
+
+                elif letra == "/" and linha[i+1] == "/" and comentario:
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexema.append(letra)
+                    lexema.append(linha[i+1])
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    i = len(linha)
                     continue
 
                 elif letra.isdigit() and linha[i - 1] == ' ' and comentario:

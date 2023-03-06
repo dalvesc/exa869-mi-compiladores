@@ -39,30 +39,31 @@ Tokens:
 <"numero", "1", 141>
 <"delimitador", ";", 141>
 <"delimitador", "}", 142>
-<"palavra reservada", "procedure", 144>
-<"palavra reservada", "start", 144>
-<"delimitador", "(", 144>
-<"delimitador", ")", 144>
-<"delimitador", "{", 144>
-<"identificador", "teste", 145>
-<"operador relacional", "=", 145>
-<"palavra reservada", "false", 145>
-<"delimitador", ";", 145>
-<"identificador", "idade", 146>
-<"operador relacional", "=", 146>
-<"numero", "1", 146>
-<"operador aritmetico", "+", 146>
+<"delimitador de comentario", "//", 143>
+<"palavra reservada", "procedure", 145>
+<"palavra reservada", "start", 145>
+<"delimitador", "(", 145>
+<"delimitador", ")", 145>
+<"delimitador", "{", 145>
 <"identificador", "teste", 146>
+<"operador relacional", "=", 146>
+<"palavra reservada", "false", 146>
 <"delimitador", ";", 146>
 <"identificador", "idade", 147>
 <"operador relacional", "=", 147>
-<"identificador", "nome_funcao", 147>
-<"delimitador", "(", 147>
-<"identificador", "idade", 147>
-<"delimitador", ",", 147>
-<"identificador", "nome", 147>
-<"delimitador", ")", 147>
+<"numero", "1", 147>
+<"operador aritmetico", "+", 147>
+<"identificador", "teste", 147>
 <"delimitador", ";", 147>
-<"delimitador de comentario", "/*", 148>
+<"identificador", "idade", 148>
+<"operador relacional", "=", 148>
+<"identificador", "nome_funcao", 148>
+<"delimitador", "(", 148>
+<"identificador", "idade", 148>
+<"delimitador", ",", 148>
+<"identificador", "nome", 148>
+<"delimitador", ")", 148>
+<"delimitador", ";", 148>
+<"delimitador de comentario", "/*", 149>
 
 Sucesso, nenhum erro encontrado!

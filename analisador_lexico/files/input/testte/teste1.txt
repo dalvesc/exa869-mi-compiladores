@@ -140,7 +140,8 @@
          print(1); 
          return 1; 
  } 
-  
+    // procedure start(){}
+
  procedure start() { 
          teste = false; 
          idade = 1 + teste; 
