@@ -151,46 +151,34 @@ def analisar_arquivo(linhas):
         while i < len(linha):
             letra = linha[i]
 
-            #for index, letra in enumerate(linha):
             if letra != "\n":
                 if letra in delimitadores and comentario:
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     lexemas_da_linha.append(letra)
                     i = i + 1
+                    continue   
+
+                elif letra == "/" and linha[i+1] == "*" and comentario:
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    lexema.append(letra)
+                    lexema.append(linha[i+1])
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    comentario = False
+                    i = i + 2
                     continue
-                elif letra == '/' and linha[i+1] == '*' or letra == '/' and linha[i+1] == '/' or letra == '*' and linha[i+1] == '/':
-                    if comentario:
-                        lexemas_da_linha.append(''.join(lexema).strip())
-                        lexema = []
-                        lexema.append(letra)
-                        lexema.append(linha[i+1])
-                        lexemas_da_linha.append(''.join(lexema).strip())
-                        lexema = []
-                    if letra == '/' and linha[i+1] == '*':
-                        comentario = False
-                    j = i +1
-                    l =0
-                    for letra2 in linha[j+1:]:
-                        if letra2 == '*' and linha[j+2] == '/':
-                            
-                            lexema.append(letra2)
-                            lexema.append(linha[j+2])
-                            lexemas_da_linha.append(''.join(lexema).strip())
-                            lexema = []
-                            i = j + 3
-                            comentario = True
-                            break
-                        elif letra == "\n":
-                            i = j + 1
-                            j = j + 1
-                            print("entrou aqui 2")
-                            break
-                        else:
-                            i = j + 1
-                            j = j + 1
-                            print("entrou aqui 3")
-                        continue
+
+                elif letra == "*" and linha[i+1] == "/":
+                    lexema.append(letra)
+                    lexema.append(linha[i+1])
+                    lexemas_da_linha.append(''.join(lexema).strip())
+                    lexema = []
+                    comentario = True
+                    i = i + 2
+                    continue
+
                 elif letra.isdigit() and linha[i - 1] == ' ' and comentario:
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
@@ -238,6 +226,7 @@ def analisar_arquivo(linhas):
                             j = j + 1
                             lexema.append(letra2)
                     continue
+
                 elif letra in operadores_aritmeticos and comentario:
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []

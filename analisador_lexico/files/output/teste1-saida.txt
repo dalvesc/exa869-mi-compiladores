@@ -1,5 +1,68 @@
 Tokens: 
 
 <"delimitador de comentario", "/*", 1>
+<"delimitador de comentario", "*/", 130>
+<"palavra reservada", "var", 132>
+<"delimitador", "{", 132>
+<"palavra reservada", "string", 133>
+<"identificador", "nome", 133>
+<"delimitador", ";", 133>
+<"palavra reservada", "int", 134>
+<"identificador", "idade", 134>
+<"delimitador", ",", 134>
+<"identificador", "numero", 134>
+<"delimitador", ";", 134>
+<"palavra reservada", "real", 135>
+<"identificador", "numero_real", 135>
+<"delimitador", ";", 135>
+<"palavra reservada", "boolean", 136>
+<"identificador", "teste", 136>
+<"delimitador", ";", 136>
+<"delimitador", "}", 137>
+<"palavra reservada", "function", 139>
+<"palavra reservada", "int", 139>
+<"identificador", "nome_funcao", 139>
+<"delimitador", "(", 139>
+<"palavra reservada", "int", 139>
+<"identificador", "p1", 139>
+<"delimitador", ",", 139>
+<"palavra reservada", "string", 139>
+<"identificador", "p1", 139>
+<"delimitador", ")", 139>
+<"delimitador", "{", 139>
+<"palavra reservada", "print", 140>
+<"delimitador", "(", 140>
+<"numero", "1", 140>
+<"delimitador", ")", 140>
+<"delimitador", ";", 140>
+<"palavra reservada", "return", 141>
+<"numero", "1", 141>
+<"delimitador", ";", 141>
+<"delimitador", "}", 142>
+<"palavra reservada", "procedure", 144>
+<"palavra reservada", "start", 144>
+<"delimitador", "(", 144>
+<"delimitador", ")", 144>
+<"delimitador", "{", 144>
+<"identificador", "teste", 145>
+<"operador relacional", "=", 145>
+<"palavra reservada", "false", 145>
+<"delimitador", ";", 145>
+<"identificador", "idade", 146>
+<"operador relacional", "=", 146>
+<"numero", "1", 146>
+<"operador aritmetico", "+", 146>
+<"identificador", "teste", 146>
+<"delimitador", ";", 146>
+<"identificador", "idade", 147>
+<"operador relacional", "=", 147>
+<"identificador", "nome_funcao", 147>
+<"delimitador", "(", 147>
+<"identificador", "idade", 147>
+<"delimitador", ",", 147>
+<"identificador", "nome", 147>
+<"delimitador", ")", 147>
+<"delimitador", ";", 147>
+<"delimitador de comentario", "/*", 148>
 
 Sucesso, nenhum erro encontrado!
