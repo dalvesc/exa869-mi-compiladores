@@ -12,7 +12,7 @@ delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
-pasta = os.getcwd()+'/files/input/testte/' #pasta dos códigos de input
+pasta = os.getcwd()+'/files/input/teste/' #pasta dos códigos de input
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -116,23 +116,23 @@ def is_cadeia_caractere(lexema):
 #todos os analisadores para passar o lexema
 def analisadores(lexema, linha_encontrada):
     if is_palavra_reservada(lexema):
-        return tokens.append(montar_token('palavra reservada', lexema, linha_encontrada))
+        return tokens.append(montar_token('PRE', lexema, linha_encontrada))
     elif is_delimitador_comentario(lexema):
         return tokens.append(montar_token('delimitador de comentario', lexema, linha_encontrada))
     elif is_operador_aritmetico(lexema):
-        return tokens.append(montar_token('operador aritmetico', lexema, linha_encontrada))
+        return tokens.append(montar_token('ART', lexema, linha_encontrada))
     elif is_operador_relacional(lexema):
-        return tokens.append(montar_token('operador relacional', lexema, linha_encontrada))
+        return tokens.append(montar_token('REL', lexema, linha_encontrada))
     elif is_operador_logico(lexema):
-        return tokens.append(montar_token('operador logico', lexema, linha_encontrada))
+        return tokens.append(montar_token('LOG', lexema, linha_encontrada))
     elif is_delimitador(lexema):
-        return tokens.append(montar_token('delimitador', lexema, linha_encontrada))
+        return tokens.append(montar_token('DEL', lexema, linha_encontrada))
     elif is_cadeia_caractere(lexema):
-        return tokens.append(montar_token('cadeia de caracteres', lexema, linha_encontrada))
+        return tokens.append(montar_token('CAC', lexema, linha_encontrada))
     elif is_numero(lexema):
-        return tokens.append(montar_token('numero', lexema, linha_encontrada))
+        return tokens.append(montar_token('NRO', lexema, linha_encontrada))
     elif is_identificador(lexema):
-        return tokens.append(montar_token('identificador', lexema, linha_encontrada))
+        return tokens.append(montar_token('IDE', lexema, linha_encontrada))
     else:
         return tokens_erros.append(montar_token('erro', lexema, linha_encontrada))
     #outros if's para os outros analisadores
