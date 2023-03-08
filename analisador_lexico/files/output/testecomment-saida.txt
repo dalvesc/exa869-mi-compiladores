@@ -1,0 +1,61 @@
+Tokens: 
+
+<"delimitador de comentario", "/*", 1>
+<"delimitador de comentario", "*/", 5>
+<"PRE", "procedure", 6>
+<"PRE", "start", 6>
+<"DEL", "{", 6>
+<"delimitador de comentario", "//", 6>
+<"PRE", "int", 8>
+<"IDE", "idade", 8>
+<"DEL", ";", 8>
+<"PRE", "string", 9>
+<"IDE", "nome", 9>
+<"DEL", ";", 9>
+<"PRE", "print", 11>
+<"DEL", "(", 11>
+<"CAC", ""Digite o nome"", 11>
+<"DEL", ")", 11>
+<"DEL", ";", 11>
+<"PRE", "read", 12>
+<"DEL", "(", 12>
+<"IDE", "nome", 12>
+<"DEL", ")", 12>
+<"DEL", ";", 12>
+<"PRE", "print", 13>
+<"DEL", "(", 13>
+<"CAC", ""Digite a idade"", 13>
+<"DEL", ")", 13>
+<"DEL", ";", 13>
+<"PRE", "read", 14>
+<"DEL", "(", 14>
+<"IDE", "idade", 14>
+<"DEL", ")", 14>
+<"DEL", ";", 14>
+<"PRE", "if", 16>
+<"DEL", "(", 16>
+<"IDE", "idade", 16>
+<"REL", ">=", 16>
+<"NRO", "150", 16>
+<"DEL", ")", 16>
+<"PRE", "print", 16>
+<"DEL", "(", 16>
+<"CAC", ""pode aposentar kkkk"", 16>
+<"DEL", ")", 16>
+<"DEL", ";", 16>
+<"PRE", "else", 17>
+<"DEL", "{", 17>
+<"PRE", "print", 18>
+<"DEL", "(", 18>
+<"CAC", ""vai trabalhar"", 18>
+<"DEL", ")", 18>
+<"DEL", ";", 18>
+<"delimitador de comentario", "//", 18>
+<"DEL", "}", 19>
+<"DEL", "}", 21>
+
+Erros: 
+<"ComF", "/* teste08 - sem erros ", 1>
+<"ComF", " const int MAX = 10, MAX2 = 50; ", 1>
+<"ComF", "          ", 1>
+<"ComF", " string Mensagem = "Hello world"; ", 1>

@@ -1,35 +1,34 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"delimitador", "{", 4>
-<"identificador", "a", 6>
-<"operador logico", "!", 6>
-<"operador relacional", "=", 6>
-<"identificador", "a", 8>
-<"operador relacional", "!=", 8>
-<"identificador", "a", 10>
-<"operador relacional", ">=", 10>
-<"identificador", "b", 10>
-<"identificador", "b", 10>
-<"operador relacional", "<", 10>
-<"operador relacional", "=", 10>
-<"identificador", "a", 12>
-<"operador logico", "&&", 12>
-<"identificador", "b", 12>
-<"operador aritmetico", "*", 12>
-<"numero", "2", 12>
-<"identificador", "b", 14>
-<"operador aritmetico", "-", 14>
-<"operador aritmetico", "-", 14>
-<"identificador", "a", 16>
-<"numero", "10", 16>
-<"operador aritmetico", "+", 16>
-<"numero", "20", 16>
-<"operador aritmetico", "/", 16>
-<"operador logico", "&&", 16>
-<"numero", "100", 16>
-<"delimitador", "}", 18>
+<"delimitador de comentario", "//", 1>
+<"DEL", "{", 4>
+<"IDE", "a", 6>
+<"LOG", "!", 6>
+<"REL", "=", 6>
+<"IDE", "a", 8>
+<"REL", "!=", 8>
+<"IDE", "a", 10>
+<"REL", ">=", 10>
+<"IDE", "b", 10>
+<"IDE", "b", 10>
+<"REL", "<", 10>
+<"REL", "=", 10>
+<"IDE", "a", 12>
+<"LOG", "&&", 12>
+<"IDE", "b", 12>
+<"ART", "*", 12>
+<"NRO", "2", 12>
+<"IDE", "b", 14>
+<"ART", "-", 14>
+<"ART", "-", 14>
+<"IDE", "a", 16>
+<"NRO", "10", 16>
+<"ART", "+", 16>
+<"NRO", "20", 16>
+<"ART", "/", 16>
+<"LOG", "&&", 16>
+<"NRO", "100", 16>
+<"DEL", "}", 18>
 
 Erros: 
 <"erro", "&", 10>

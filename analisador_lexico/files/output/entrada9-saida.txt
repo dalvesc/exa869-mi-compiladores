@@ -1,123 +1,94 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"identificador", "Programa", 1>
-<"identificador", "sem", 1>
-<"identificador", "erros", 1>
-<"operador aritmetico", "-", 1>
-<"identificador", "Testando", 1>
-<"identificador", "tudo", 1>
-<"identificador", "que", 1>
-<"identificador", "a", 1>
-<"identificador", "linguagem", 1>
-<"operador aritmetico", "/", 3>
-<"operador aritmetico", "/", 3>
-<"identificador", "Palavras", 3>
-<"identificador", "algoritmo", 4>
-<"delimitador", ",", 4>
-<"identificador", "variaveis", 4>
-<"delimitador", ",", 4>
-<"identificador", "constantes", 4>
-<"delimitador", ",", 4>
-<"identificador", "registro", 4>
-<"delimitador", ",", 4>
-<"identificador", "funcao", 4>
-<"delimitador", ",", 4>
-<"identificador", "retorno", 4>
-<"delimitador", ",", 4>
-<"identificador", "vazio", 4>
-<"delimitador", ",", 4>
-<"identificador", "se", 4>
-<"delimitador", ",", 4>
-<"identificador", "senao", 4>
-<"delimitador", ",", 4>
-<"identificador", "enquanto", 4>
-<"delimitador", ",", 4>
-<"identificador", "para", 4>
-<"delimitador", ",", 4>
-<"identificador", "leia", 4>
-<"delimitador", ",", 4>
-<"identificador", "escreva", 4>
-<"delimitador", ",", 4>
-<"palavra reservada", "int", 4>
-<"delimitador", ",", 4>
-<"palavra reservada", "real", 4>
-<"delimitador", ",", 4>
-<"palavra reservada", "boolean", 4>
-<"delimitador", ",", 4>
-<"identificador", "char", 4>
-<"delimitador", ",", 4>
-<"palavra reservada", "string", 4>
-<"delimitador", ",", 4>
-<"identificador", "verdadeiro", 4>
-<"delimitador", ",", 4>
-<"operador aritmetico", "/", 6>
-<"operador aritmetico", "/", 6>
-<"identificador", "Identificadores", 6>
-<"identificador", "num1", 8>
-<"identificador", "todos_tutores", 8>
-<"identificador", "soma", 8>
-<"operador aritmetico", "/", 10>
-<"operador aritmetico", "/", 10>
-<"identificador", "Numeros", 10>
-<"numero", "123", 12>
-<"numero", "1.2", 12>
-<"numero", "23.987", 12>
-<"operador aritmetico", "/", 14>
-<"operador aritmetico", "/", 14>
-<"identificador", "strings", 14>
-<"identificador", "de", 14>
-<"cadeia de caracteres", ""texto correto"", 16>
-<"cadeia de caracteres", ""@#$:^&*"", 16>
-<"operador aritmetico", "/", 18>
-<"operador aritmetico", "/", 18>
-<"operador aritmetico", "+", 20>
-<"operador aritmetico", "-", 20>
-<"operador aritmetico", "*", 20>
-<"operador aritmetico", "/", 20>
-<"operador aritmetico", "+", 20>
-<"operador aritmetico", "+", 20>
-<"operador aritmetico", "-", 20>
-<"operador aritmetico", "-", 20>
-<"operador relacional", "==", 20>
-<"operador relacional", "!=", 20>
-<"operador relacional", ">", 20>
-<"operador relacional", ">=", 20>
-<"operador relacional", "<", 20>
-<"operador relacional", "<=", 20>
-<"operador relacional", "=", 20>
-<"operador logico", "&&", 20>
-<"operador logico", "||", 20>
-<"operador aritmetico", "/", 22>
-<"operador aritmetico", "/", 22>
-<"delimitador", ";", 24>
-<"delimitador", ",", 24>
-<"delimitador", "(", 24>
-<"delimitador", ")", 24>
-<"delimitador", "{", 24>
-<"delimitador", "}", 24>
-<"delimitador", "[", 24>
-<"delimitador", "]", 24>
-<"delimitador", ".", 24>
-<"operador aritmetico", "/", 26>
-<"operador aritmetico", "/", 26>
-<"identificador", "Comentarios", 26>
-<"delimitador", "{", 28>
-<"identificador", "isto", 28>
-<"identificador", "um", 28>
-<"identificador", "de", 29>
-<"identificador", "bloco", 29>
-<"delimitador", "}", 29>
-<"operador aritmetico", "/", 30>
-<"operador aritmetico", "/", 30>
-<"identificador", "isto", 30>
-<"identificador", "um", 30>
-<"identificador", "de", 30>
+<"delimitador de comentario", "//", 1>
+<"delimitador de comentario", "//", 3>
+<"IDE", "algoritmo", 4>
+<"DEL", ",", 4>
+<"IDE", "variaveis", 4>
+<"DEL", ",", 4>
+<"IDE", "constantes", 4>
+<"DEL", ",", 4>
+<"IDE", "registro", 4>
+<"DEL", ",", 4>
+<"IDE", "funcao", 4>
+<"DEL", ",", 4>
+<"IDE", "retorno", 4>
+<"DEL", ",", 4>
+<"IDE", "vazio", 4>
+<"DEL", ",", 4>
+<"IDE", "se", 4>
+<"DEL", ",", 4>
+<"IDE", "senao", 4>
+<"DEL", ",", 4>
+<"IDE", "enquanto", 4>
+<"DEL", ",", 4>
+<"IDE", "para", 4>
+<"DEL", ",", 4>
+<"IDE", "leia", 4>
+<"DEL", ",", 4>
+<"IDE", "escreva", 4>
+<"DEL", ",", 4>
+<"PRE", "int", 4>
+<"DEL", ",", 4>
+<"PRE", "real", 4>
+<"DEL", ",", 4>
+<"PRE", "boolean", 4>
+<"DEL", ",", 4>
+<"IDE", "char", 4>
+<"DEL", ",", 4>
+<"PRE", "string", 4>
+<"DEL", ",", 4>
+<"IDE", "verdadeiro", 4>
+<"DEL", ",", 4>
+<"delimitador de comentario", "//", 6>
+<"IDE", "num1", 8>
+<"IDE", "todos_tutores", 8>
+<"IDE", "soma", 8>
+<"delimitador de comentario", "//", 10>
+<"NRO", "123", 12>
+<"NRO", "1.2", 12>
+<"NRO", "23.987", 12>
+<"delimitador de comentario", "//", 14>
+<"CAC", ""texto correto"", 16>
+<"CAC", ""@#$:^&*"", 16>
+<"delimitador de comentario", "//", 18>
+<"ART", "+", 20>
+<"ART", "-", 20>
+<"ART", "*", 20>
+<"ART", "/", 20>
+<"ART", "+", 20>
+<"ART", "+", 20>
+<"ART", "-", 20>
+<"ART", "-", 20>
+<"REL", "==", 20>
+<"REL", "!=", 20>
+<"REL", ">", 20>
+<"REL", ">=", 20>
+<"REL", "<", 20>
+<"REL", "<=", 20>
+<"REL", "=", 20>
+<"LOG", "&&", 20>
+<"LOG", "||", 20>
+<"delimitador de comentario", "//", 22>
+<"DEL", ";", 24>
+<"DEL", ",", 24>
+<"DEL", "(", 24>
+<"DEL", ")", 24>
+<"DEL", "{", 24>
+<"DEL", "}", 24>
+<"DEL", "[", 24>
+<"DEL", "]", 24>
+<"DEL", ".", 24>
+<"delimitador de comentario", "//", 26>
+<"DEL", "{", 28>
+<"IDE", "isto", 28>
+<"IDE", "um", 28>
+<"IDE", "de", 29>
+<"IDE", "bloco", 29>
+<"DEL", "}", 29>
+<"delimitador de comentario", "//", 30>
 
 Erros: 
 <"erro", "#", 28>
 <"erro", "é", 28>
 <"erro", "#", 29>
-<"erro", "é", 30>
-<"erro", "comentário", 30>

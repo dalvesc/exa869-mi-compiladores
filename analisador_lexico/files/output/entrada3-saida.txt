@@ -1,58 +1,45 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"identificador", "Testes", 1>
-<"identificador", "de", 1>
-<"delimitador", "{", 4>
-<"palavra reservada", "int", 5>
-<"identificador", "a", 5>
-<"delimitador", ";", 5>
-<"palavra reservada", "int", 6>
-<"identificador", "x", 6>
-<"delimitador", ";", 6>
-<"operador aritmetico", "/", 7>
-<"operador aritmetico", "/", 7>
-<"palavra reservada", "real", 7>
-<"operador aritmetico", "/", 7>
-<"operador aritmetico", "/", 7>
-<"identificador", "s", 7>
-<"delimitador", ";", 7>
-<"palavra reservada", "real", 8>
-<"identificador", "b", 8>
-<"delimitador", ";", 8>
-<"delimitador", "}", 9>
-<"delimitador", "{", 11>
-<"delimitador", "{", 12>
-<"identificador", "s", 13>
-<"operador relacional", "=", 13>
-<"numero", "-1", 13>
-<"delimitador", ".", 13>
-<"numero", "3", 13>
-<"delimitador", ";", 13>
-<"delimitador", "}", 13>
-<"identificador", "b", 14>
-<"operador relacional", "=", 14>
-<"delimitador", "{", 14>
-<"identificador", "numero", 14>
-<"palavra reservada", "real", 14>
-<"delimitador", "}", 14>
-<"numero", "1.2", 14>
-<"delimitador", ";", 14>
-<"identificador", "a", 15>
-<"operador relacional", "=", 15>
-<"operador aritmetico", "/", 15>
-<"operador aritmetico", "/", 15>
-<"delimitador", "{", 15>
-<"numero", "-1", 15>
-<"delimitador", ";", 15>
-<"identificador", "b", 16>
-<"operador relacional", "=", 16>
-<"numero", "5", 16>
-<"delimitador", ";", 16>
-<"delimitador", "}", 16>
-<"delimitador", "{", 18>
-<"delimitador", "}", 20>
+<"delimitador de comentario", "//", 1>
+<"DEL", "{", 4>
+<"PRE", "int", 5>
+<"IDE", "a", 5>
+<"DEL", ";", 5>
+<"PRE", "int", 6>
+<"IDE", "x", 6>
+<"DEL", ";", 6>
+<"delimitador de comentario", "//", 7>
+<"PRE", "real", 8>
+<"IDE", "b", 8>
+<"DEL", ";", 8>
+<"DEL", "}", 9>
+<"DEL", "{", 11>
+<"DEL", "{", 12>
+<"IDE", "s", 13>
+<"REL", "=", 13>
+<"NRO", "-1", 13>
+<"DEL", ".", 13>
+<"NRO", "3", 13>
+<"DEL", ";", 13>
+<"DEL", "}", 13>
+<"IDE", "b", 14>
+<"REL", "=", 14>
+<"DEL", "{", 14>
+<"IDE", "numero", 14>
+<"PRE", "real", 14>
+<"DEL", "}", 14>
+<"NRO", "1.2", 14>
+<"DEL", ";", 14>
+<"IDE", "a", 15>
+<"REL", "=", 15>
+<"delimitador de comentario", "//", 15>
+<"IDE", "b", 16>
+<"REL", "=", 16>
+<"NRO", "5", 16>
+<"DEL", ";", 16>
+<"DEL", "}", 16>
+<"DEL", "{", 18>
+<"DEL", "}", 20>
 
 Erros: 
 <"erro", "##", 13>

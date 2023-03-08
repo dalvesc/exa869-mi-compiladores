@@ -1,58 +1,67 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"identificador", "Teste", 1>
-<"numero", "2", 1>
-<"operador aritmetico", "-", 1>
-<"identificador", "Numeros", 1>
-<"delimitador", "{", 4>
-<"palavra reservada", "int", 5>
-<"palavra reservada", "int", 5>
-<"delimitador", ";", 5>
-<"palavra reservada", "int", 6>
-<"identificador", "a", 6>
-<"delimitador", ";", 6>
-<"palavra reservada", "real", 7>
-<"identificador", "numero_real", 7>
-<"delimitador", ";", 7>
-<"palavra reservada", "real", 8>
-<"identificador", "numero_real2", 8>
-<"delimitador", ";", 8>
-<"delimitador", "}", 9>
-<"delimitador", "{", 12>
-<"palavra reservada", "int", 14>
-<"operador relacional", "=", 14>
-<"numero", "1", 14>
-<"delimitador", ";", 14>
-<"identificador", "a", 15>
-<"operador relacional", "=", 15>
-<"numero", "1.1", 15>
-<"delimitador", ";", 15>
-<"identificador", "numero_real", 16>
-<"operador relacional", "=", 16>
-<"numero", "1.123456789", 16>
-<"identificador", "numero_real2", 17>
-<"operador relacional", "=", 17>
-<"numero", "123456789.1", 17>
-<"palavra reservada", "int", 19>
-<"operador relacional", "=", 19>
-<"delimitador", ".", 19>
-<"numero", "1", 19>
-<"delimitador", ";", 19>
-<"identificador", "a", 20>
-<"operador relacional", "=", 20>
-<"numero", "1.1", 20>
-<"delimitador", ";", 20>
-<"identificador", "numero_real", 21>
-<"operador relacional", "=", 21>
-<"identificador", "numero_real2", 22>
-<"operador relacional", "=", 22>
-<"numero", "1234", 22>
-<"delimitador", ".", 22>
-<"delimitador", "}", 23>
+<"delimitador de comentario", "//", 1>
+<"DEL", "{", 4>
+<"PRE", "int", 5>
+<"PRE", "int", 5>
+<"DEL", ";", 5>
+<"PRE", "int", 6>
+<"IDE", "a", 6>
+<"DEL", ";", 6>
+<"PRE", "real", 7>
+<"IDE", "numero_real", 7>
+<"DEL", ";", 7>
+<"PRE", "real", 8>
+<"IDE", "numero_real2", 8>
+<"DEL", ";", 8>
+<"DEL", "}", 9>
+<"DEL", "{", 12>
+<"PRE", "int", 14>
+<"REL", "=", 14>
+<"NRO", "1", 14>
+<"DEL", ";", 14>
+<"IDE", "a", 15>
+<"REL", "=", 15>
+<"NRO", "1.1", 15>
+<"DEL", ";", 15>
+<"IDE", "b", 16>
+<"REL", "=", 16>
+<"DEL", ".", 16>
+<"NRO", "3", 16>
+<"DEL", ";", 16>
+<"IDE", "numero_real", 17>
+<"REL", "=", 17>
+<"NRO", "1.123456789", 17>
+<"IDE", "numero_real2", 18>
+<"REL", "=", 18>
+<"NRO", "123456789.1", 18>
+<"PRE", "int", 20>
+<"REL", "=", 20>
+<"DEL", ".", 20>
+<"NRO", "1", 20>
+<"DEL", ";", 20>
+<"IDE", "a", 21>
+<"REL", "=", 21>
+<"NRO", "1.1", 21>
+<"DEL", ";", 21>
+<"IDE", "numero_real", 22>
+<"REL", "=", 22>
+<"IDE", "numero_real2", 23>
+<"REL", "=", 23>
+<"NRO", "1234", 23>
+<"NRO", "56789.1", 23>
+<"IDE", "teste", 25>
+<"REL", "=", 25>
+<"DEL", "}", 26>
 
 Erros: 
-<"erro", "_", 20>
-<"erro", "1.123456.789", 21>
-<"erro", "@56789", 22>
+<"NMF", "1.", 16>
+<"IMF", "_", 21>
+<"erro", "_", 21>
+<"NMF", "1.123456.789", 22>
+<"IMF", "1.123456.789", 22>
+<"erro", "1.123456.789", 22>
+<"TMF", "@", 23>
+<"CMF", ""test", 25>
+<"IMF", ""test", 25>
+<"erro", ""test", 25>

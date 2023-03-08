@@ -1,67 +1,35 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"identificador", "Programa", 1>
-<"identificador", "com", 1>
-<"identificador", "varios", 1>
-<"operador aritmetico", "/", 2>
-<"operador aritmetico", "/", 2>
-<"identificador", "tabulacao", 2>
-<"identificador", "no", 2>
-<"identificador", "inicio", 2>
-<"identificador", "de", 2>
-<"identificador", "cada", 2>
-<"identificador", "linha", 2>
-<"delimitador", "(", 2>
-<"identificador", "nao", 2>
-<"identificador", "eh", 2>
-<"identificador", "erro", 2>
-<"delimitador", ")", 2>
-<"delimitador", "{", 5>
-<"palavra reservada", "int", 6>
-<"delimitador", ";", 6>
-<"operador aritmetico", "/", 6>
-<"operador aritmetico", "/", 6>
-<"identificador", "identificador", 6>
-<"delimitador", "}", 7>
-<"delimitador", "{", 9>
-<"identificador", "a", 10>
-<"operador relacional", "=", 10>
-<"operador aritmetico", "/", 10>
-<"operador aritmetico", "/", 10>
-<"delimitador", ";", 10>
-<"identificador", "a", 11>
-<"operador relacional", "=", 11>
-<"delimitador", ";", 11>
-<"operador aritmetico", "/", 11>
-<"operador aritmetico", "/", 11>
-<"identificador", "numero", 11>
-<"identificador", "invalido", 11>
-<"identificador", "ou", 11>
-<"identificador", "numero", 11>
-<"delimitador", ",", 11>
-<"identificador", "delimitador", 11>
-<"delimitador", ",", 11>
-<"identificador", "numero", 11>
-<"identificador", "se", 13>
-<"delimitador", "(", 13>
-<"delimitador", ")", 13>
-<"delimitador", "{", 14>
-<"identificador", "x", 15>
-<"identificador", "a", 15>
-<"delimitador", ";", 15>
-<"operador aritmetico", "/", 15>
-<"operador aritmetico", "/", 15>
-<"identificador", "operador", 15>
-<"identificador", "mal", 15>
-<"delimitador", "}", 16>
-<"delimitador", "{", 17>
-<"identificador", "Comentario", 17>
-<"identificador", "nao", 17>
-<"identificador", "finalizado", 17>
-<"delimitador", ";", 17>
-<"delimitador", "}", 18>
+<"delimitador de comentario", "//", 1>
+<"delimitador de comentario", "//", 2>
+<"DEL", "{", 5>
+<"PRE", "int", 6>
+<"DEL", ";", 6>
+<"delimitador de comentario", "//", 6>
+<"DEL", "}", 7>
+<"DEL", "{", 9>
+<"IDE", "a", 10>
+<"REL", "=", 10>
+<"delimitador de comentario", "//", 10>
+<"IDE", "a", 11>
+<"REL", "=", 11>
+<"DEL", ";", 11>
+<"delimitador de comentario", "//", 11>
+<"IDE", "se", 13>
+<"DEL", "(", 13>
+<"DEL", ")", 13>
+<"DEL", "{", 14>
+<"IDE", "x", 15>
+<"IDE", "a", 15>
+<"DEL", ";", 15>
+<"delimitador de comentario", "//", 15>
+<"DEL", "}", 16>
+<"DEL", "{", 17>
+<"IDE", "Comentario", 17>
+<"IDE", "nao", 17>
+<"IDE", "finalizado", 17>
+<"DEL", ";", 17>
+<"DEL", "}", 18>
 
 Erros: 
 <"erro", "a?", 6>

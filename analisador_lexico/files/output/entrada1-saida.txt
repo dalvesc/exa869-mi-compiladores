@@ -1,35 +1,36 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"identificador", "Teste", 1>
-<"numero", "1", 1>
-<"operador aritmetico", "-", 1>
-<"delimitador", "{", 3>
-<"palavra reservada", "int", 4>
-<"identificador", "var_int", 4>
-<"delimitador", ";", 4>
-<"palavra reservada", "real", 5>
-<"identificador", "r_e_a_l", 5>
-<"delimitador", ";", 5>
-<"palavra reservada", "boolean", 6>
-<"identificador", "b00lean", 6>
-<"delimitador", ";", 6>
-<"palavra reservada", "string", 7>
-<"identificador", "str1_ng", 7>
-<"delimitador", ";", 7>
-<"palavra reservada", "int", 9>
-<"delimitador", ";", 9>
-<"palavra reservada", "real", 10>
-<"delimitador", ";", 10>
-<"palavra reservada", "boolean", 11>
-<"delimitador", ";", 11>
-<"palavra reservada", "string", 12>
-<"delimitador", ";", 12>
-<"delimitador", "}", 13>
+<"delimitador de comentario", "//", 1>
+<"DEL", "{", 3>
+<"PRE", "int", 4>
+<"IDE", "var_int", 4>
+<"DEL", ";", 4>
+<"PRE", "real", 5>
+<"IDE", "r_e_a_l", 5>
+<"DEL", ";", 5>
+<"PRE", "boolean", 6>
+<"IDE", "b00lean", 6>
+<"DEL", ";", 6>
+<"PRE", "string", 7>
+<"IDE", "str1_ng", 7>
+<"DEL", ";", 7>
+<"PRE", "int", 9>
+<"DEL", ";", 9>
+<"PRE", "real", 10>
+<"DEL", ";", 10>
+<"PRE", "boolean", 11>
+<"IDE", "blean", 11>
+<"DEL", ";", 11>
+<"PRE", "string", 12>
+<"DEL", ";", 12>
+<"DEL", "}", 13>
 
 Erros: 
+<"IMF", "var_int!", 9>
 <"erro", "var_int!", 9>
+<"IMF", "_r_e_a_l", 10>
 <"erro", "_r_e_a_l", 10>
-<"erro", "b@@lean", 11>
+<"TMF", "@", 11>
+<"TMF", "@", 11>
+<"IMF", "str!_ng", 12>
 <"erro", "str!_ng", 12>

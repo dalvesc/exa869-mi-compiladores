@@ -1,33 +1,28 @@
 Tokens: 
 
-<"operador aritmetico", "/", 1>
-<"operador aritmetico", "/", 1>
-<"identificador", "Teste", 1>
-<"identificador", "de", 1>
-<"palavra reservada", "string", 1>
-<"identificador", "de", 1>
-<"delimitador", "{", 3>
-<"palavra reservada", "string", 4>
-<"identificador", "nome", 4>
-<"operador relacional", "=", 4>
-<"cadeia de caracteres", ""nome pro'prio "", 4>
-<"delimitador", ";", 4>
-<"palavra reservada", "string", 5>
-<"identificador", "palavra", 5>
-<"operador relacional", "=", 5>
-<"cadeia de caracteres", """", 5>
-<"delimitador", ";", 5>
-<"palavra reservada", "string", 6>
-<"identificador", "palavra2", 6>
-<"operador relacional", "=", 6>
-<"cadeia de caracteres", "" "", 6>
-<"delimitador", ";", 6>
-<"palavra reservada", "string", 7>
-<"identificador", "sobrenome", 7>
-<"operador relacional", "=", 7>
-<"cadeia de caracteres", "" sobre "", 7>
-<"identificador", "tutores", 7>
-<"delimitador", "}", 9>
+<"delimitador de comentario", "//", 1>
+<"DEL", "{", 3>
+<"PRE", "string", 4>
+<"IDE", "nome", 4>
+<"REL", "=", 4>
+<"CAC", ""nome pro'prio "", 4>
+<"DEL", ";", 4>
+<"PRE", "string", 5>
+<"IDE", "palavra", 5>
+<"REL", "=", 5>
+<"CAC", """", 5>
+<"DEL", ";", 5>
+<"PRE", "string", 6>
+<"IDE", "palavra2", 6>
+<"REL", "=", 6>
+<"CAC", "" "", 6>
+<"DEL", ";", 6>
+<"PRE", "string", 7>
+<"IDE", "sobrenome", 7>
+<"REL", "=", 7>
+<"CAC", "" sobre "", 7>
+<"IDE", "tutores", 7>
+<"DEL", "}", 9>
 
 Erros: 
 <"erro", "";", 7>

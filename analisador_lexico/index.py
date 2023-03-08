@@ -13,6 +13,7 @@ delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
 pasta = os.getcwd()+'/files/input/teste/' #pasta dos códigos de input
+print("PASTA ", pasta)
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -66,18 +67,22 @@ def is_palavra_reservada(lexema):
     return lexema in palavras_reservadas
 
 #identifica se o lexema é um identificador
-def is_identificador(lexema):
+def is_identificador(lexema, linha):
     if not lexema[0].isdigit() and lexema[0] != '_' and lexema[0] not in delimitadores:
         for caracter in lexema:
             if not caracter.isalnum() and caracter != '_':
+                tokens_erros.append(montar_token('IMF', lexema, linha))
                 return False
         return True
+    tokens_erros.append(montar_token('IMF', lexema, linha))
     return False
 
 #identifica se o lexema é um número
-def is_numero(lexema):
+def is_numero(lexema, linha):
     if len(lexema) > 1 and lexema[0] == '-' and lexema[-1].isdigit():
         return True
+    elif lexema.count('.') > 1:
+        return tokens_erros.append(montar_token('NMF', lexema, linha))
     return lexema.isdigit() or isfloat(lexema)
 
 #identifica se o lexema é um operador aritmetico
@@ -105,13 +110,15 @@ def is_caractere_valido_string(lexema):
     return all(ord(c) in simbolo_ascii or c == '"' for c in lexema)
 
 #identifica se o lexema é uma cadeia de caracteres
-def is_cadeia_caractere(lexema):
+def is_cadeia_caractere(lexema, linha):
     if len(lexema) > 1:
         if lexema[0] == '"' and lexema[-1] == '"':
             if is_caractere_valido_string(lexema):
                 return True
-        else:
-            return False    
+        elif lexema[0] == '"' and lexema[-1] != '"':
+            tokens_erros.append(montar_token('CMF', lexema, linha))
+            return False
+        return False
 
 #todos os analisadores para passar o lexema
 def analisadores(lexema, linha_encontrada):
@@ -127,26 +134,28 @@ def analisadores(lexema, linha_encontrada):
         return tokens.append(montar_token('LOG', lexema, linha_encontrada))
     elif is_delimitador(lexema):
         return tokens.append(montar_token('DEL', lexema, linha_encontrada))
-    elif is_cadeia_caractere(lexema):
+    elif is_cadeia_caractere(lexema, linha_encontrada):
         return tokens.append(montar_token('CAC', lexema, linha_encontrada))
-    elif is_numero(lexema):
+    elif is_numero(lexema, linha_encontrada):
         return tokens.append(montar_token('NRO', lexema, linha_encontrada))
-    elif is_identificador(lexema):
+    elif is_identificador(lexema, linha_encontrada):
         return tokens.append(montar_token('IDE', lexema, linha_encontrada))
     else:
+        # classificar erros léxicos:
+        # CoMF comentário mal formado
         return tokens_erros.append(montar_token('erro', lexema, linha_encontrada))
-    #outros if's para os outros analisadores
 
 #ler linha por linha do arquivo e passar para o analisador
 def analisar_arquivo(linhas):
     linha_atual = 0
+    linha_comentario = 0
     lexemas_da_linha = []
     comentario = True
     for linha in linhas:
         lexemas_da_linha = []
         linha_atual = linha_atual + 1
         lexema = []
-        print("LINHA: ", linha)
+        lexema_comentario = []
         i=0
         while i < len(linha):
             letra = linha[i]
@@ -160,12 +169,14 @@ def analisar_arquivo(linhas):
                     continue   
 
                 elif letra == "/" and linha[i+1] == "*" and comentario:
+                    #linha_comentario = linha_atual
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     lexema.append(letra)
                     lexema.append(linha[i+1])
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
+                    #lexema_comentario.append("/*")
                     comentario = False
                     i = i + 2
                     continue
@@ -175,6 +186,7 @@ def analisar_arquivo(linhas):
                     lexema.append(linha[i+1])
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
+                    lexema_comentario = []
                     comentario = True
                     i = i + 2
                     continue
@@ -189,7 +201,7 @@ def analisar_arquivo(linhas):
                     i = len(linha)
                     continue
 
-                elif letra.isdigit() and linha[i - 1] == ' ' and comentario:
+                elif letra.isdigit() and not linha[i - 1].isalnum() and comentario:
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     lexema.append(letra)
@@ -205,6 +217,13 @@ def analisar_arquivo(linhas):
                             lexema = []
                             i = j + 1
                             break
+                        elif letra2 == "." and not linha[j+2].isdigit():
+                            lexema.append(linha[j+1])
+                            tokens_erros.append(montar_token('NMF', lexema, linha_atual))
+                            lexema = []
+                            i = j + 2
+                            break
+    
                         else:
                             j = j + 1
                             lexema.append(letra2)
@@ -278,15 +297,18 @@ def analisar_arquivo(linhas):
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                 
+                elif letra == '@':
+                    tokens_erros.append(montar_token('TMF', letra, linha_atual))
+
                 elif comentario:
                     lexema.append(letra)
-                print("LEXEMA: ", lexema)
-            i = i + 1    
-                #print("STRING: ", lexema)
+
+                lexema_comentario.append(letra)
+
+            i = i + 1
+        # if not comentario:
+        #     tokens_erros.append(montar_token('ComF', lexema_comentario, linha_comentario))
         lexemas_da_linha = [item for item in lexemas_da_linha if item != '']
-        print("LEXEMAS DA LINHA: ", lexemas_da_linha)
-        print("============")
-        print("\n")
         for lexema in lexemas_da_linha:
             analisadores(lexema, linha_atual)
 
@@ -302,3 +324,4 @@ if __name__ == "__main__":
         tokens_erros = []
         analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
         montar_output(arquivo, tokens, tokens_erros)
+        print("Arquivos gerados com sucesso!")
