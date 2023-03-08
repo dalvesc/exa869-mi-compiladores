@@ -1,11 +1,11 @@
 Tokens: 
 
-<"delimitador de comentario", "/*", 1>
-<"delimitador de comentario", "*/", 5>
+<"CoM", "/*", 1>
+<"CoM", "*/", 5>
 <"PRE", "procedure", 6>
 <"PRE", "start", 6>
 <"DEL", "{", 6>
-<"delimitador de comentario", "//", 6>
+<"CoM", "//", 6>
 <"PRE", "int", 8>
 <"IDE", "idade", 8>
 <"DEL", ";", 8>
@@ -50,12 +50,8 @@ Tokens:
 <"CAC", ""vai trabalhar"", 18>
 <"DEL", ")", 18>
 <"DEL", ";", 18>
-<"delimitador de comentario", "//", 18>
+<"CoM", "//", 18>
 <"DEL", "}", 19>
 <"DEL", "}", 21>
 
-Erros: 
-<"ComF", "/* teste08 - sem erros ", 1>
-<"ComF", " const int MAX = 10, MAX2 = 50; ", 1>
-<"ComF", "          ", 1>
-<"ComF", " string Mensagem = "Hello world"; ", 1>
+Sucesso, nenhum erro encontrado!

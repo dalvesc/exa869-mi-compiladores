@@ -1,6 +1,6 @@
 Tokens: 
 
-<"delimitador de comentario", "//", 1>
+<"CoM", "//", 1>
 <"DEL", "{", 4>
 <"PRE", "int", 5>
 <"PRE", "int", 5>
@@ -44,8 +44,10 @@ Tokens:
 <"REL", "=", 21>
 <"NRO", "1.1", 21>
 <"DEL", ";", 21>
+<"CoM", "//", 21>
 <"IDE", "numero_real", 22>
 <"REL", "=", 22>
+<"CoM", "//", 22>
 <"IDE", "numero_real2", 23>
 <"REL", "=", 23>
 <"NRO", "1234", 23>
@@ -57,11 +59,6 @@ Tokens:
 Erros: 
 <"NMF", "1.", 16>
 <"IMF", "_", 21>
-<"erro", "_", 21>
 <"NMF", "1.123456.789", 22>
-<"IMF", "1.123456.789", 22>
-<"erro", "1.123456.789", 22>
 <"TMF", "@", 23>
 <"CMF", ""test", 25>
-<"IMF", ""test", 25>
-<"erro", ""test", 25>

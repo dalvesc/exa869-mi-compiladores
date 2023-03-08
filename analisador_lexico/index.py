@@ -13,7 +13,6 @@ delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
 pasta = os.getcwd()+'/files/input/teste/' #pasta dos códigos de input
-print("PASTA ", pasta)
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -60,6 +59,7 @@ def isfloat(num):
 
 #monta o token
 def montar_token(classificacao, lexema, linha):
+    # Colocar no padrão do arquivo da professora
     return '<"'+classificacao+'", "'+''.join(lexema)+'", '+str(linha)+'>\n'
 
 #identifica se o lexema é uma palavra reservada
@@ -79,10 +79,15 @@ def is_identificador(lexema, linha):
 
 #identifica se o lexema é um número
 def is_numero(lexema, linha):
+    global token_error_flag
+    token_error_flag = False
     if len(lexema) > 1 and lexema[0] == '-' and lexema[-1].isdigit():
         return True
     elif lexema.count('.') > 1:
-        return tokens_erros.append(montar_token('NMF', lexema, linha))
+        token_error_flag = True
+        tokens_erros.append(montar_token('NMF', lexema, linha))
+        # Não pode retornar true, se não ele adiciona como token tbm no elif
+        return True
     return lexema.isdigit() or isfloat(lexema)
 
 #identifica se o lexema é um operador aritmetico
@@ -111,13 +116,16 @@ def is_caractere_valido_string(lexema):
 
 #identifica se o lexema é uma cadeia de caracteres
 def is_cadeia_caractere(lexema, linha):
+    global token_error_flag
+    token_error_flag = False
     if len(lexema) > 1:
         if lexema[0] == '"' and lexema[-1] == '"':
             if is_caractere_valido_string(lexema):
                 return True
         elif lexema[0] == '"' and lexema[-1] != '"':
+            token_error_flag = True
             tokens_erros.append(montar_token('CMF', lexema, linha))
-            return False
+            return True
         return False
 
 #todos os analisadores para passar o lexema
@@ -125,7 +133,7 @@ def analisadores(lexema, linha_encontrada):
     if is_palavra_reservada(lexema):
         return tokens.append(montar_token('PRE', lexema, linha_encontrada))
     elif is_delimitador_comentario(lexema):
-        return tokens.append(montar_token('delimitador de comentario', lexema, linha_encontrada))
+        return tokens.append(montar_token('CoM', lexema, linha_encontrada))
     elif is_operador_aritmetico(lexema):
         return tokens.append(montar_token('ART', lexema, linha_encontrada))
     elif is_operador_relacional(lexema):
@@ -135,15 +143,13 @@ def analisadores(lexema, linha_encontrada):
     elif is_delimitador(lexema):
         return tokens.append(montar_token('DEL', lexema, linha_encontrada))
     elif is_cadeia_caractere(lexema, linha_encontrada):
-        return tokens.append(montar_token('CAC', lexema, linha_encontrada))
+        if not token_error_flag:
+            return tokens.append(montar_token('CAC', lexema, linha_encontrada))
     elif is_numero(lexema, linha_encontrada):
-        return tokens.append(montar_token('NRO', lexema, linha_encontrada))
+        if not token_error_flag:
+            return tokens.append(montar_token('NRO', lexema, linha_encontrada))
     elif is_identificador(lexema, linha_encontrada):
         return tokens.append(montar_token('IDE', lexema, linha_encontrada))
-    else:
-        # classificar erros léxicos:
-        # CoMF comentário mal formado
-        return tokens_erros.append(montar_token('erro', lexema, linha_encontrada))
 
 #ler linha por linha do arquivo e passar para o analisador
 def analisar_arquivo(linhas):
@@ -169,14 +175,12 @@ def analisar_arquivo(linhas):
                     continue   
 
                 elif letra == "/" and linha[i+1] == "*" and comentario:
-                    #linha_comentario = linha_atual
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     lexema.append(letra)
                     lexema.append(linha[i+1])
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
-                    #lexema_comentario.append("/*")
                     comentario = False
                     i = i + 2
                     continue
@@ -311,11 +315,6 @@ def analisar_arquivo(linhas):
         lexemas_da_linha = [item for item in lexemas_da_linha if item != '']
         for lexema in lexemas_da_linha:
             analisadores(lexema, linha_atual)
-
-            
-
-
-
 
 
 if __name__ == "__main__":

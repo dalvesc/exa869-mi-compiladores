@@ -1,6 +1,6 @@
 Tokens: 
 
-<"delimitador de comentario", "//", 1>
+<"CoM", "//", 1>
 <"DEL", "{", 3>
 <"PRE", "int", 4>
 <"IDE", "var_int", 4>
@@ -27,10 +27,7 @@ Tokens:
 
 Erros: 
 <"IMF", "var_int!", 9>
-<"erro", "var_int!", 9>
 <"IMF", "_r_e_a_l", 10>
-<"erro", "_r_e_a_l", 10>
 <"TMF", "@", 11>
 <"TMF", "@", 11>
 <"IMF", "str!_ng", 12>
-<"erro", "str!_ng", 12>
