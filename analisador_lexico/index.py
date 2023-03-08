@@ -59,8 +59,7 @@ def isfloat(num):
 
 #monta o token
 def montar_token(classificacao, lexema, linha):
-    # Colocar no padrão do arquivo da professora
-    return '<"'+classificacao+'", "'+''.join(lexema)+'", '+str(linha)+'>\n'
+    return '' + str(linha) + ' ' + classificacao + ' ' + ''.join(lexema) + '\n'
 
 #identifica se o lexema é uma palavra reservada
 def is_palavra_reservada(lexema):
