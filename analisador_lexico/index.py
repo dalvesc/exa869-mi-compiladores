@@ -12,6 +12,8 @@ delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
+comment_open = False
+
 pasta = os.getcwd()+'/files/input/teste/' #pasta dos códigos de input
 
 #ler linha por linha do arquivo
@@ -152,6 +154,7 @@ def analisadores(lexema, linha_encontrada):
 
 #ler linha por linha do arquivo e passar para o analisador
 def analisar_arquivo(linhas):
+    global comment_open
     linha_atual = 0
     linha_comentario = 0
     lexemas_da_linha = []
@@ -174,6 +177,8 @@ def analisar_arquivo(linhas):
                     continue   
 
                 elif letra == "/" and linha[i+1] == "*" and comentario:
+                    comment_open = True
+                    linha_comentario = linha_atual
                     lexemas_da_linha.append(''.join(lexema).strip())
                     lexema = []
                     lexema.append(letra)
@@ -185,6 +190,7 @@ def analisar_arquivo(linhas):
                     continue
 
                 elif letra == "*" and linha[i+1] == "/": #falta quando n fecha o comentario de bloco aberto
+                    comment_open = False
                     lexema.append(letra)
                     lexema.append(linha[i+1])
                     lexemas_da_linha.append(''.join(lexema).strip())
@@ -309,11 +315,12 @@ def analisar_arquivo(linhas):
                 lexema_comentario.append(letra)
 
             i = i + 1
-        # if not comentario:
-        #     tokens_erros.append(montar_token('ComF', lexema_comentario, linha_comentario))
         lexemas_da_linha = [item for item in lexemas_da_linha if item != '']
         for lexema in lexemas_da_linha:
             analisadores(lexema, linha_atual)
+        if linha_atual == len(linhas) and comment_open:
+            tokens.pop()
+            tokens_erros.append(montar_token('ComF', "/*", linha_comentario))
 
 
 if __name__ == "__main__":

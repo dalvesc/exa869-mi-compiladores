@@ -19,7 +19,7 @@ algoritmo
 
     int = .1;
     a = 1.1_ ; // Verificar número mal formado
-    numero_real = 1.123456.789 // Sendo classificado como identificador mal formado
+    numero_real = 1.123456.789
     numero_real2 = 1234@56789.1
 
     teste = "test
