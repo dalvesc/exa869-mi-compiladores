@@ -1,69 +1,69 @@
 Tokens: 
 
-<"delimitador de comentario", "/*", 1>
-<"delimitador de comentario", "*/", 130>
-<"palavra reservada", "var", 132>
-<"delimitador", "{", 132>
-<"palavra reservada", "string", 133>
-<"identificador", "nome", 133>
-<"delimitador", ";", 133>
-<"palavra reservada", "int", 134>
-<"identificador", "idade", 134>
-<"delimitador", ",", 134>
-<"identificador", "numero", 134>
-<"delimitador", ";", 134>
-<"palavra reservada", "real", 135>
-<"identificador", "numero_real", 135>
-<"delimitador", ";", 135>
-<"palavra reservada", "boolean", 136>
-<"identificador", "teste", 136>
-<"delimitador", ";", 136>
-<"delimitador", "}", 137>
-<"palavra reservada", "function", 139>
-<"palavra reservada", "int", 139>
-<"identificador", "nome_funcao", 139>
-<"delimitador", "(", 139>
-<"palavra reservada", "int", 139>
-<"identificador", "p1", 139>
-<"delimitador", ",", 139>
-<"palavra reservada", "string", 139>
-<"identificador", "p1", 139>
-<"delimitador", ")", 139>
-<"delimitador", "{", 139>
-<"palavra reservada", "print", 140>
-<"delimitador", "(", 140>
-<"numero", "1", 140>
-<"delimitador", ")", 140>
-<"delimitador", ";", 140>
-<"palavra reservada", "return", 141>
-<"numero", "1", 141>
-<"delimitador", ";", 141>
-<"delimitador", "}", 142>
-<"delimitador de comentario", "//", 143>
-<"palavra reservada", "procedure", 145>
-<"palavra reservada", "start", 145>
-<"delimitador", "(", 145>
-<"delimitador", ")", 145>
-<"delimitador", "{", 145>
-<"identificador", "teste", 146>
-<"operador relacional", "=", 146>
-<"palavra reservada", "false", 146>
-<"delimitador", ";", 146>
-<"identificador", "idade", 147>
-<"operador relacional", "=", 147>
-<"numero", "1", 147>
-<"operador aritmetico", "+", 147>
-<"identificador", "teste", 147>
-<"delimitador", ";", 147>
-<"identificador", "idade", 148>
-<"operador relacional", "=", 148>
-<"identificador", "nome_funcao", 148>
-<"delimitador", "(", 148>
-<"identificador", "idade", 148>
-<"delimitador", ",", 148>
-<"identificador", "nome", 148>
-<"delimitador", ")", 148>
-<"delimitador", ";", 148>
-<"delimitador de comentario", "/*", 149>
+1 CoM /*
+130 CoM */
+132 PRE var
+132 DEL {
+133 PRE string
+133 IDE nome
+133 DEL ;
+134 PRE int
+134 IDE idade
+134 DEL ,
+134 IDE numero
+134 DEL ;
+135 PRE real
+135 IDE numero_real
+135 DEL ;
+136 PRE boolean
+136 IDE teste
+136 DEL ;
+137 DEL }
+139 PRE function
+139 PRE int
+139 IDE nome_funcao
+139 DEL (
+139 PRE int
+139 IDE p1
+139 DEL ,
+139 PRE string
+139 IDE p1
+139 DEL )
+139 DEL {
+140 PRE print
+140 DEL (
+140 NRO 1
+140 DEL )
+140 DEL ;
+141 PRE return
+141 NRO 1
+141 DEL ;
+142 DEL }
+143 CoM //
+145 PRE procedure
+145 PRE start
+145 DEL (
+145 DEL )
+145 DEL {
+146 IDE teste
+146 REL =
+146 PRE false
+146 DEL ;
+147 IDE idade
+147 REL =
+147 NRO 1
+147 ART +
+147 IDE teste
+147 DEL ;
+148 IDE idade
+148 REL =
+148 IDE nome_funcao
+148 DEL (
+148 IDE idade
+148 DEL ,
+148 IDE nome
+148 DEL )
+148 DEL ;
 
-Sucesso, nenhum erro encontrado!
+Erros: 
+149 ComF /*

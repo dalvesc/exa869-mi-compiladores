@@ -42,9 +42,7 @@ Tokens:
 20 DEL ;
 21 IDE a
 21 REL =
-21 NRO 1.1
 21 DEL ;
-21 CoM //
 22 IDE numero_real
 22 REL =
 23 IDE numero_real2
@@ -53,11 +51,11 @@ Tokens:
 23 NRO 56789.1
 25 IDE teste
 25 REL =
+26 DEL }
 
 Erros: 
 16 NMF 1.
-21 IMF _
+21 NMF 1.1_
 22 NMF 1.123456.789
 23 TMF @
 25 CMF "test
-0 ComF /*

@@ -14,7 +14,7 @@ simbolo_ascii = [i for i in range(32, 127) if i != 34]
 
 comment_open = False
 
-pasta = os.getcwd()+'/files/input/teste/' #pasta dos códigos de input
+pasta = os.getcwd()+'/files/input/' #pasta dos códigos de input
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -38,6 +38,7 @@ def ler_pasta_arquivos():
 
 #salva os tokens e erros em arquivos de output
 def montar_output(arquivo, tokens, tokens_erros):
+    filename = ''+arquivo+'-saida.txt' 
     arquivo = arquivo.replace('.txt', '')
     arquivo = open(os.getcwd()+'/files/output/'+arquivo+'-saida.txt', 'w')
     arquivo.write( 'Tokens: \n\n')
@@ -49,6 +50,7 @@ def montar_output(arquivo, tokens, tokens_erros):
             arquivo.write(token_erro)
     else: 
         arquivo.write( '\nSucesso, nenhum erro encontrado!')
+    print("Arquivo "+ filename +" gerado com sucesso!")
     arquivo.close()
 
 
@@ -58,6 +60,12 @@ def isfloat(num):
         return True
     except ValueError:
         return False
+
+
+def lexema_numero(lexema):
+    if len(lexema) > 1 and lexema[0] == '-' and lexema[-1].isdigit():
+        return True
+    return lexema.isdigit() or isfloat(lexema)
 
 #monta o token
 def montar_token(classificacao, lexema, linha):
@@ -87,7 +95,10 @@ def is_numero(lexema, linha):
     elif lexema.count('.') > 1:
         token_error_flag = True
         tokens_erros.append(montar_token('NMF', lexema, linha))
-        # Não pode retornar true, se não ele adiciona como token tbm no elif
+        return True
+    elif len(lexema) > 1 and lexema[0].isdigit() and not lexema[-1].isdigit():
+        token_error_flag = True
+        tokens_erros.append(montar_token('NMF', lexema, linha))
         return True
     return lexema.isdigit() or isfloat(lexema)
 
@@ -216,7 +227,7 @@ def analisar_arquivo(linhas):
                     lexema.append(letra)
                     j = i
                     for letra2 in linha[j+1:]:
-                        if not letra2.isdigit() and not letra2 == ".":
+                        if not letra2.isdigit() and not letra2 == "." and not letra2 == "_":
                             lexemas_da_linha.append(''.join(lexema).strip())
                             lexema = []
                             i = j + 1
@@ -245,7 +256,7 @@ def analisar_arquivo(linhas):
                     lexema.append(letra)
                     j = i
                     for letra2 in linha[j+1:]:
-                        if lexemas_da_linha and is_numero(lexemas_da_linha[-1]):
+                        if lexemas_da_linha and lexema_numero(lexemas_da_linha[-1]):
                             lexemas_da_linha.append(''.join(letra).strip())
                             lexema = []
                             i = j + 1
@@ -329,4 +340,3 @@ if __name__ == "__main__":
         tokens_erros = []
         analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
         montar_output(arquivo, tokens, tokens_erros)
-        print("Arquivos gerados com sucesso!")

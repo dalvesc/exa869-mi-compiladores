@@ -1,39 +1,39 @@
 Tokens: 
 
-<"delimitador de comentario", "//", 1>
-<"delimitador de comentario", "//", 2>
-<"DEL", "{", 5>
-<"PRE", "int", 6>
-<"DEL", ";", 6>
-<"delimitador de comentario", "//", 6>
-<"DEL", "}", 7>
-<"DEL", "{", 9>
-<"IDE", "a", 10>
-<"REL", "=", 10>
-<"delimitador de comentario", "//", 10>
-<"IDE", "a", 11>
-<"REL", "=", 11>
-<"DEL", ";", 11>
-<"delimitador de comentario", "//", 11>
-<"IDE", "se", 13>
-<"DEL", "(", 13>
-<"DEL", ")", 13>
-<"DEL", "{", 14>
-<"IDE", "x", 15>
-<"IDE", "a", 15>
-<"DEL", ";", 15>
-<"delimitador de comentario", "//", 15>
-<"DEL", "}", 16>
-<"DEL", "{", 17>
-<"IDE", "Comentario", 17>
-<"IDE", "nao", 17>
-<"IDE", "finalizado", 17>
-<"DEL", ";", 17>
-<"DEL", "}", 18>
+1 CoM //
+2 CoM //
+5 DEL {
+6 PRE int
+6 DEL ;
+6 CoM //
+7 DEL }
+9 DEL {
+10 IDE a
+10 REL =
+10 CoM //
+11 IDE a
+11 REL =
+11 DEL ;
+11 CoM //
+13 IDE se
+13 DEL (
+13 DEL )
+14 DEL {
+15 IDE x
+15 IDE a
+15 DEL ;
+15 CoM //
+16 DEL }
+17 DEL {
+17 IDE Comentario
+17 IDE nao
+17 IDE finalizado
+17 DEL ;
+18 DEL }
 
 Erros: 
-<"erro", "a?", 6>
-<"erro", "2.2.2", 11>
-<"erro", "?", 13>
-<"erro", "=?", 15>
-<"erro", "#", 17>
+6 IMF a?
+11 NMF 2.2.2
+13 IMF ?
+15 IMF =?
+17 IMF #
