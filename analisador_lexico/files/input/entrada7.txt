@@ -2,7 +2,7 @@
 variaveis
 {
 	string nome = "nome pro'prio ";
-	string palavra = "";
+	string palavra = "mençagem";
 	string palavra2 = " ";
 	string sobrenome = " sobre " tutores ";
 

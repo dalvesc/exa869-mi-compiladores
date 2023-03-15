@@ -55,7 +55,7 @@ Tokens:
 
 Erros: 
 16 NMF 1.
-21 NMF 1.1_
+21 NMF 1.1#
 22 NMF 1.123456.789
 23 TMF @
 25 CMF "test

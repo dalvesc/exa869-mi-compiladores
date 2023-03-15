@@ -31,9 +31,9 @@ Tokens:
 18 DEL }
 
 Erros: 
-10 IMF &
-10 IMF &
-14 IMF |
-14 IMF |!
-14 IMF <==
-16 IMF >>=
+10 TMF &
+10 TMF &
+14 TMF |
+14 TMF |!
+14 TMF <==
+16 TMF >>=

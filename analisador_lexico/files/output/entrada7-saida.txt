@@ -10,7 +10,6 @@ Tokens:
 5 PRE string
 5 IDE palavra
 5 REL =
-5 CAC ""
 5 DEL ;
 6 PRE string
 6 IDE palavra2
@@ -25,4 +24,5 @@ Tokens:
 9 DEL }
 
 Erros: 
+5 CMF "mençagem"
 7 CMF ";

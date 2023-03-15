@@ -89,6 +89,6 @@ Tokens:
 30 CoM //
 
 Erros: 
-28 IMF #
+28 TMF #
 28 IMF é
-29 IMF #
+29 TMF #

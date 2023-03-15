@@ -11,6 +11,8 @@ operadores_logicos = ['!', '&&', '||']
 delimitadores_comentarios = ['//', '/*', '*/']
 delimitadores = [';', ',', '(', ')','[', ']', '{', '}', '.']
 simbolo_ascii = [i for i in range(32, 127) if i != 34]
+simbolo_ascii.append(9)
+simbolos_especiais = ['_', '#', '$', '%', '&']
 
 comment_open = False
 
@@ -77,13 +79,19 @@ def is_palavra_reservada(lexema):
 
 #identifica se o lexema é um identificador
 def is_identificador(lexema, linha):
-    if not lexema[0].isdigit() and lexema[0] != '_' and lexema[0] not in delimitadores:
+    global token_error_flag
+    token_error_flag = False
+    if not lexema[0].isdigit() and lexema[0].isalpha() and lexema[0] != '_' and lexema[0] not in delimitadores:
         for caracter in lexema:
             if not caracter.isalnum() and caracter != '_':
+                token_error_flag = True
                 tokens_erros.append(montar_token('IMF', lexema, linha))
-                return False
+                return True
         return True
-    tokens_erros.append(montar_token('IMF', lexema, linha))
+    elif len(lexema) > 1 and lexema[0] == '_':
+        token_error_flag = True
+        tokens_erros.append(montar_token('IMF', lexema, linha))
+        return True
     return False
 
 #identifica se o lexema é um número
@@ -134,6 +142,10 @@ def is_cadeia_caractere(lexema, linha):
         if lexema[0] == '"' and lexema[-1] == '"':
             if is_caractere_valido_string(lexema):
                 return True
+            else:
+                token_error_flag = True
+                tokens_erros.append(montar_token('CMF', lexema, linha))
+                return True
         elif lexema[0] == '"' and lexema[-1] != '"':
             token_error_flag = True
             tokens_erros.append(montar_token('CMF', lexema, linha))
@@ -161,7 +173,10 @@ def analisadores(lexema, linha_encontrada):
         if not token_error_flag:
             return tokens.append(montar_token('NRO', lexema, linha_encontrada))
     elif is_identificador(lexema, linha_encontrada):
-        return tokens.append(montar_token('IDE', lexema, linha_encontrada))
+        if not token_error_flag:
+            return tokens.append(montar_token('IDE', lexema, linha_encontrada))
+    else:
+        return tokens_erros.append(montar_token('TMF', lexema, linha_encontrada))
 
 #ler linha por linha do arquivo e passar para o analisador
 def analisar_arquivo(linhas):
@@ -227,7 +242,7 @@ def analisar_arquivo(linhas):
                     lexema.append(letra)
                     j = i
                     for letra2 in linha[j+1:]:
-                        if not letra2.isdigit() and not letra2 == "." and not letra2 == "_":
+                        if not letra2.isdigit() and not letra2 == "." and not letra2 in simbolos_especiais:
                             lexemas_da_linha.append(''.join(lexema).strip())
                             lexema = []
                             i = j + 1
