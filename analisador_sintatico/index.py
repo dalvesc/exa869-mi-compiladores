@@ -1,7 +1,5 @@
-import os
-import unicodedata
+from analisador_lexico.index import analisar_lexico #NAO FUNCIONAAAAA
 
-pasta = os.getcwd()+'/analisador_lexico/files/output/' #pasta dos códigos de input
 
 #############################FAZER A STACK #######################################################
 ##############################################FAZER O SYMBOL######################################
@@ -9,27 +7,8 @@ pasta = os.getcwd()+'/analisador_lexico/files/output/' #pasta dos códigos de in
 pilha_escopo = ['global']
 pilha_chaves = []
 
-#ler linha por linha do arquivo
-def ler_linha_arquivo(arquivo):
-    arquivo = open(arquivo)
-    linhas = arquivo.readlines()
-    arquivo.close()
 
-    linhas_formatadas = []
-    for linha in linhas:
-        linha = unicodedata.normalize("NFKD", linha)#transforma \xa0 em espaço
-        linhas_formatadas.append(linha)
-    return linhas_formatadas
-
-#salva quais arquivos estão na pasta de input
-def ler_pasta_arquivos():
-    arquivos = []
-    for raiz, diretorios, files in os.walk(pasta):
-        for file in files:
-            arquivos.append(file)
-    return arquivos
-
-def analisar_arquivo(linhas):
+def analisar_tokens(linhas):
     for linha in linhas[2:]:
         split_linha = linha.split()
         if len(split_linha) >= 3:
@@ -57,8 +36,7 @@ def escopo_variavel(lexema):
         pass
 
 if __name__ == "__main__":
-    for arquivo in ler_pasta_arquivos():
-        tokens = []
-        tokens_erros = []
-        analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
-        #montar_output(arquivo, tokens, tokens_erros)
+    tokens = []
+    tokens_erros = []
+    analisar_tokens(analisar_lexico())
+    #montar_output(arquivo, tokens, tokens_erros)
