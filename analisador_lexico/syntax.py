@@ -1,20 +1,11 @@
-from lexical import * #NAO FUNCIONAAAAA
-
+from lexical import *
 
 #############################FAZER A STACK #######################################################
-##############################################FAZER O SYMBOL######################################
 
 pilha_escopo = ['global']
 pilha_chaves = []
 pilha_simbolos = []
 escopo_pre = ['start', 'function', 'procedure', 'var', 'const', 'struct']
-
-'}'
-start {
-    func(){
-
-    }
-}
 
 def analisar_tokens(tokens):
     global file_symbols
@@ -34,11 +25,6 @@ def analisar_tokens(tokens):
         file_symbols.append(symbol)
 
     print('SYMBOLS', file_symbols)
-
-def validate_scope(palavra_reservada):
-    default_expected = ['var', '{']
-    function_expected = []
-    procedure_expected = 
 
 #Criar pilha de escopos
 def escopo(symbol):
