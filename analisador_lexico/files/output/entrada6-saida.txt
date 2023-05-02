@@ -29,11 +29,3 @@ Tokens:
 16 LOG &&
 16 NRO 100
 18 DEL }
-
-Erros: 
-10 TMF &
-10 TMF &
-14 TMF |
-14 TMF |!
-14 TMF <==
-16 TMF >>=

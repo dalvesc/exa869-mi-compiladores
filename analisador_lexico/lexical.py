@@ -17,8 +17,8 @@ simbolos_especiais = ['_', '#', '$', '%', '&']
 comment_open = False
 
 pasta = os.getcwd()+'/files/input/' #pasta dos códigos de input
-tokens = []
-tokens_erros = []
+# global tokens = []
+# tokens_erros = []
 
 #ler linha por linha do arquivo
 def ler_linha_arquivo(arquivo):
@@ -47,7 +47,8 @@ def montar_output(arquivo, tokens, tokens_erros):
     arquivo = open(os.getcwd()+'/files/output/'+arquivo+'-saida.txt', 'w')
     arquivo.write( 'Tokens: \n\n')
     for token in tokens:
-        arquivo.write(token)
+        arquivo.write('' + str(token["numLinha"]) + ' ' + token["token"] + ' ' + ''.join(token["lexema"]) + '\n')
+        # arquivo.write(token)
     # if tokens_erros:
     #     arquivo.write( '\nErros: \n')
     #     for token_erro in tokens_erros:
@@ -73,7 +74,13 @@ def lexema_numero(lexema):
 
 #monta o token
 def montar_token(classificacao, lexema, linha):
-    return '' + str(linha) + ' ' + classificacao + ' ' + ''.join(lexema) + '\n'
+    token = {
+        'numLinha': linha,
+        'token': classificacao,
+        'lexema': lexema
+    }
+    return token
+    #return '' + str(linha) + ' ' + classificacao + ' ' + ''.join(lexema) + '\n'
 
 #identifica se o lexema é uma palavra reservada
 def is_palavra_reservada(lexema):
@@ -351,10 +358,12 @@ def analisar_arquivo(linhas):
             tokens_erros.append(montar_token('ComF', "/*", linha_comentario))
 
 
-def analisar_lexico():
-    for arquivo in ler_pasta_arquivos():
-        tokens = []
-        tokens_erros = []
-        analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
-        montar_output(arquivo, tokens, tokens_erros)
-        return tokens
+def analisar_lexico(arquivo):
+    global tokens
+    global tokens_erros
+    # for arquivo in ler_pasta_arquivos():
+    tokens = []
+    tokens_erros = []
+    analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
+    montar_output(arquivo, tokens, tokens_erros)
+    return tokens

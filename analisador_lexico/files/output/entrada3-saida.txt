@@ -39,10 +39,3 @@ Tokens:
 16 DEL }
 18 DEL {
 20 DEL }
-
-Erros: 
-13 TMF ##
-14 TMF #
-14 TMF #
-16 NMF 5$
-16 TMF #

@@ -52,10 +52,3 @@ Tokens:
 25 IDE teste
 25 REL =
 26 DEL }
-
-Erros: 
-16 NMF 1.
-21 NMF 1.1#
-22 NMF 1.123456.789
-23 TMF @
-25 CMF "test

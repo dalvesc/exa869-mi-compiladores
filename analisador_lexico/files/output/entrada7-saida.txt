@@ -22,7 +22,3 @@ Tokens:
 7 CAC " sobre "
 7 IDE tutores
 9 DEL }
-
-Erros: 
-5 CMF "mençagem"
-7 CMF ";

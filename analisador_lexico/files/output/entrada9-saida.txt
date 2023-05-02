@@ -87,8 +87,3 @@ Tokens:
 29 IDE bloco
 29 DEL }
 30 CoM //
-
-Erros: 
-28 TMF #
-28 IMF é
-29 TMF #

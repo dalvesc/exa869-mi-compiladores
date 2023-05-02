@@ -53,5 +53,3 @@ Tokens:
 18 CoM //
 19 DEL }
 21 DEL }
-
-Sucesso, nenhum erro encontrado!

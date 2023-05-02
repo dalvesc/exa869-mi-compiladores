@@ -24,10 +24,3 @@ Tokens:
 12 PRE string
 12 DEL ;
 13 DEL }
-
-Erros: 
-9 IMF var_int!
-10 IMF _r_e_a_l
-11 TMF @
-11 TMF @
-12 IMF str!_ng

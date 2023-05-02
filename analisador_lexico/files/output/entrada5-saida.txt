@@ -9,7 +9,3 @@ Tokens:
 6 REL =
 7 NRO 6
 7 ART +
-
-Erros: 
-3 TMF @
-5 TMF $

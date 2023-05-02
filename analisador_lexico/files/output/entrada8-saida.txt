@@ -30,10 +30,3 @@ Tokens:
 17 IDE finalizado
 17 DEL ;
 18 DEL }
-
-Erros: 
-6 IMF a?
-11 NMF 2.2.2
-13 TMF ?
-15 TMF =?
-17 TMF #

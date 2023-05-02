@@ -64,6 +64,3 @@ Tokens:
 148 IDE nome
 148 DEL )
 148 DEL ;
-
-Erros: 
-149 ComF /*

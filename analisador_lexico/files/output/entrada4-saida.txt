@@ -39,5 +39,3 @@ Tokens:
 1 IDE verdadeiro
 1 DEL ,
 1 IDE falso
-
-Sucesso, nenhum erro encontrado!
