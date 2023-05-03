@@ -1,1 +1,0 @@
-algoritmo, variaveis, constantes, registro, funcao, retorno, vazio, se, senao, enquanto, para, leia, escreva, int, real, boolean, char, string, verdadeiro, falso 
