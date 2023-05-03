@@ -2,7 +2,6 @@ Tokens:
 
 1 CoM /*
 5 CoM */
-6 PRE procedure
 6 PRE start
 6 DEL {
 6 CoM //

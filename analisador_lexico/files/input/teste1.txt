@@ -6,7 +6,7 @@
           
  string Mensagem = "Hello world"; 
   
- procedure start {  // comeca aqui o programa principal  
+ start {  // comeca aqui o programa principal  
   
          int idade;  
          string nome; 
@@ -135,6 +135,17 @@
          real numero_real; 
          boolean teste; 
  } 
+
+const{ 
+         string nome; 
+         int idade, numero; 
+         real numero_real; 
+         boolean teste; 
+ } 
+
+ struct ex {
+   int a;
+ }
   
  function int nome_funcao(int p1, string p1) { 
          print(1); 
@@ -142,7 +153,7 @@
  } 
     // procedure start(){}
 
- procedure start() { 
+ start { 
          teste = false; 
          idade = 1 + teste; 
          idade = nome_funcao(idade, nome); 

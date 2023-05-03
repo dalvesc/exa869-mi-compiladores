@@ -31,17 +31,19 @@ def analisar_tokens(tokens):
     #analisando cada token para verificar o escopo de cada um
     while i < len(file_symbols):
         if file_symbols[i]['lexema'] == 'struct':
-            i = analisar_struct(i)
+            (i, _) = analisar_struct(i)
         elif file_symbols[i]['lexema'] == 'var':
-            i = analisar_var(i)
+            (i, _) = analisar_var(i)
         elif file_symbols[i]['lexema'] == 'const':
-            i = analisar_const(i)
+            (i, _) = analisar_const(i)
         elif file_symbols[i]['lexema'] == 'procedure':
-            i = analisar_procedure(i)
+            i += 1
+            #(i, _) = analisar_procedure(i)
         elif file_symbols[i]['lexema'] == 'function':
-            i = analisar_function(i)
+            i += 1
+            #(i, _) = analisar_function(i)
         elif file_symbols[i]['lexema'] == 'start':
-            i = analisar_start(i)
+            (i, _) = analisar_start(i)
         else:
             #escopo global
             i += 1
@@ -72,7 +74,7 @@ def analisar_struct(i):
         esperado = pilha_struct[-1]
 
         if simbolo["lexema"] == esperado or simbolo["token"] == esperado:
-            esperado.pop()
+            pilha_struct.pop()
             acc += simbolo["lexema"]
         elif esperado == '<struct_var>' and i + 1 < len(file_symbols):
             pilha_escopo.append('struct')
@@ -80,8 +82,9 @@ def analisar_struct(i):
             if simbolo["lexema"] in get_tipos():
                 (i, acc_aux) = analisar_declaracao(i)
                 acc += acc_aux
-                if not(i + 1 < len(file_symbols) and simbolo["lexema"] in get_tipos()):
-                    esperado.pop()
+
+                if not(i + 1 < len(file_symbols) and file_symbols[i]["lexema"] in get_tipos()):
+                    pilha_struct.pop()
             else:
                 acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
             pilha_escopo.pop()
@@ -122,16 +125,29 @@ def analisar_declaracao(i):
             elif simbolo["lexema"] == '=':
                 pilha_declaracao = criar_pilha(['<valor>', '<lista_variaveis>', ';'])
                 acc += simbolo["lexema"]
+            elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i + 1]["lexema"] != "}":
+                pilha_declaracao = criar_pilha(['<tipo>', 'IDE', '<lista_variaveis>' , ';'])
+                acc += simbolo["lexema"]
             else: 
                 pilha_declaracao.pop()
                 continue
+        
+        elif esperado == "<tipo>":
+            if simbolo["lexema"] in get_tipos():
+                pilha_declaracao.pop()
+                acc += simbolo["lexema"] + ' '
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        
         elif esperado == "<valor>":
             (i, acc_aux) = analisar_atribuicao(i)
             acc += acc_aux 
             pilha_declaracao.pop()
+        
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_declaracao.pop()
             acc += simbolo["lexema"] + ' '
+        
         else:
             acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
 
@@ -139,7 +155,7 @@ def analisar_declaracao(i):
             i += 1
     
     print_faltando_esperado(pilha_declaracao)
-    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    #print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
 
@@ -155,6 +171,8 @@ def analisar_const(i):
     acc = ''
     if get_escopo_atual() != 'global':
         acc += erro_inesperado_handler(file_symbols[i]["lexema"], file_symbols[i]["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+    
+    escopo = get_escopo_atual()
 
     while len(pilha_const) > 0 and i + 1 <= len(file_symbols):
         simbolo = file_symbols[i]
@@ -165,7 +183,7 @@ def analisar_const(i):
             (i, acc_aux) = analisar_declaracao(i)
             acc += acc_aux
             pilha_const.pop()
-            continue
+            #continue
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_const.pop()
             acc += simbolo["lexema"] + ' '
@@ -194,7 +212,7 @@ def analisar_var(i):
             (i, acc_aux) = analisar_declaracao(i)
             acc += acc_aux
             pilha_var.pop()
-            continue
+            #continue
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_var.pop()
             acc += simbolo["lexema"] + ' '
@@ -229,6 +247,7 @@ def analisar_start(i):
         esperado = pilha_start[-1]
 
         if esperado == '<codigo>':
+            pilha_start.pop()
             pilha_escopo.append('start')
             # Ver análise do codigo
             pilha_escopo.pop()

@@ -3,7 +3,7 @@
           
  string Mensagem = "Hello world"; 
 */
- procedure start {  // comeca aqui o programa principal  
+start {  // comeca aqui o programa principal  
   
          int idade;  
          string nome; 
