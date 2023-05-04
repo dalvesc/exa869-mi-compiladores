@@ -129,15 +129,17 @@
                  int s;} 
  */ 
   
- var { 
-         string nome; 
-         int idade, numero; 
-         real numero_real; 
-         boolean teste; 
+ var {
+   int teste[1][2];
+   string teste2[a];
+   string nome = "maria";
+   int idade, numero; 
+   real numero_real; 
+   boolean teste; 
  } 
 
 const{ 
-         string nome; 
+         string nome = "joao"; 
          int idade, numero; 
          real numero_real; 
          boolean teste; 
@@ -157,7 +159,7 @@ const{
          teste = false; 
          idade = 1 + teste; 
          idade = nome_funcao(idade, nome); 
-         /*print("Digite o nome"); 
+         /*print("Digite o nome"); */
          read(nome); 
          print("Digite a idade"); 
          read(idade); 

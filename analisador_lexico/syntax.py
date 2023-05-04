@@ -8,6 +8,19 @@ pilha_simbolos = []
 lista_identificadores = []
 file_symbols = []
 
+# TODO: 
+#     - IF...THEN...ELSE
+#     - WHILE
+#     - EXPRESSÃO RELACIONAL
+#     - EXPRESSÃO LÓGICA
+#     - EXPRESSÃO ARITMÉTICA
+#     - CORRIGIR CONST PARA OBRIGAR ATRIBUIÇÃO
+#     - FUNÇÃO (e parâmetros)
+#     - PROCEDURE (e parâmetros)
+#     - CODIGO (dentro do start)
+#     - READ
+#     - PRINT
+
 # Analisa todos os tokens que foram gerados pelo analisador léxico
 def analisar_tokens(tokens):
     #  global file_symbols #lista de simbolos
@@ -104,7 +117,7 @@ def analisar_declaracao(i):
     acc = ""
     if file_symbols[i]["lexema"] not in get_tipos():
         print("Erro: Tipo esperado")
-        return i, simbolo["lexema"]
+        return i, file_symbols[i]["lexema"]
 
     escopo = get_escopo_atual()
 
@@ -122,6 +135,10 @@ def analisar_declaracao(i):
             if simbolo["lexema"] == ",":
                 pilha_declaracao = criar_pilha(['IDE', '<lista_variaveis>' , ';'])
                 acc += simbolo["lexema"] + ' '
+            elif simbolo["lexema"] == '[':
+                pilha_declaracao = criar_pilha(['<lista_variaveis>', ';'])
+                (i, acc_aux) = analisar_matriz(i)
+                acc += acc_aux
             elif simbolo["lexema"] == '=':
                 pilha_declaracao = criar_pilha(['<valor>', '<lista_variaveis>', ';'])
                 acc += simbolo["lexema"]
@@ -155,7 +172,6 @@ def analisar_declaracao(i):
             i += 1
     
     print_faltando_esperado(pilha_declaracao)
-    #print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
 
@@ -163,6 +179,9 @@ def analisar_atribuicao(i):
     simbolo = file_symbols[i]
 
     if simbolo["token"] == "IDE" or simbolo["token"] == "NRO" or simbolo["token"] == "CAC" or simbolo["lexema"] in get_boolean():
+        if(simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '['):
+            (i, lexema) = analisar_matriz(i)
+      
         return i, simbolo["lexema"]
 
 # Analisa o escopo de uma constante
@@ -180,10 +199,10 @@ def analisar_const(i):
         file_symbols[i]["escopo"] = escopo
 
         if esperado == "<lista_variaveis>":
+            
             (i, acc_aux) = analisar_declaracao(i)
             acc += acc_aux
             pilha_const.pop()
-            #continue
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_const.pop()
             acc += simbolo["lexema"] + ' '
@@ -212,7 +231,6 @@ def analisar_var(i):
             (i, acc_aux) = analisar_declaracao(i)
             acc += acc_aux
             pilha_var.pop()
-            #continue
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_var.pop()
             acc += simbolo["lexema"] + ' '
@@ -227,6 +245,43 @@ def analisar_var(i):
 
     return i, acc
 
+
+def analisar_matriz(i):
+    acc = ''
+    
+    finish = False
+    pilha_vetor = criar_pilha(['[', '<valor>' ,']'])
+
+    while not finish and i + 1 < len(file_symbols):
+        simbolo = file_symbols[i]
+        if len(pilha_vetor) == 0:
+            if simbolo["lexema"] == '[':
+                pilha_vetor = criar_pilha(['<valor>', ']'])
+                acc += simbolo["lexema"]
+            else:
+                finish = True
+                continue
+        else:
+            esperado = pilha_vetor[-1]
+            if esperado == "<valor>":
+                if simbolo["token"] == "IDE" or simbolo["token"] == "NRO":
+                    pilha_vetor.pop()
+                    acc += simbolo["lexema"]
+                else:
+                    acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            elif simbolo["lexema"] == esperado:
+                pilha_vetor.pop()
+                acc += simbolo["lexema"]
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        
+        if finish == False:
+            i += 1
+                
+    print_faltando_esperado(pilha_vetor)
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+
+    return i-1, acc
 
 # Analisa o escopo de uma procedure
 def analisar_procedure(i):
