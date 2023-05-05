@@ -136,13 +136,14 @@
    int idade, numero; 
    real numero_real; 
    boolean teste; 
- } 
+}
+
 
 const{ 
          string nome = "joao"; 
-         int idade, numero; 
-         real numero_real; 
-         boolean teste; 
+         int idade = 10, numero = 5; 
+         real numero_real = 2; 
+         boolean teste = true; 
  } 
 
  struct ex {

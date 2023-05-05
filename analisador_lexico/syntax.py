@@ -2,6 +2,8 @@ from lexical import *
 from utils import *
 from inspect import currentframe, getframeinfo
 
+IDENTIFICADORES = ['IDE', 'MATRIZ', 'STRUCT']
+
 pilha_escopo = ['global'] #pilha de escopos
 pilha_chaves = []
 pilha_simbolos = []
@@ -15,11 +17,11 @@ file_symbols = []
 #     - EXPRESSÃO LÓGICA
 #     - EXPRESSÃO ARITMÉTICA
 #     - CORRIGIR CONST PARA OBRIGAR ATRIBUIÇÃO
-#     - FUNÇÃO (e parâmetros)
-#     - PROCEDURE (e parâmetros)
+#     - FUNÇÃO
+#     - PROCEDURE
 #     - CODIGO (dentro do start)
-#     - READ
-#     - PRINT
+#     - READ (testar)
+#     - PRINT (testar)
 
 # Analisa todos os tokens que foram gerados pelo analisador léxico
 def analisar_tokens(tokens):
@@ -113,7 +115,7 @@ def analisar_struct(i):
     return i, acc
 
 # Analisa o escopo de uma variável
-def analisar_declaracao(i):
+def analisar_declaracao(i, tipo="var"):
     acc = ""
     if file_symbols[i]["lexema"] not in get_tipos():
         print("Erro: Tipo esperado")
@@ -148,6 +150,27 @@ def analisar_declaracao(i):
             else: 
                 pilha_declaracao.pop()
                 continue
+        # elif esperado == "<lista_variaveis>" and tipo == "const":
+        #     pilha_declaracao = criar_pilha(['=', '<valor>', '<lista_variaveis>', ';'])
+        #     if simbolo["lexema"] == ",":
+        #         pilha_declaracao = criar_pilha(['IDE', '<lista_variaveis>' , ';'])
+        #         acc += simbolo["lexema"] + ' '
+        #     elif simbolo["lexema"] == '[':
+        #         pilha_declaracao = criar_pilha(['<lista_variaveis>', ';'])
+        #         (i, acc_aux) = analisar_matriz(i)
+        #         acc += acc_aux
+        #     elif simbolo["lexema"] == '=':
+        #         pilha_declaracao = criar_pilha(['<valor>', '<lista_variaveis>', ';'])
+        #         acc += simbolo["lexema"]
+        #     # elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i +1]["token"] in get_tipos():
+                
+        #     elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i + 1]["lexema"] != "}":
+        #         print("ENTROU AQUI")
+        #         pilha_declaracao = criar_pilha(['<tipo>', 'IDE', '<lista_variaveis>' , ';'])
+        #         acc += simbolo["lexema"]
+        #     else:
+        #         pilha_declaracao.pop()
+        #         continue
         
         elif esperado == "<tipo>":
             if simbolo["lexema"] in get_tipos():
@@ -199,8 +222,7 @@ def analisar_const(i):
         file_symbols[i]["escopo"] = escopo
 
         if esperado == "<lista_variaveis>":
-            
-            (i, acc_aux) = analisar_declaracao(i)
+            (i, acc_aux) = analisar_declaracao(i, tipo='const')
             acc += acc_aux
             pilha_const.pop()
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
@@ -290,6 +312,99 @@ def analisar_procedure(i):
 # Analisa o escopo de uma function
 def analisar_function(i):
     pass
+
+def analisar_read(i):
+    acc = ''
+    pilha_read = criar_pilha(['read', '(', '<parametro_read>', ')', ';'])
+    
+    while(i < len(file_symbols) and len(pilha_read) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_read[-1]
+        
+        if esperado == '<parametro_read>':
+            lista_args = IDENTIFICADORES
+            (i, acc_aux) = analisar_argumento(i, lista_args)
+            if acc_aux != False:
+                pilha_read.pop()
+                acc += acc_aux
+            else:
+                erros_sintaticos.append('Erro: Token inesperado ' + simbolo["lexema"] + ' na linha ' + str(simbolo["numLinha"]))
+                acc += pintar_vermelho(simbolo["lexema"])
+        elif esperado == simbolo["lexema"]:
+            pilha_read.pop()
+            acc += simbolo["lexema"]
+        else:
+            erros_sintaticos.append('Erro: Token inesperado ' + pintar_vermelho(simbolo["lexema"]) + ' na linha ' + str(simbolo["numLinha"]))
+            acc += pintar_vermelho(simbolo["lexema"])
+        
+        if len(pilha_read) > 0:
+            i += 1
+    
+    print_faltando_esperado(pilha_read)
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+
+    return i, acc
+
+def analisar_print(i):
+    acc = ''
+    pilha_print = criar_pilha(['print', '(', '<parametro_geral>', ')', ';'])
+    
+    while(i < len(file_symbols) and len(pilha_print) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_print[-1]
+        if esperado == "<parametro_geral>":
+            lista_args = ["CAC", "NRO"]
+            lista_args.extend(IDENTIFICADORES)
+            (i, acc_aux) = analisar_argumento(i, lista_args)
+            if acc_aux != False:
+                pilha_print.pop()
+                acc += acc_aux
+            else:
+                erros_sintaticos.append('Erro: Token inesperado ' + simbolo["lexema"] + ' na linha ' + str(simbolo["numLinha"]))
+                acc += pintar_vermelho(simbolo["lexema"])
+        elif esperado == simbolo["lexema"]:
+            pilha_print.pop()
+            acc += simbolo["lexema"]
+        else:
+            erros_sintaticos.append('Erro: Token inesperado ' + pintar_vermelho(simbolo["lexema"]) + ' na linha ' + str(simbolo["numLinha"]))
+            acc += pintar_vermelho(simbolo["lexema"])
+        
+        if len(pilha_print) > 0:
+            i += 1
+    
+    print_faltando_esperado(pilha_print)
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+
+    return i, acc
+    
+
+def analisar_argumento(i, lista_args, args_funcao = False, final = ')'):
+    simbolo = file_symbols[i]
+    if simbolo["token"] == "CAC" and "CAC" in lista_args:
+        return i, simbolo["lexema"]
+    elif simbolo["token"] == "NRO" and "NRO" in lista_args:
+        return i, simbolo["lexema"]
+    elif simbolo["lexema"] in get_boolean() and ("true" in lista_args or "false" in lista_args):
+        return i, simbolo["lexema"]
+    elif simbolo["token"] == "IDE" and "IDE" in lista_args and args_funcao:
+        # validar retorno
+        # if file_symbols[i+i]["lexema"] == "(":
+        #     i 
+        return i, simbolo["lexema"]
+    
+    if (set(IDENTIFICADORES) & set(lista_args)) and simbolo["token"] == "IDE":
+        simbolo_aux = file_symbols[i+1]
+        if "IDE" in lista_args and final in [f"_{simbolo_aux['token']}", simbolo_aux["lexema"]]:
+            return i, simbolo["lexema"]
+        elif "STRUCT" in lista_args and simbolo_aux["lexema"] == ".":
+            return analisar_struct(i)
+        elif "MATRIZ" in lista_args and simbolo_aux["lexema"] == "[":
+            return analisar_matriz(i)
+        else:
+            return i, erro_inesperado_handler(simbolo_aux["lexema"], simbolo_aux["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+    else:
+        return i, erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+
 
 # Analisa o escopo de um start
 def analisar_start(i):
