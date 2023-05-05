@@ -125,8 +125,12 @@ def analisar_declaracao(i, tipo="var"):
 
     acc += file_symbols[i]["lexema"]  + ' '
     i += 1
+    if tipo == "var":
+        pilha_declaracao = criar_pilha(['IDE', '<lista_variaveis>' , ';'])
+    elif tipo == "const":
+        print("aquiii")
+        pilha_declaracao = criar_pilha(['IDE', "=", '<lista_variaveis>', ';'])
 
-    pilha_declaracao = criar_pilha(['IDE', '<lista_variaveis>' , ';'])
     
     while len(pilha_declaracao) > 0 and i + 1 <= len(file_symbols):
         simbolo = file_symbols[i]
@@ -134,7 +138,10 @@ def analisar_declaracao(i, tipo="var"):
         file_symbols[i]["escopo"] = escopo
 
         if esperado == "<lista_variaveis>":
-            if simbolo["lexema"] == ",":
+            if simbolo["lexema"] == "," and tipo == "const":
+                pilha_declaracao = criar_pilha(['IDE', '=', '<lista_variaveis>' , ';'])
+                acc += simbolo["lexema"] + ' '
+            elif simbolo["lexema"] == ",":
                 pilha_declaracao = criar_pilha(['IDE', '<lista_variaveis>' , ';'])
                 acc += simbolo["lexema"] + ' '
             elif simbolo["lexema"] == '[':
@@ -144,34 +151,15 @@ def analisar_declaracao(i, tipo="var"):
             elif simbolo["lexema"] == '=':
                 pilha_declaracao = criar_pilha(['<valor>', '<lista_variaveis>', ';'])
                 acc += simbolo["lexema"]
+            elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i + 1]["lexema"] != "}" and tipo == "const":
+                pilha_declaracao = criar_pilha(['<tipo>', 'IDE', '=', '<lista_variaveis>' , ';'])
+                acc += simbolo["lexema"]
             elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i + 1]["lexema"] != "}":
                 pilha_declaracao = criar_pilha(['<tipo>', 'IDE', '<lista_variaveis>' , ';'])
                 acc += simbolo["lexema"]
             else: 
                 pilha_declaracao.pop()
                 continue
-        # elif esperado == "<lista_variaveis>" and tipo == "const":
-        #     pilha_declaracao = criar_pilha(['=', '<valor>', '<lista_variaveis>', ';'])
-        #     if simbolo["lexema"] == ",":
-        #         pilha_declaracao = criar_pilha(['IDE', '<lista_variaveis>' , ';'])
-        #         acc += simbolo["lexema"] + ' '
-        #     elif simbolo["lexema"] == '[':
-        #         pilha_declaracao = criar_pilha(['<lista_variaveis>', ';'])
-        #         (i, acc_aux) = analisar_matriz(i)
-        #         acc += acc_aux
-        #     elif simbolo["lexema"] == '=':
-        #         pilha_declaracao = criar_pilha(['<valor>', '<lista_variaveis>', ';'])
-        #         acc += simbolo["lexema"]
-        #     # elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i +1]["token"] in get_tipos():
-                
-        #     elif simbolo["lexema"] == ';' and i + 1 < len(file_symbols) and file_symbols[i + 1]["lexema"] != "}":
-        #         print("ENTROU AQUI")
-        #         pilha_declaracao = criar_pilha(['<tipo>', 'IDE', '<lista_variaveis>' , ';'])
-        #         acc += simbolo["lexema"]
-        #     else:
-        #         pilha_declaracao.pop()
-        #         continue
-        
         elif esperado == "<tipo>":
             if simbolo["lexema"] in get_tipos():
                 pilha_declaracao.pop()
@@ -180,13 +168,21 @@ def analisar_declaracao(i, tipo="var"):
                 acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
         
         elif esperado == "<valor>":
+            print(simbolo["lexema"])
             (i, acc_aux) = analisar_atribuicao(i)
             acc += acc_aux 
             pilha_declaracao.pop()
         
+        elif (simbolo["lexema"] == esperado or simbolo["token"] == esperado) and tipo == "const" and simbolo["lexema"] == "=":
+            pilha_declaracao = criar_pilha(['<valor>', '<lista_variaveis>', ';'])
+            acc += simbolo["lexema"] + ' '  
+            print("ACC",acc)
+        
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_declaracao.pop()
             acc += simbolo["lexema"] + ' '
+        
+  
         
         else:
             acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)

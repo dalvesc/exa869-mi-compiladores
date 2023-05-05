@@ -141,7 +141,7 @@
 
 const{ 
          string nome = "joao"; 
-         int idade = 10, numero = 5; 
+         int idade = 10, numero; 
          real numero_real = 2; 
          boolean teste = true; 
  } 

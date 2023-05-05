@@ -49,8 +49,6 @@ Tokens:
 144 NRO 10
 144 DEL ,
 144 IDE numero
-144 REL =
-144 NRO 5
 144 DEL ;
 145 PRE real
 145 IDE numero_real
