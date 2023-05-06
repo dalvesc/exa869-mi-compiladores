@@ -129,7 +129,7 @@
                  int s;} 
  */ 
   
- var {
+ var {
    int teste[1][2];
    string teste2[a];
    string nome = "maria";
@@ -146,7 +146,7 @@ const{
          boolean teste = true; 
  } 
 
- struct ex {
+ struct textp {
    int a;
  }
   

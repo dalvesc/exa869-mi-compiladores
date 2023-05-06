@@ -62,7 +62,7 @@ Tokens:
 146 DEL ;
 147 DEL }
 149 PRE struct
-149 IDE ex
+149 IDE textp
 149 DEL {
 150 PRE int
 150 IDE a
