@@ -16,7 +16,6 @@ file_symbols = []
 #     - EXPRESSÃO RELACIONAL
 #     - EXPRESSÃO LÓGICA
 #     - EXPRESSÃO ARITMÉTICA
-#     - CORRIGIR CONST PARA OBRIGAR ATRIBUIÇÃO
 #     - FUNÇÃO
 #     - PROCEDURE
 #     - CODIGO (dentro do start)
@@ -205,6 +204,8 @@ def analisar_atribuicao(i):
     if simbolo["token"] == "IDE" or simbolo["token"] == "NRO" or simbolo["token"] == "CAC" or simbolo["lexema"] in get_boolean():
         if(simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '['):
             (i, lexema) = analisar_matriz(i)
+        # elif(simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '.'):
+        #     (i)
       
         return i, simbolo["lexema"]
 
@@ -426,7 +427,47 @@ def analisar_argumento(i, lista_args, args_funcao = False, final = ')'):
     else:
         return i, erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
 
-#########################################################START######################################################    
+#########################################################START###################################################### 
+
+def analisar_expressao_aritmetica(i):
+    pilha_expressao_aritmetica = criar_pilha(['<valor>', 'ART', '<valor>'])
+    acc = ''
+    fim = False
+    parenteses = True
+    lista_parenteses = []
+    
+    while(not fim and i < len(file_symbols)):
+        simbolo = file_symbols[i]
+        while(parenteses):
+            if simbolo["lexema"] == "(":
+                i += 1
+                acc += '('
+                lista_parenteses.append(')')
+                simbolo = file_symbols[i]
+            else:
+                parenteses = False
+        if len(pilha_expressao_aritmetica) == 0:
+            parenteses = True
+            while(i < len(file_symbols) and len(lista_parenteses) > 0 and parenteses):
+                if file_symbols[i]["lexema"] == ')':
+                    i += 1
+                    acc += ")"
+                    lista_parenteses.pop()
+                else:
+                    parenteses = False
+            if i+1 < len(file_symbols) and file_symbols[i]["token"] == "ART":
+                pilha_expressao_aritmetica = criar_pilha(['ART', '<valor>'])
+            else:
+                fim = True
+                continue
+        else:
+            simbolo = file_symbols[i]
+            esperado = pilha_expressao_aritmetica[-1]
+            if esperado == '<valor>':
+                lista_args = ['IDE', 'NRO']
+    pass
+
+#########################################################START######################################################   
 
 # Analisa o escopo de um start
 def analisar_start(i):
@@ -457,7 +498,6 @@ def analisar_start(i):
             elif simbolo["lexema"] == 'print':
                 print("AQUIII")
                 (i, acc_aux) = analisar_print(i)
-                pilha_start = criar_pilha(['<codigo>', '}'])
                 acc += acc_aux
 
             elif simbolo["lexema"] == 'if':
@@ -488,10 +528,13 @@ def analisar_start(i):
             elif simbolo["lexema"] == ';' and file_symbols[i + 1]["lexema"] != '}':
                 pilha_start = criar_pilha(['<codigo>', '}'])
                 acc += simbolo["lexema"] + ' '
+                #pilha_start.pop()
 
             else:
-                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
-                #pilha_escopo.pop()
+                pilha_start.pop()
+                continue
+                #acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+                
 
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_start.pop()
@@ -502,7 +545,6 @@ def analisar_start(i):
 
         if len(pilha_start) > 0:
             i += 1
-
     print_faltando_esperado(pilha_start)
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 

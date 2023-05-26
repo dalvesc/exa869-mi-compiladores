@@ -1,0 +1,28 @@
+const { 
+   string nome = "joao"; 
+   int idade = 10, numero = 2;
+   real teste = 2;
+   boolean teste = true; 
+}
+
+var {
+   int teste[1][2];
+   string teste2[a];
+   string nome = "maria";
+}
+
+struct textp {
+   int a;
+}
+
+start { 
+   var {
+      int idade, numero; 
+      real numero_real; 
+      boolean teste; 
+   }
+
+   read(a);
+
+   print("teste");
+}
