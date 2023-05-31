@@ -16,6 +16,15 @@ def get_tipos():
 def get_boolean():
     return ['true', 'false']
 
+def get_simbolos_aritmeticos():
+    return ['+', '-', '*', '/']
+
+def get_simbolos_logicos():
+    return ['&&', '||']
+
+def get_simbolos_relacionais():
+    return ['>', '<', '>=', '<=', '==', '!=']
+
 def print_faltando_esperado(pilha_esperado):
     if(len(pilha_esperado) > 0):
         pilha_esperado.reverse()

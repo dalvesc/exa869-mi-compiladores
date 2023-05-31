@@ -1,6 +1,6 @@
 const { 
    string nome = "joao"; 
-   int idade = 10, numero = 2;
+   int idade = 10, numero = 5+5;
    real teste = 2;
    boolean teste = true; 
 }

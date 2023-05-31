@@ -357,6 +357,12 @@ def analisar_arquivo(linhas):
             tokens.pop()
             tokens_erros.append(montar_token('ComF', "/*", linha_comentario))
 
+def remove_comentarios(tokens):
+    new_tokens = []
+    for token in tokens:
+        if token["token"] != "CoM":
+            new_tokens.append(token)
+    return new_tokens
 
 def analisar_lexico(arquivo):
     global tokens
@@ -366,4 +372,5 @@ def analisar_lexico(arquivo):
     tokens_erros = []
     analisar_arquivo(ler_linha_arquivo(pasta+arquivo))
     montar_output(arquivo, tokens, tokens_erros)
+    tokens = remove_comentarios(tokens)
     return tokens
