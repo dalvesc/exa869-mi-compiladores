@@ -15,12 +15,43 @@ struct textp {
    int a;
 }
 
+function int teste(){
+   nome = "maria";
+   idade = 5;
+   textp.a = 10;
+   if(a > 1) then {
+      teste = 10;
+   } else {
+      teste2 = 5;
+   }
+
+   print("teste");
+
+   while(a > 2) {
+      teste = "maria";
+   }
+
+   return false;
+}
+
 start { 
    var {
       int idade, numero; 
       real numero_real; 
       boolean teste; 
    }
+
+   if(a > 1) then {
+      teste = 10;
+   } else {
+      teste2 = 5;
+   }
+
+   while(a > 2) {
+      teste = "maria";
+   }
+
+   soma(a)
 
    read(a);
 

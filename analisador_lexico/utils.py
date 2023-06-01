@@ -28,4 +28,8 @@ def get_simbolos_relacionais():
 def print_faltando_esperado(pilha_esperado):
     if(len(pilha_esperado) > 0):
         pilha_esperado.reverse()
-        print('Erro: tokens em falta ' + str(pilha_esperado))
+        erro = 'Erro: tokens em falta ' + str(pilha_esperado)
+        print(erro)
+        return erro
+    return ''
+        

@@ -4,22 +4,30 @@ from inspect import currentframe, getframeinfo
 
 IDENTIFICADORES = ['IDE', 'MATRIZ', 'STRUCT']
 
-pilha_escopo = ['global'] #pilha de escopos
+pilha_escopo = ['global']
 pilha_chaves = []
 pilha_simbolos = []
 lista_identificadores = []
 file_symbols = []
 
 # TODO: 
-#     - ATRIBUIÇÃO DE STRUCT
-#     - IF...THEN...ELSE
-#     - WHILE
-#     - FUNÇÃO
-#     - RETORNO DE FUNÇÃO
-#     - PROCEDURE
-#     - CODIGO (dentro do start)
 #     - ESCREVER O OUTPUT SINTÁTICO NO ARQUIVO
 
+def montar_output_sintatico(arquivo):
+    filename = ''+arquivo+'-saida.txt' 
+    arquivo = arquivo.replace('.txt', '')
+    arquivo = open(os.getcwd()+'/files/output/'+arquivo+'-saida.txt', 'a')
+    arquivo.write( '\n\nErros sintáticos: \n\n')
+    if len(erros_sintaticos) > 0:
+        print(erros_sintaticos)
+        for erro in erros_sintaticos:
+            if erro != '':
+                arquivo.write(erro + '\n')
+    else:
+        arquivo.write('Não há erros sintáticos!')
+    print("Arquivo "+ filename +" gerado com sucesso!")
+    arquivo.close()
+    
 # Analisa todos os tokens que foram gerados pelo analisador léxico
 def analisar_tokens(tokens):
     #  global file_symbols #lista de simbolos
@@ -49,11 +57,9 @@ def analisar_tokens(tokens):
         elif file_symbols[i]['lexema'] == 'const':
             (i, _) = analisar_const(i)
         elif file_symbols[i]['lexema'] == 'procedure':
-            i += 1
-            #(i, _) = analisar_procedure(i)
+            (i, _) = validar_declaracao_procedure(i)
         elif file_symbols[i]['lexema'] == 'function':
-            i += 1
-            #(i, _) = analisar_function(i)
+            (i, _) = validar_declaracao_funcao(i)
         elif file_symbols[i]['lexema'] == 'start':
             (i, _) = analisar_start(i)
             #i += 1
@@ -108,7 +114,7 @@ def analisar_struct(i):
         if len(pilha_struct) > 0:
             i += 1
 
-    print_faltando_esperado(pilha_struct)
+    erros_sintaticos.append(print_faltando_esperado(pilha_struct))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
@@ -119,7 +125,7 @@ def analisar_struct(i):
 def analisar_declaracao(i, tipo="var"):
     acc = ""
     if file_symbols[i]["lexema"] not in get_tipos():
-        print("Erro: Tipo esperado")
+        erros_sintaticos.append(f"Erro: Tipo esperado na linha {file_symbols[i]['numLinha']}")
         return i, file_symbols[i]["lexema"]
 
     escopo = get_escopo_atual()
@@ -186,7 +192,7 @@ def analisar_declaracao(i, tipo="var"):
         if len(pilha_declaracao) > 0:
             i += 1
     
-    print_faltando_esperado(pilha_declaracao)
+    erros_sintaticos.append(print_faltando_esperado(pilha_declaracao))
 
     return i, acc
 
@@ -197,20 +203,92 @@ def analisar_atribuicao(i):
     simbolo = file_symbols[i]
 
     if i+1 < len(file_symbols):
-        (i, _) = validar_argumento_expressao_aritmetica(i, ["IDE", "NRO"], return_error=False)
-        if i+1 < len(file_symbols) and file_symbols[i+1]["token"] == "ART":
+        (j, _) = validar_argumento_expressao_aritmetica(i, ["IDE", "NRO"], return_error=False)
+        if j+1 < len(file_symbols) and file_symbols[i+1]["token"] == "ART":
             (i, acc_aux) = analisar_expressao_aritmetica(i)
+            i -= 1
+            return i, acc_aux
+        (j, _) = validar_argumento_expressao_relacional(i, return_error=False)
+        if j+1 < len(file_symbols) and file_symbols[i+1]["token"] == "REL":
+            (i, acc_aux) = analisar_expressao_relacional(i)
+            i -= 1
+            return i, acc_aux
+        (j, _) = validar_argumento_expressao_logica(i, return_error=False)
+        if j+1 < len(file_symbols) and file_symbols[i+1]["token"] == "LOG":
+            (i, acc_aux) = analisar_expressao_logica(i)
             i -= 1
             return i, acc_aux
     
     if simbolo["token"] == "IDE" or simbolo["token"] == "NRO" or simbolo["token"] == "CAC" or simbolo["lexema"] in get_boolean():
+        acc_aux = simbolo["lexema"]
         if(simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '['):
-            (i, lexema) = analisar_matriz(i)
-        # elif(simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '.'):
-        #     (i)
-      
-        return i, simbolo["lexema"]
+            (i, acc_aux) = analisar_matriz(i)
+        elif(simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '.'):
+            (i, acc_aux) = validar_atribuicao_struct(i)
+        elif(simbolo["token"] == "IDE") and file_symbols[i+1]["lexema"] == '(':
+            (i, acc_aux) = validar_chamada_funcao_procedure(i)
+            
+        return i, acc_aux
+    
+def validar_atribuicao(i, accum = True):
+    acc = ''
+    if file_symbols[i]["token"] == "IDE":
+        if accum:
+            simbolo = file_symbols[i]
+            acc += simbolo["lexema"]
+        i += 1
+        if file_symbols[i]["lexema"] == "=":
+            acc += '='
+            i += 1
+            simbolo = file_symbols[i]
+            (i, acc_aux) = analisar_atribuicao(i)
+            if acc_aux != False:
+                acc += acc_aux
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+    return i, acc
 
+
+def validar_atribuicao_struct(i):
+    fim = False
+    simbolo = file_symbols[i]
+    
+    if simbolo["token"] != "IDE":
+        erros_sintaticos.append(f"Erro: Tipo esperado na linha {simbolo['numLinha']}")
+        return i
+    
+    acc = simbolo["lexema"]
+    while(not fim and i+1<len(file_symbols)):
+        simbolo_aux = file_symbols[i+1]
+        if simbolo_aux["lexema"] != '.':
+            fim = True
+            continue
+        acc += simbolo_aux["lexema"]
+        if i+2 >= len(file_symbols):
+            i+=1
+            erro = f"Erro: Identificador esperado na linha {simbolo_aux['numLinha']}"
+            erros_sintaticos.append(erro)
+            print(erro)
+            continue
+        simbolo_aux2 = file_symbols[i+2]
+        if simbolo_aux2["lexema"] == '.':
+            i += 1
+            erro = f"Identificador faltando na linha {simbolo_aux2['numLinha']}"
+            erros_sintaticos.append(erro)
+            print(erro)
+            continue
+        if simbolo_aux2["token"] != "IDE":
+            erro = f"Erro: Token inesperado {simbolo_aux2['token']} na linha {simbolo_aux2['numLinha']}"
+            erros_sintaticos.append(erro)
+            print(erro)
+            i+=1
+        acc += simbolo_aux2["lexema"]
+        i += 2
+    
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    return i, acc
+    
+    
 #########################################################CONSTANTE######################################################
 
 # Analisa o escopo de uma constante
@@ -240,7 +318,7 @@ def analisar_const(i):
         if len(pilha_const) > 0:
             i += 1
     
-    print_faltando_esperado(pilha_const)
+    erros_sintaticos.append(print_faltando_esperado(pilha_const))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
@@ -271,7 +349,7 @@ def analisar_var(i):
         if len(pilha_var) > 0:
             i += 1
     
-    print_faltando_esperado(pilha_var)
+    erros_sintaticos.append(print_faltando_esperado(pilha_var))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
@@ -311,7 +389,7 @@ def analisar_matriz(i):
         if finish == False:
             i += 1
                 
-    print_faltando_esperado(pilha_vetor)
+    erros_sintaticos.append(print_faltando_esperado(pilha_vetor))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i-1, acc
@@ -319,14 +397,190 @@ def analisar_matriz(i):
 ###################################################PROCEDURE###############################################################
 
 # Analisa o escopo de uma procedure
-def analisar_procedure(i):
-    pass
+def validar_declaracao_procedure(i):
+    pilha_declaracao_procedure = criar_pilha(['procedure', 'IDE', '(', '<parametros>', ')', '{', '<codigo>', '}'])
+    acc = ''
+    
+    while(i < len(file_symbols) and len(pilha_declaracao_procedure) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_declaracao_procedure[-1]
+        if esperado == '<parametros>':
+            if simbolo["lexema"] != ')':
+                (i, acc_aux) = validar_parametro(i)
+                if acc_aux != False:
+                    acc += acc_aux
+                    pilha_declaracao_procedure.pop()
+                else:
+                    acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            else:
+                pilha_declaracao_procedure.pop()
+                continue
+        elif esperado == '<codigo>':
+            (i, acc_aux) = validar_codigo(i)
+            if acc_aux != False:
+                acc += acc_aux
+                pilha_declaracao_procedure.pop()
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif esperado in [simbolo["lexema"], simbolo["token"]]:
+            pilha_declaracao_procedure.pop()
+            acc += simbolo["lexema"]
+        else:
+            acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        
+        if len(pilha_declaracao_procedure) > 0:
+            i += 1
+    
+    erros_sintaticos.append(print_faltando_esperado(pilha_declaracao_procedure))
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    
 
 ################################################FUNÇÃO###############################################################
 
+def validar_parametro(i):
+    acc = ''
+    mais_parametros = True
+    pilha_parametros = criar_pilha(['<tipo>', 'IDE'])
+    
+    while(mais_parametros and i<len(file_symbols)-1 and file_symbols[i]["lexema"] != ")"):
+        simbolo = file_symbols[i]
+        if len(pilha_parametros) == 0:
+            if simbolo["lexema"] == ")":
+                mais_parametros = False
+            else:
+                pilha_parametros = criar_pilha([',', '<tipo>', 'IDE'])
+                continue
+        else:
+            esperado = pilha_parametros[-1]
+            if esperado == '<tipo>':
+                if not simbolo["lexema"] in get_tipos():
+                    # TODO: talvez seja um acc
+                    erros_sintaticos.append(f"Erro: Tipo esperado na linha {simbolo['numLinha']}")
+                else:
+                    acc += simbolo["lexema"]
+            elif esperado in [simbolo["lexema"], simbolo["token"]]:
+                acc += simbolo["lexema"]
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            i += 1
+            pilha_parametros.pop()
+    i -= 1
+    return i, acc
+
+
 # Analisa o escopo de uma function
-def analisar_function(i):
-    pass
+def validar_declaracao_funcao(i):
+    pilha_declaracao_funcao = criar_pilha(['function', '<tipo>', 'IDE', '(', '<parametros>', ')', '{', '<codigo>', 'return', '<retorno>', ';' ,'}'])
+    acc = ''
+    
+    while(i < len(file_symbols) and len(pilha_declaracao_funcao) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_declaracao_funcao[-1]
+        if esperado == '<parametros>':
+            if simbolo["lexema"] != ')':
+                (i, acc_aux) = validar_parametro(i)
+                if acc_aux != False:
+                    acc += acc_aux
+                    pilha_declaracao_funcao.pop()
+                else:
+                    acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            else:
+                pilha_declaracao_funcao.pop()
+                continue
+        elif esperado == '<codigo>':
+            (i, acc_aux) = validar_codigo(i, 'return')
+            if acc_aux != False:
+                acc += acc_aux
+                pilha_declaracao_funcao.pop()
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif esperado == '<retorno>':
+            (i, acc_aux) = validar_argumentos_retorno(i)
+            if acc_aux != False:
+                pilha_declaracao_funcao.pop()
+                acc += acc_aux
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif esperado in [simbolo["lexema"], simbolo["token"]]:
+            pilha_declaracao_funcao.pop()
+            acc += simbolo["lexema"]
+        elif esperado == '<tipo>':
+            if simbolo["lexema"] in get_tipos():
+                pilha_declaracao_funcao.pop()
+                acc += simbolo["lexema"]
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        else:
+            acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        
+        if len(pilha_declaracao_funcao) > 0:
+            i += 1
+    
+    erros_sintaticos.append(print_faltando_esperado(pilha_declaracao_funcao))
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    
+    return i, acc
+
+def validar_argumentos_retorno(i):
+    simbolo = file_symbols[i]
+    if simbolo["token"] == 'NRO' or simbolo["token"] == 'CAC' or simbolo["token"] == 'IDE' or simbolo["lexema"] in get_boolean():
+        return i, simbolo["lexema"]
+    return i, False
+
+def validar_chamada_funcao_procedure(i):
+    pilha_chamada_funcao = criar_pilha(['IDE', '(', '<parametros>', ')'])
+    acc = ''
+    lista_parametros = []
+    
+    while(i < len(file_symbols) and len(pilha_chamada_funcao) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_chamada_funcao[-1]
+        if esperado == '<parametros>':
+            if simbolo["lexema"] != ')':
+                args_validos = ["CCA", "NUM"]
+                args_validos.extend(IDENTIFICADORES)
+                mais_parametros = True
+                parametros = criar_pilha(['<parametros>'])
+                while(mais_parametros and i<len(file_symbols)-1 and file_symbols[i]["lexema"] != ')'):
+                    simbolo = file_symbols[i]
+                    if len(parametros) == 0:
+                        if simbolo["lexema"] == ')':
+                            mais_parametros = False
+                        else:
+                            parametros = criar_pilha([',', '<parametros>'])
+                            continue
+                    else:
+                        esperado = parametros[-1]
+                        if esperado == '<parametros>':
+                            j = i
+                            (i, acc_aux) = analisar_argumento(i, args_validos, args_funcao=True)
+                            if acc_aux != False:
+                                acc += acc_aux
+                            else:
+                                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+                        elif esperado == simbolo["lexema"]:
+                            acc += simbolo["lexema"]
+                        else:
+                            acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+                        i += 1
+                        parametros.pop()
+                i -= 1
+                pilha_chamada_funcao.pop()
+            else:
+                pilha_chamada_funcao.pop()
+                continue
+        elif esperado in [simbolo["token"], simbolo["lexema"]]:
+            pilha_chamada_funcao.pop()
+            acc += simbolo["lexema"]
+        else:
+            acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        if len(pilha_chamada_funcao) > 0:
+            i += 1
+            
+    erros_sintaticos.append(print_faltando_esperado(pilha_chamada_funcao))
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    
+    return i, acc
 
 ##################################################READ###############################################################
 
@@ -358,7 +612,7 @@ def analisar_read(i):
         if len(pilha_read) > 0:
             i += 1
     
-    print_faltando_esperado(pilha_read)
+    erros_sintaticos.append(print_faltando_esperado(pilha_read))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
@@ -367,7 +621,6 @@ def analisar_read(i):
 
 # Analisa o escopo de um print
 def analisar_print(i):
-    print("AQUIII")
     acc = ''
     pilha_print = criar_pilha(['print', '(', '<parametro_geral>', ')', ';'])
     
@@ -394,9 +647,87 @@ def analisar_print(i):
         if len(pilha_print) > 0:
             i += 1
     
-    print_faltando_esperado(pilha_print)
+    erros_sintaticos.append(print_faltando_esperado(pilha_print))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
+    return i, acc
+
+def analisar_if_then_else(i):
+    pilha_if = criar_pilha(['if', '(', '<expressao>', ')', 'then', '<codigo>', 'else'])
+    acc = ''
+    
+    while(i<len(file_symbols) and len(pilha_if) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_if[-1]
+        if esperado == '<expressao>':
+            (i, acc_aux) = validar_argumentos_estruturas(i)
+            i -= 1
+            if acc_aux != False:
+                acc += acc_aux
+                pilha_if.pop()
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif esperado == '<codigo>':
+            (i, acc_aux) = analisar_bloco(i)
+            if acc_aux != False:
+                acc += acc_aux
+                pilha_if.pop()
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            if len(pilha_if) > 0 and pilha_if[-1] == 'else':
+                if i+1 < len(file_symbols) and file_symbols[i+1]["lexema"] == 'else':
+                    pilha_if = criar_pilha(['else', '<codigo>'])
+                else:
+                    pilha_if.pop()
+        elif esperado == simbolo["lexema"]:
+            pilha_if.pop()
+            acc += simbolo["lexema"]
+        else:
+            acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno) 
+        
+        if len(pilha_if) > 0:
+            i+=1
+
+    erros_sintaticos.append(print_faltando_esperado(pilha_if))
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    
+    return i, acc
+
+def analisar_while(i):
+    pilha_while = criar_pilha(['while', '(', '<expressao>', ')', '<codigo>'])
+    acc = ''
+    
+    while(i<len(file_symbols) and len(pilha_while) > 0):
+        simbolo = file_symbols[i]
+        esperado = pilha_while[-1]
+        
+        if esperado == '<expressao>':
+            (i, acc_aux) = validar_argumentos_estruturas(i)
+            i -= 1
+            if acc_aux != False:
+                acc += acc_aux
+                pilha_while.pop()
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno) 
+        elif esperado == '<codigo>':
+            (i, acc_aux) = analisar_bloco(i)
+            if acc_aux != False:
+                acc += acc_aux
+                pilha_while.pop()
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno) 
+        elif esperado == simbolo["lexema"]:
+            pilha_while.pop()
+            acc += simbolo["lexema"]
+        else:
+            acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        
+        if len(pilha_while) > 0:
+            i += 1
+        
+    erros_sintaticos.append(print_faltando_esperado(pilha_while))
+    print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    
     return i, acc
     
 ######################################################ARGUMENTO############################################################
@@ -411,17 +742,18 @@ def analisar_argumento(i, lista_args, args_funcao = False, final = ')'):
     elif simbolo["lexema"] in get_boolean() and ("true" in lista_args or "false" in lista_args):
         return i, simbolo["lexema"]
     elif simbolo["token"] == "IDE" and "IDE" in lista_args and args_funcao:
-        # validar retorno
-        # if file_symbols[i+i]["lexema"] == "(":
-        #     i 
-        return i, simbolo["lexema"]
+        if file_symbols[i+1]["lexema"] == "(":
+            (i, acc_aux) = validar_chamada_funcao_procedure(i)
+            return i, acc_aux
+        elif file_symbols[i+1]["lexema"] == ",":
+            return i, simbolo["lexema"]
     
     if (set(IDENTIFICADORES) & set(lista_args)) and simbolo["token"] == "IDE":
         simbolo_aux = file_symbols[i+1]
         if "IDE" in lista_args and final in [f"_{simbolo_aux['token']}", simbolo_aux["lexema"]]:
             return i, simbolo["lexema"]
         elif "STRUCT" in lista_args and simbolo_aux["lexema"] == ".":
-            return analisar_struct(i)
+            return validar_atribuicao_struct(i)
         elif "MATRIZ" in lista_args and simbolo_aux["lexema"] == "[":
             return analisar_matriz(i)
         else:
@@ -443,7 +775,7 @@ def validar_argumento_expressao_aritmetica(i, lista_args, return_error = True):
                 tem_parenteses = False
     if "IDE" in lista_args and simbolo["token"] == "IDE":
         if simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '.':
-            (i, acc_aux) = analisar_struct(i)
+            (i, acc_aux) = validar_atribuicao_struct(i)
         elif simbolo["token"] == "IDE" and file_symbols[i+1]["lexema"] == '[':
             (i, acc_aux) = analisar_matriz(i)
         return i, acc_aux
@@ -501,7 +833,7 @@ def validar_argumento_expressao_relacional(i, return_error = True):
         if simbolo_aux["token"] == "REL":
             return i, simbolo["lexema"]
         elif simbolo_aux["lexema"] == ".":
-            return analisar_struct(i)
+            return validar_atribuicao_struct(i)
         elif simbolo_aux["lexema"] == "[":
             return analisar_matriz(i)
         else:
@@ -568,8 +900,8 @@ def analisar_expressao_aritmetica(i):
                 i += 1
             else:
                 i += 1
-    print_faltando_esperado(lista_parenteses)
-    print_faltando_esperado(pilha_expressao_aritmetica)
+    erros_sintaticos.append(print_faltando_esperado(lista_parenteses))
+    erros_sintaticos.append(print_faltando_esperado(pilha_expressao_aritmetica))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
     
     return i, acc
@@ -614,7 +946,7 @@ def analisar_expressao_logica(i):
         if len(pilha_expressao_logica) > 0:
             i += 1
         
-    print_faltando_esperado(pilha_expressao_logica)
+    erros_sintaticos.append(print_faltando_esperado(pilha_expressao_logica))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
         
     return i, acc
@@ -674,15 +1006,15 @@ def analisar_expressao_relacional(i):
                 i += 1
             else:
                 i += 1
-    print_faltando_esperado(lista_parenteses)
-    print_faltando_esperado(pilha_expressao_relacional)
+    erros_sintaticos.append(print_faltando_esperado(lista_parenteses))
+    erros_sintaticos.append(print_faltando_esperado(pilha_expressao_relacional))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
     
     return i, acc
     
 ###################################################################################################################
 
-def analisar_bloco(i):
+def analisar_bloco(i, escopo=None):
     pilha_bloco = criar_pilha(['{', '<codigo>', '}'])
     acc = ''
     
@@ -692,7 +1024,7 @@ def analisar_bloco(i):
         
         if esperado == '<codigo>':
             if simbolo["lexema"] != '}':
-                (i, acc_aux) = validar_codigo(i, validar_argumentos_de_bloco, '}')
+                (i, acc_aux) = validar_codigo(i, '}', escopo)
                 if acc_aux != False:
                     acc += acc_aux
                     pilha_bloco.pop()
@@ -709,18 +1041,79 @@ def analisar_bloco(i):
         if len(pilha_bloco) > 0:
             i += 1
             
-    print_faltando_esperado(pilha_bloco)
+    erros_sintaticos.append(print_faltando_esperado(pilha_bloco))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
     
     return i, acc
 
-def validar_codigo(i, validar_funcao, delimitador):
+def validar_argumentos_de_bloco(i, escopo):
+    simbolo = file_symbols[i]
+    if simbolo["lexema"] == 'print':
+        return analisar_print(i)
+    elif simbolo["lexema"] == 'read':
+        return analisar_read(i)
+    elif simbolo["lexema"] == 'while':
+        return analisar_while(i)
+    elif simbolo["lexema"] == 'if':
+        return analisar_if_then_else(i)
+    elif simbolo["lexema"] == 'var':
+        return analisar_var(i)
+    elif simbolo["lexema"] == 'function' and escopo != None:
+        return validar_declaracao_funcao(i)
+    elif simbolo["lexema"] == 'procedure' and escopo != None:
+        return validar_declaracao_procedure(i)
+    elif i+1 < len(file_symbols) and simbolo["token"] == "IDE":
+        simbolo_aux = file_symbols[i+1]
+        if simbolo_aux["lexema"] == '=':
+            (i, acc_aux) = validar_atribuicao(i)
+            i += 1
+            if file_symbols[i]["lexema"] == ';':
+                acc_aux += ';'
+                return i, acc_aux
+            else:
+                erros_sintaticos.append(f"Token em falta: ; na linha {file_symbols[i-1]['numLinha']}")
+                return i, erro_inesperado_handler(file_symbols[i]["lexema"], file_symbols[i]["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif simbolo_aux["lexema"] == '.':
+            (i, acc_aux) = validar_atribuicao_struct(i)
+            if file_symbols[i+1]["lexema"] == '=':
+                (i, acc_aux2) = validar_atribuicao(i, accum = False)
+                acc_aux += acc_aux2
+                i +=1
+                if file_symbols[i]["lexema"] == ';':
+                    acc_aux += ';'
+                    return i, acc_aux
+                else:
+                    erros_sintaticos.append(f"Token em falta: ; na linha {file_symbols[i-1]['numLinha']}")
+                    return i, erro_inesperado_handler(file_symbols[i]["lexema"], file_symbols[i]["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif simbolo_aux["lexema"] == "(":
+            (i, acc_aux) = validar_chamada_funcao_procedure(i)
+            i += 1
+            if file_symbols[i]["lexema"] == ';':
+                acc_aux += ';'
+                return i, acc_aux
+            else:
+                erros_sintaticos.append(f"Token em falta: ; na linha {file_symbols[i-1]['numLinha']}")
+                return i, erro_inesperado_handler(file_symbols[i]["lexema"], file_symbols[i]["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        elif simbolo_aux["lexema"] == '[':
+            (i, acc_aux) = analisar_matriz(i)
+            if file_symbols[i]["lexema"] == ';':
+                acc_aux += ';'
+                return i, acc_aux
+            else:
+                erros_sintaticos.append(f"Token em falta: ; na linha {file_symbols[i-1]['numLinha']}")
+                return i, erro_inesperado_handler(file_symbols[i]["lexema"], file_symbols[i]["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+        else: 
+            return i, erro_inesperado_handler(simbolo_aux["lexema"], simbolo_aux["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+    else:
+        return i, erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+
+def validar_codigo(i, delimitador, escopo=None):
     simbolo = file_symbols[i]
     codigo = True
     acc = ''
     
     while(codigo):
-        (i, acc_aux) = validar_funcao(i)
+        (i, acc_aux) = validar_argumentos_de_bloco(i, escopo)
         if acc_aux != False:
             acc += acc_aux
         else:
@@ -760,63 +1153,64 @@ def validar_argumentos_estruturas(i):
 # Analisa o escopo de um start
 def analisar_start(i):
     acc = ''
-    pilha_start = criar_pilha(['start', '{', '<codigo>' ,'}'])
+    pilha_start = criar_pilha(['start', '<codigo>'])
 
     while(i < len(file_symbols) and len(pilha_start) > 0):
         simbolo = file_symbols[i]
         esperado = pilha_start[-1]
 
         if esperado == '<codigo>':
-            pilha_start.pop()
-            pilha_escopo.append('start')
-            # Ver análise do codigo
-            print("lexema", simbolo["lexema"])
-            if simbolo["lexema"] == 'read':
-                print("AQUIII")
-                (i, acc_aux) = analisar_read(i)
-                pilha_start = criar_pilha(['<codigo>', '}'])
+            (i, acc_aux) = analisar_bloco(i)
+            if acc_aux != False:
                 acc += acc_aux
-
-            elif simbolo["lexema"] == 'var':
-                print("AQUIII")
-                (i, acc_aux) = analisar_var(i)
-                pilha_start = criar_pilha(['<codigo>', '}'])
-                acc += acc_aux
-
-            elif simbolo["lexema"] == 'print':
-                print("AQUIII")
-                (i, acc_aux) = analisar_print(i)
-                acc += acc_aux
-
-            elif simbolo["lexema"] == 'if':
-                #(i, acc_aux) = analisar_if(i)
-                #pilha_start = criar_pilha(['<codigo>', '}'])
-                #acc += acc_aux
-                pass
-            elif simbolo["lexema"] == 'while':
-                #(i, acc_aux) = analisar_while(i)
-                #pilha_start = criar_pilha(['<codigo>', '}'])
-                #acc += acc_aux
-                pass
-            elif simbolo["lexema"] == 'function':
-                #(i, acc_aux) =analisar_function(i)
-                #pilha_start = criar_pilha(['<codigo>', '}'])
-                #acc += acc_aux
-                pass
-            elif simbolo["lexema"] == 'procedure':
-                #(i, acc_aux) = analisar_procedure(i)
-                #pilha_start = criar_pilha(['<codigo>', '}'])
-                #acc += acc_aux
-                pass
-            elif simbolo["lexema"] == ';' and file_symbols[i + 1]["lexema"] != '}':
-                pilha_start = criar_pilha(['<codigo>', '}'])
-                acc += simbolo["lexema"] + ' '
-                #pilha_start.pop()
-
-            else:
                 pilha_start.pop()
-                continue
-                #acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            else:
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
+            
+            
+            # pilha_start.pop()
+            # pilha_escopo.append('start')
+            # # Ver análise do codigo
+            # print("lexema", simbolo["lexema"])
+            # if simbolo["lexema"] == 'read':
+            #     (i, acc_aux) = analisar_read(i)
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+
+            # elif simbolo["lexema"] == 'var':
+            #     (i, acc_aux) = analisar_var(i)
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+
+            # elif simbolo["lexema"] == 'print':
+            #     (i, acc_aux) = analisar_print(i)
+            #     #pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+
+            # elif simbolo["lexema"] == 'if':
+            #     (i, acc_aux) = analisar_if_then_else(i)
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+            # elif simbolo["lexema"] == 'while':
+            #     (i, acc_aux) = analisar_while(i)
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+            # elif simbolo["lexema"] == 'function':
+            #     (i, acc_aux) = validar_declaracao_funcao(i)
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+            # elif simbolo["lexema"] == 'procedure':
+            #     (i, acc_aux) = validar_declaracao_procedure(i)
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += acc_aux
+            # elif simbolo["lexema"] == ';' and file_symbols[i + 1]["lexema"] != '}':
+            #     pilha_start = criar_pilha(['<codigo>', '}'])
+            #     acc += simbolo["lexema"] + ' '
+
+            # else:
+            #     pilha_start.pop()
+            #     continue
+            #     #acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
                 
 
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
@@ -828,7 +1222,7 @@ def analisar_start(i):
 
         if len(pilha_start) > 0:
             i += 1
-    print_faltando_esperado(pilha_start)
+    erros_sintaticos.append(print_faltando_esperado(pilha_start))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
 
     return i, acc
@@ -842,17 +1236,10 @@ def erro_inesperado_handler(lexema, linha, referencia = None):
   print(pintar_vermelho(referencia) + ' Erro: Token inesperado ' + pintar_vermelho(lexema) + ' na linha ' + str(linha))
   return pintar_vermelho(lexema)
 
-#Erro de token não declarado
-def erro_nao_declarado(lexema, linha):
-  erros_semanticos.append('Erro: Variável ' + lexema + ' não declarada na linha ' + str(linha))
-  print(pintar_vermelho(getframeinfo(currentframe()).lineno) + ' Erro: Variável ' + pintar_vermelho(lexema) + ' não declarada na linha ' + str(linha))
-
 #Função principal
 if __name__ == "__main__":
-    tokens = [] #lista de tokens
     erros_sintaticos = [] #lista de tokens com erros sintaticos
-    erros_semanticos = []
     for arquivo in ler_pasta_arquivos(): #lendo cada arquivo da pasta input
         analisar_tokens(analisar_lexico(arquivo)) #chamando o analisador léxico
         # Aqui a gente faz a análise desse arquivo
-        #montar_output(arquivo, tokens, tokens_erros)
+        montar_output_sintatico(arquivo)
