@@ -31,5 +31,5 @@ def print_faltando_esperado(pilha_esperado):
         erro = 'Erro: tokens em falta ' + str(pilha_esperado)
         print(erro)
         return erro
-    return ''
+    return None
         

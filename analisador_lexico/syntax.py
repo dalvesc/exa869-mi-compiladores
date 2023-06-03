@@ -17,14 +17,16 @@ def montar_output_sintatico(arquivo):
     filename = ''+arquivo+'-saida.txt' 
     arquivo = arquivo.replace('.txt', '')
     arquivo = open(os.getcwd()+'/files/output/'+arquivo+'-saida.txt', 'a')
-    arquivo.write( '\n\nErros sintáticos: \n\n')
-    if len(erros_sintaticos) > 0:
-        print(erros_sintaticos)
-        for erro in erros_sintaticos:
-            if erro != '':
-                arquivo.write(erro + '\n')
+   
+    erros_sanitizado = [x for x in erros_sintaticos if x is not None]
+        
+    if len(erros_sanitizado) > 0:
+        arquivo.write( '\n\nErros sintáticos: \n\n')
+        print(erros_sanitizado)
+        for erro in erros_sanitizado:
+            arquivo.write(erro + '\n')
     else:
-        arquivo.write('Não há erros sintáticos!')
+        arquivo.write('\n\nNão há erros sintáticos!')
     print("Arquivo "+ filename +" gerado com sucesso!")
     arquivo.close()
     
@@ -416,7 +418,7 @@ def validar_declaracao_procedure(i):
                 pilha_declaracao_procedure.pop()
                 continue
         elif esperado == '<codigo>':
-            (i, acc_aux) = validar_codigo(i)
+            (i, acc_aux) = validar_codigo(i, '}')
             if acc_aux != False:
                 acc += acc_aux
                 pilha_declaracao_procedure.pop()
@@ -433,6 +435,8 @@ def validar_declaracao_procedure(i):
     
     erros_sintaticos.append(print_faltando_esperado(pilha_declaracao_procedure))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
+    
+    return i, acc
     
 
 ################################################FUNÇÃO###############################################################
@@ -804,10 +808,12 @@ def validar_argumento_expressao_logica(i, return_error = True):
             (j, _) = validar_argumento_expressao_relacional(i, return_error=False)
             if j+1 < len(file_symbols) and file_symbols[j+1]["token"] == "REL":
                 return analisar_expressao_relacional(i)
-        # if simbolo["token"] == "IDE":
-        #     if i+1 < len(file_symbols) and file_symbols[i+1]["lexema"] == "(":
-        #         (i, acc_aux) = validar_return
-        #     return i, acc_aux
+        if simbolo["token"] == "IDE":
+            if i+1 < len(file_symbols) and file_symbols[i+1]["lexema"] == "(":
+                (i, acc_aux) = validar_chamada_funcao_procedure(i)
+                return i, acc_aux
+            return i, simbolo["lexema"]
+        
     if return_error:
         erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
     
@@ -1014,7 +1020,7 @@ def analisar_expressao_relacional(i):
     
 ###################################################################################################################
 
-def analisar_bloco(i, escopo=None):
+def analisar_bloco(i):
     pilha_bloco = criar_pilha(['{', '<codigo>', '}'])
     acc = ''
     
@@ -1024,7 +1030,7 @@ def analisar_bloco(i, escopo=None):
         
         if esperado == '<codigo>':
             if simbolo["lexema"] != '}':
-                (i, acc_aux) = validar_codigo(i, '}', escopo)
+                (i, acc_aux) = validar_codigo(i, '}')
                 if acc_aux != False:
                     acc += acc_aux
                     pilha_bloco.pop()
@@ -1046,7 +1052,7 @@ def analisar_bloco(i, escopo=None):
     
     return i, acc
 
-def validar_argumentos_de_bloco(i, escopo):
+def validar_argumentos_de_bloco(i):
     simbolo = file_symbols[i]
     if simbolo["lexema"] == 'print':
         return analisar_print(i)
@@ -1058,10 +1064,6 @@ def validar_argumentos_de_bloco(i, escopo):
         return analisar_if_then_else(i)
     elif simbolo["lexema"] == 'var':
         return analisar_var(i)
-    elif simbolo["lexema"] == 'function' and escopo != None:
-        return validar_declaracao_funcao(i)
-    elif simbolo["lexema"] == 'procedure' and escopo != None:
-        return validar_declaracao_procedure(i)
     elif i+1 < len(file_symbols) and simbolo["token"] == "IDE":
         simbolo_aux = file_symbols[i+1]
         if simbolo_aux["lexema"] == '=':
@@ -1107,13 +1109,13 @@ def validar_argumentos_de_bloco(i, escopo):
     else:
         return i, erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
 
-def validar_codigo(i, delimitador, escopo=None):
+def validar_codigo(i, delimitador):
     simbolo = file_symbols[i]
     codigo = True
     acc = ''
     
     while(codigo):
-        (i, acc_aux) = validar_argumentos_de_bloco(i, escopo)
+        (i, acc_aux) = validar_argumentos_de_bloco(i)
         if acc_aux != False:
             acc += acc_aux
         else:
