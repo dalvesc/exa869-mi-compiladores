@@ -4,7 +4,7 @@ Repositório para a solução do PBL de compiladores da Universidade Estadual de
 
 # Como executar o projeto
 
-Com o projeto baixado em sua máquina, adicione os arquivos para teste no diretório `/analisador_lexico/files/input/`.
+Com o projeto baixado em sua máquina, adicione os arquivos para teste no diretório `/analisador/files/input/`.
 
 Tendo o python instalado em seu computador, navegue até o diretório `/analisador/` do projeto e execute `python syntax.py` ou `python3 syntax.py`.
 
