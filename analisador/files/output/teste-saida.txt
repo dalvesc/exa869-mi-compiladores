@@ -60,7 +60,7 @@ Tokens:
 15 DEL ;
 16 DEL }
 18 PRE function
-18 PRE int
+18 PRE real
 18 IDE teste_funcao
 18 DEL (
 18 DEL )
@@ -71,7 +71,7 @@ Tokens:
 19 DEL ;
 20 IDE idade
 20 REL =
-20 NRO 5
+20 NRO -5
 20 DEL ;
 21 IDE textp
 21 DEL .
@@ -141,13 +141,9 @@ Tokens:
 40 DEL ;
 41 PRE if
 41 DEL (
-41 IDE a
-41 REL >
-41 IDE a
+41 IDE contra
 41 LOG &&
-41 IDE a
-41 REL >
-41 IDE b
+41 IDE teste
 41 DEL )
 41 PRE then
 41 DEL {
@@ -234,22 +230,22 @@ Tokens:
 72 IDE a
 72 DEL )
 72 DEL ;
-74 PRE read
+74 PRE print
 74 DEL (
-74 IDE a
+74 NRO 1
 74 DEL )
 74 DEL ;
-76 PRE print
+76 PRE read
 76 DEL (
-76 CAC "teste"
+76 IDE a
 76 DEL )
 76 DEL ;
-77 DEL }
+78 PRE print
+78 DEL (
+78 CAC "teste"
+78 DEL )
+78 DEL ;
+79 DEL }
 
 
-Erros sintáticos: 
-
-Erro: Token inesperado && na linha 41
-Erro: Token inesperado a na linha 41
-Erro: Token inesperado > na linha 41
-Erro: Token inesperado b na linha 41
+Não há erros sintáticos!

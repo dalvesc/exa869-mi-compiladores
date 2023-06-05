@@ -217,6 +217,7 @@ def analisar_atribuicao(i):
             return i, acc_aux
         (j, _) = validar_argumento_expressao_logica(i, return_error=False)
         if j+1 < len(file_symbols) and file_symbols[i+1]["token"] == "LOG":
+            print("sAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaa")
             (i, acc_aux) = analisar_expressao_logica(i)
             i -= 1
             return i, acc_aux
@@ -254,7 +255,6 @@ def validar_atribuicao(i, accum = True):
 def validar_atribuicao_struct(i):
     fim = False
     simbolo = file_symbols[i]
-    
     if simbolo["token"] != "IDE":
         erros_sintaticos.append(f"Erro: Tipo esperado na linha {simbolo['numLinha']}")
         return i
@@ -610,7 +610,7 @@ def analisar_read(i):
             pilha_read.pop()
             acc += simbolo["lexema"]
         else:
-            erros_sintaticos.append('Erro: Token inesperado ' + pintar_vermelho(simbolo["lexema"]) + ' na linha ' + str(simbolo["numLinha"]))
+            erros_sintaticos.append('Erro: Token inesperado ' + (simbolo["lexema"]) + ' na linha ' + str(simbolo["numLinha"]))
             acc += pintar_vermelho(simbolo["lexema"])
         
         if len(pilha_read) > 0:
@@ -645,7 +645,7 @@ def analisar_print(i):
             pilha_print.pop()
             acc += simbolo["lexema"]
         else:
-            erros_sintaticos.append('Erro: Token inesperado ' + pintar_vermelho(simbolo["lexema"]) + ' na linha ' + str(simbolo["numLinha"]))
+            erros_sintaticos.append('Erro: Token inesperado ' + (simbolo["lexema"]) + ' na linha ' + str(simbolo["numLinha"]))
             acc += pintar_vermelho(simbolo["lexema"])
         
         if len(pilha_print) > 0:
@@ -916,8 +916,9 @@ def analisar_expressao_logica(i):
     pilha_expressao_logica = criar_pilha(['<valor_logico>', 'LOG', '<valor_logico>'])
     acc = ''
     fim = False
-    
+
     while not fim and i < len(file_symbols):
+
         simbolo = file_symbols[i]
         if simbolo["lexema"] == "!":
             i += 1
@@ -925,7 +926,7 @@ def analisar_expressao_logica(i):
             acc += "!"
         if i+1 >= len(file_symbols):
             fim = True
-        if len(pilha_expressao_logica) == 0 and fim:
+        if len(pilha_expressao_logica) == 0 and not fim:
             simbolo_aux = file_symbols[i+1]
             if simbolo_aux["lexema"] in get_simbolos_logicos():
                 pilha_expressao_logica = criar_pilha(['<valor_logico>'])
@@ -937,10 +938,12 @@ def analisar_expressao_logica(i):
             if len(pilha_expressao_logica) > 0:
                 esperado = pilha_expressao_logica[-1]
                 if esperado == '<valor_logico>':
+
                     (i, acc_aux) = validar_argumento_expressao_logica(i)
                     if acc_aux != False:
                         pilha_expressao_logica.pop()
                         acc += acc_aux
+
                     else:
                         acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
                 elif esperado in [simbolo["token"], simbolo["lexema"]] and simbolo["lexema"] in get_simbolos_logicos():
@@ -951,7 +954,7 @@ def analisar_expressao_logica(i):
         
         if len(pilha_expressao_logica) > 0:
             i += 1
-        
+
     erros_sintaticos.append(print_faltando_esperado(pilha_expressao_logica))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
         
@@ -1046,7 +1049,6 @@ def analisar_bloco(i):
             acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
         if len(pilha_bloco) > 0:
             i += 1
-            
     erros_sintaticos.append(print_faltando_esperado(pilha_bloco))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
     
@@ -1122,6 +1124,7 @@ def validar_codigo(i, delimitador):
             acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
         
         if file_symbols[i+1]["lexema"] == delimitador:
+            print(acc)
             codigo = False
         else:
             i += 1
@@ -1141,7 +1144,8 @@ def validar_argumentos_estruturas(i):
             return analisar_expressao_relacional(i)
         (i, _) = validar_argumento_expressao_logica(i, return_error=False)
         if i+1<len(file_symbols) and file_symbols[i+1]["token"] == "LOG":
-            return analisar_expressao_logica(i)
+            (i, acc_aux) = analisar_expressao_logica(i)
+            return i+1, acc_aux
         return i, erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
 
     elif simbolo["lexema"] in get_boolean() or simbolo["token"] == "IDE":
@@ -1167,53 +1171,7 @@ def analisar_start(i):
                 acc += acc_aux
                 pilha_start.pop()
             else:
-                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
-            
-            
-            # pilha_start.pop()
-            # pilha_escopo.append('start')
-            # # Ver análise do codigo
-            # print("lexema", simbolo["lexema"])
-            # if simbolo["lexema"] == 'read':
-            #     (i, acc_aux) = analisar_read(i)
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-
-            # elif simbolo["lexema"] == 'var':
-            #     (i, acc_aux) = analisar_var(i)
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-
-            # elif simbolo["lexema"] == 'print':
-            #     (i, acc_aux) = analisar_print(i)
-            #     #pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-
-            # elif simbolo["lexema"] == 'if':
-            #     (i, acc_aux) = analisar_if_then_else(i)
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-            # elif simbolo["lexema"] == 'while':
-            #     (i, acc_aux) = analisar_while(i)
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-            # elif simbolo["lexema"] == 'function':
-            #     (i, acc_aux) = validar_declaracao_funcao(i)
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-            # elif simbolo["lexema"] == 'procedure':
-            #     (i, acc_aux) = validar_declaracao_procedure(i)
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += acc_aux
-            # elif simbolo["lexema"] == ';' and file_symbols[i + 1]["lexema"] != '}':
-            #     pilha_start = criar_pilha(['<codigo>', '}'])
-            #     acc += simbolo["lexema"] + ' '
-
-            # else:
-            #     pilha_start.pop()
-            #     continue
-            #     #acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)
-                
+                acc += erro_inesperado_handler(simbolo["lexema"], simbolo["numLinha"], referencia=getframeinfo(currentframe()).lineno)    
 
         elif simbolo["lexema"] == esperado or simbolo["token"] == esperado:
             pilha_start.pop()
@@ -1226,7 +1184,6 @@ def analisar_start(i):
             i += 1
     erros_sintaticos.append(print_faltando_esperado(pilha_start))
     print(pintar_azul(getframeinfo(currentframe()).lineno), acc)
-
     return i, acc
 
 

@@ -15,9 +15,9 @@ struct textp {
    int a;
 }
 
-function int teste_funcao(){
+function real teste_funcao(){
    nome = "maria";
-   idade = 5;
+   idade = -5;
    textp.a = 10;
    if(a > 1) then {
       teste = 10;
@@ -38,7 +38,7 @@ procedure teste_procedure(){
    nome = "maria";
    idade = 5;
    textp.a = 10;
-   if(a > a && a > b) then {
+   if(contra && teste) then {
       teste = 10;
    } else {
       teste2 = 5;
@@ -70,6 +70,8 @@ start { 
    }
 
    soma(a);
+
+   print(1);
 
    read(a);
 
